@@ -11,30 +11,52 @@
 		fontSize?: string;
 	};
 
+	type ProjectLink = {
+		label: string;
+		href: string;
+	};
+
 	let { data }: PageProps = $props();
 
 	const initialPromptText = 'How did you get here?';
 	const returningPromptText = 'welcome back';
 	const initialFinalText = 'are you still here?';
 	const returningFinalText = 'why have you returned?';
+	const projectsPromptText = "is this what you're looking for?";
 
+	// Total number of prompts shown in the burst, including the original centered prompt.
 	const totalPrompts = 64;
-	const spawnStartDelayMs = 1400;
-	const spawnIntervalMs = 305;
-	const spawnIntervalDecreaseMs = 2;
-	const minimumSpawnIntervalMs = 180;
+	// Delay before spawning begins for first-time visitors.
+	const initialSpawnStartDelayMs = 2000;
+	// Initial gap between spawned prompts for first-time visitors.
+	const initialSpawnIntervalMs = 100;
+	// Amount removed from the spawn gap after each first-time spawn to gradually speed things up.
+	const initialSpawnIntervalDecreaseMs = 2;
+	// Fastest allowed spawn gap for first-time visitors.
+	const initialMinimumSpawnIntervalMs = 50;
+	// Delay before spawning begins for returning visitors so "welcome back" stays visible first.
+	const returningSpawnStartDelayMs = 2000;
+	// Gap between spawned prompts for returning visitors; kept tiny so the burst feels nearly instant.
+	const returningSpawnIntervalMs = 30;
+	// Blank-screen pause after all prompts are cleared and before the final message appears.
 	const finalPromptDelayMs = 1500;
+	// Delay after the final message appears before the projects section is shown underneath it.
+	const projectsAppearDelayMs = 4000;
+	// Starting scale for the original centered prompt.
 	const baseScale = 1;
+	// Amount each newly spawned prompt grows relative to the previous one.
 	const scaleStep = 0.08;
+	// Percentage-based area where random prompts are allowed to appear.
 	const randomBounds = {
+		// Horizontal spawn range from the left edge of the viewport.
 		xMin: 10,
 		xMax: 90,
+		// Vertical spawn range from the top edge of the viewport.
 		yMin: 12,
 		yMax: 88
 	};
 
 	const promptText = $derived(data.hasVisited ? returningPromptText : initialPromptText);
-	const finalText = $derived(data.hasVisited ? returningFinalText : initialFinalText);
 
 	const createCenterPrompt = (): Prompt => ({
 		id: 0,
@@ -55,23 +77,86 @@
 
 	let prompts = $state<Prompt[]>([createCenterPrompt()]);
 	let showFinalPrompt = $state(false);
+	let showProjects = $state(false);
+
+	const finalText = $derived(
+		showProjects
+			? projectsPromptText
+			: data.hasVisited
+				? returningFinalText
+				: initialFinalText
+	);
+	const projectLinks: ProjectLink[] = [
+		{ label: 'aethellib', href: 'https://github.com/Downmoto/aethellib' },
+		{ label: 'aethel', href: '' },
+	];
 
 	onMount(() => {
 		prompts = [createCenterPrompt()];
 		showFinalPrompt = false;
+		showProjects = false;
 
-		let clearTimer: ReturnType<typeof setTimeout> | undefined;
+		const hasVisited = data.hasVisited;
+		const spawnStartDelayMs = hasVisited ? returningSpawnStartDelayMs : initialSpawnStartDelayMs;
+		const spawnIntervalMs = hasVisited ? returningSpawnIntervalMs : initialSpawnIntervalMs;
+		const spawnIntervalDecreaseMs = hasVisited ? 0 : initialSpawnIntervalDecreaseMs;
+		const minimumSpawnIntervalMs = hasVisited ? returningSpawnIntervalMs : initialMinimumSpawnIntervalMs;
+
+		let startTimer: ReturnType<typeof setTimeout> | undefined;
+		let finalPromptTimer: ReturnType<typeof setTimeout> | undefined;
+		let projectsTimer: ReturnType<typeof setTimeout> | undefined;
 		let spawnTimer: ReturnType<typeof setTimeout> | undefined;
+
+		const clearSequenceTimers = () => {
+			if (startTimer) {
+				clearTimeout(startTimer);
+			}
+
+			if (spawnTimer) {
+				clearTimeout(spawnTimer);
+			}
+
+			if (finalPromptTimer) {
+				clearTimeout(finalPromptTimer);
+			}
+
+			if (projectsTimer) {
+				clearTimeout(projectsTimer);
+			}
+		};
 
 		const queueFinalPrompt = () => {
 			prompts = [];
 
-			clearTimer = setTimeout(() => {
+			finalPromptTimer = setTimeout(() => {
 				showFinalPrompt = true;
+				projectsTimer = setTimeout(() => {
+					showProjects = true;
+				}, projectsAppearDelayMs);
 			}, finalPromptDelayMs);
 		};
 
-		const startTimer = setTimeout(() => {
+		const skipToProjects = () => {
+			if (!hasVisited || showProjects) {
+				return;
+			}
+
+			clearSequenceTimers();
+			prompts = [];
+			showFinalPrompt = true;
+			showProjects = true;
+		};
+
+		const handleSkip = () => {
+			skipToProjects();
+		};
+
+		if (hasVisited) {
+			window.addEventListener('pointerdown', handleSkip);
+			window.addEventListener('keydown', handleSkip);
+		}
+
+		startTimer = setTimeout(() => {
 			if (totalPrompts <= 1) {
 				queueFinalPrompt();
 				return;
@@ -97,14 +182,11 @@
 		}, spawnStartDelayMs);
 
 		return () => {
-			clearTimeout(startTimer);
+			clearSequenceTimers();
 
-			if (spawnTimer) {
-				clearTimeout(spawnTimer);
-			}
-
-			if (clearTimer) {
-				clearTimeout(clearTimer);
+			if (hasVisited) {
+				window.removeEventListener('pointerdown', handleSkip);
+				window.removeEventListener('keydown', handleSkip);
 			}
 		};
 	});
@@ -126,7 +208,19 @@
 	{/each}
 
 	{#if showFinalPrompt}
-		<TextPrompt text={finalText} fontSize="16px" />
+		<p class="final-message">{finalText}</p>
+
+		{#if showProjects}
+			<section class="projects" aria-label="Projects section">
+				<nav class="project-links" aria-label="Project links">
+					{#each projectLinks as project}
+						<a class="project-link" href={project.href}>
+							{project.label}
+						</a>
+					{/each}
+				</nav>
+			</section>
+		{/if}
 	{/if}
 </div>
 
@@ -146,5 +240,56 @@
 		min-height: 100vh;
 		overflow: hidden;
 		background: #fff;
+	}
+
+	.final-message {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		margin: 0;
+		font-size: 16px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.projects {
+		position: absolute;
+		left: 50%;
+		top: calc(50% + 3.5rem);
+		transform: translateX(-50%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.project-links {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.project-link {
+		border: 1px solid #000;
+		padding: 0.5rem 0.85rem;
+		color: #000;
+		font-size: 0.85rem;
+		letter-spacing: 0.04em;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition:
+			background-color 120ms ease,
+			color 120ms ease;
+	}
+
+	.project-link:hover,
+	.project-link:focus-visible {
+		background: #000;
+		color: #fff;
 	}
 </style>
