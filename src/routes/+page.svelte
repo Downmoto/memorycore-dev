@@ -76,6 +76,7 @@
 	});
 
 	let prompts = $state<Prompt[]>([createCenterPrompt()]);
+	let isDark = $state(false);
 	let showFinalPrompt = $state(false);
 	let showProjects = $state(false);
 
@@ -93,6 +94,7 @@
 
 	onMount(() => {
 		prompts = [createCenterPrompt()];
+		isDark = false;
 		showFinalPrompt = false;
 		showProjects = false;
 
@@ -127,6 +129,7 @@
 
 		const queueFinalPrompt = () => {
 			prompts = [];
+			isDark = true;
 
 			finalPromptTimer = setTimeout(() => {
 				showFinalPrompt = true;
@@ -143,6 +146,7 @@
 
 			clearSequenceTimers();
 			prompts = [];
+			isDark = true;
 			showFinalPrompt = true;
 			showProjects = true;
 		};
@@ -196,7 +200,7 @@
 	<title>{promptText}</title>
 </svelte:head>
 
-<div class="scene">
+<div class:dark={isDark} class="scene">
 	{#each prompts as prompt (prompt.id)}
 		<TextPrompt
 			text={promptText}
@@ -242,6 +246,11 @@
 		background: #fff;
 	}
 
+	.scene.dark {
+		background: #000;
+		color: #fff;
+	}
+
 	.final-message {
 		position: absolute;
 		left: 50%;
@@ -275,9 +284,9 @@
 	}
 
 	.project-link {
-		border: 1px solid #000;
+		border: 1px solid currentColor;
 		padding: 0.5rem 0.85rem;
-		color: #000;
+		color: inherit;
 		font-size: 0.85rem;
 		letter-spacing: 0.04em;
 		text-decoration: none;
@@ -289,7 +298,7 @@
 
 	.project-link:hover,
 	.project-link:focus-visible {
-		background: #000;
-		color: #fff;
+		background: #fff;
+		color: #000;
 	}
 </style>
