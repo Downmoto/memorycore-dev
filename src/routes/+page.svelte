@@ -239,14 +239,10 @@
 </div>
 
 <style>
-	:global(body) {
-		overflow: hidden;
-	}
-
 	.scene {
 		position: relative;
 		width: 100vw;
-		min-height: 100vh;
+		height: 100vh;
 		overflow: hidden;
 		background: #fff;
 	}
