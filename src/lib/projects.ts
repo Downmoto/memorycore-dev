@@ -4,6 +4,8 @@ export type RepositoryProject = {
 	slug: string;
 	github: string;
 	product: string;
+	description: string;
+	version: string;
 };
 
 export type ProductProject = {
@@ -21,14 +23,18 @@ export const projects: Record<string, Project> = {
 		name: 'aethellib',
 		slug: 'aethellib',
 		github: 'https://github.com/Downmoto/aethellib',
-		product: 'aethel'
+		product: 'aethel',
+		description: 'Composable procedural text generation with source provenance.',
+		version: 'Rust'
 	},
 	ditherlib: {
 		kind: 'repository',
 		name: 'ditherlib',
 		slug: 'ditherlib',
 		github: 'https://github.com/Downmoto/ditherlib',
-		product: 'dithertool'
+		product: 'dithertool',
+		description: 'Non-destructive image effects, selections, and dithering pipelines.',
+		version: 'Rust · 0.6'
 	},
 	aethel: {
 		kind: 'product',
