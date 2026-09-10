@@ -88,8 +88,10 @@
 				: initialFinalText
 	);
 	const projectLinks: ProjectLink[] = [
-		{ label: 'aethellib', href: 'https://github.com/Downmoto/aethellib' },
-		{ label: 'aethel', href: '' },
+		{ label: 'aethellib', href: '/aethellib' },
+		{ label: 'ditherlib', href: '/ditherlib' },
+		{ label: 'aethel', href: '/aethel' },
+		{ label: 'dithertool', href: '/dithertool' }
 	];
 
 	onMount(() => {
@@ -230,11 +232,6 @@
 
 <style>
 	:global(body) {
-		margin: 0;
-		background: #fff;
-		color: #000;
-		font-family:
-			Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 		overflow: hidden;
 	}
 
