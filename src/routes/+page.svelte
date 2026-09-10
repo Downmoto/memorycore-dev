@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { replaceState } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import TextPrompt from '$lib/components/TextPrompt.svelte';
 	import type { PageProps } from './$types';
@@ -81,7 +82,7 @@
 	let showProjects = $state(false);
 
 	const finalText = $derived(
-		showProjects
+		data.skipIntro || showProjects
 			? projectsPromptText
 			: data.hasVisited
 				? returningFinalText
@@ -95,6 +96,11 @@
 	];
 
 	onMount(() => {
+		if (data.skipIntro) {
+			replaceState('/', {});
+			return;
+		}
+
 		prompts = [createCenterPrompt()];
 		isDark = false;
 		showFinalPrompt = false;
@@ -202,21 +208,23 @@
 	<title>{promptText}</title>
 </svelte:head>
 
-<div class:dark={isDark} class="scene">
-	{#each prompts as prompt (prompt.id)}
-		<TextPrompt
-			text={promptText}
-			x={prompt.x}
-			y={prompt.y}
-			scale={prompt.scale}
-			fontSize={prompt.fontSize}
-		/>
-	{/each}
+<div class:dark={data.skipIntro || isDark} class="scene">
+	{#if !data.skipIntro}
+		{#each prompts as prompt (prompt.id)}
+			<TextPrompt
+				text={promptText}
+				x={prompt.x}
+				y={prompt.y}
+				scale={prompt.scale}
+				fontSize={prompt.fontSize}
+			/>
+		{/each}
+	{/if}
 
-	{#if showFinalPrompt}
+	{#if data.skipIntro || showFinalPrompt}
 		<p class="final-message">{finalText}</p>
 
-		{#if showProjects}
+		{#if data.skipIntro || showProjects}
 			<section class="projects" aria-label="Projects section">
 				<nav class="project-links" aria-label="Project links">
 					{#each projectLinks as project}

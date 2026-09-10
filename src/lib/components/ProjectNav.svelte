@@ -5,11 +5,12 @@
 </script>
 
 <nav aria-label={`${project.name} navigation`}>
-	<a href="/">memorycore</a>
+	<a href="/?skip=1">memorycore</a>
 	<a href={`/${project.slug}`}>{project.name}</a>
 
 	{#if project.kind === 'repository'}
 		<a href={`/${project.slug}/docs`}>docs</a>
+		<a href={`/${project.product}`}>{project.product}</a>
 		<a href={project.github} target="_blank" rel="noreferrer">GitHub</a>
 	{:else}
 		<a href={`/${project.library}`}>{project.library}</a>

@@ -3,6 +3,7 @@ export type RepositoryProject = {
 	name: string;
 	slug: string;
 	github: string;
+	product: string;
 };
 
 export type ProductProject = {
@@ -19,13 +20,15 @@ export const projects: Record<string, Project> = {
 		kind: 'repository',
 		name: 'aethellib',
 		slug: 'aethellib',
-		github: 'https://github.com/Downmoto/aethellib'
+		github: 'https://github.com/Downmoto/aethellib',
+		product: 'aethel'
 	},
 	ditherlib: {
 		kind: 'repository',
 		name: 'ditherlib',
 		slug: 'ditherlib',
-		github: 'https://github.com/Downmoto/ditherlib'
+		github: 'https://github.com/Downmoto/ditherlib',
+		product: 'dithertool'
 	},
 	aethel: {
 		kind: 'product',

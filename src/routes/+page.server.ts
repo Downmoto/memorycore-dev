@@ -4,7 +4,7 @@ const visitCookieName = 'memorycore-visited';
 const visitCookieValue = 'true';
 const visitCookieMaxAgeSeconds = 60 * 60 * 24 * 365;
 
-export const load: PageServerLoad = ({ cookies }) => {
+export const load: PageServerLoad = ({ cookies, url }) => {
 	const hasVisited = cookies.get(visitCookieName) === visitCookieValue;
 
 	if (!hasVisited) {
@@ -17,6 +17,7 @@ export const load: PageServerLoad = ({ cookies }) => {
 	}
 
 	return {
-		hasVisited
+		hasVisited,
+		skipIntro: url.searchParams.has('skip')
 	};
 };
