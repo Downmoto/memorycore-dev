@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { projectDocs } from '$lib/project-content';
 	import type { PageProps } from './$types';
 
 	let { data }: PageProps = $props();
-	const docs = $derived(projectDocs[data.project.slug]);
 </script>
 
 <svelte:head>
@@ -11,61 +9,36 @@
 </svelte:head>
 
 <div class="docs-layout">
-	<aside>
+	<header>
 		<p>documentation</p>
-		<nav aria-label="On this page">
-			{#each docs.sections as section}
-				<a href={`#${section.id}`}>{section.title}</a>
-			{/each}
-		</nav>
-	</aside>
+		<h1>{data.project.name}</h1>
+	</header>
 
 	<article>
-		<header>
-			<h1>{data.project.name}</h1>
-			<p>{docs.intro}</p>
-		</header>
+		{#if data.readmeHtml}
+			<div class="readme">{@html data.readmeHtml}</div>
+		{:else}
+			<p class="unavailable">The README could not be loaded right now.</p>
+		{/if}
 
-		{#each docs.sections as section}
-			<section id={section.id}>
-				<h2>{section.title}</h2>
-
-				{#each section.paragraphs ?? [] as paragraph}
-					<p>{paragraph}</p>
-				{/each}
-
-				{#if section.code}
-					<pre><code>{section.code}</code></pre>
-				{/if}
-
-				{#if section.bullets}
-					<ul>
-						{#each section.bullets as bullet}
-							<li>{bullet}</li>
-						{/each}
-					</ul>
-				{/if}
-			</section>
-		{/each}
-
-		<a class="source" href={data.project.github} target="_blank" rel="noreferrer">source on GitHub →</a>
+		<a class="source" href={data.repository.github} target="_blank" rel="noreferrer">source on GitHub →</a>
 	</article>
 </div>
 
 <style>
 	.docs-layout {
 		display: grid;
-		grid-template-columns: 12rem minmax(0, 46rem);
+		grid-template-columns: 12rem minmax(0, 58rem);
 		gap: clamp(3rem, 8vw, 8rem);
 		align-items: start;
 	}
 
-	aside {
+	.docs-layout > header {
 		position: sticky;
 		top: 2rem;
 	}
 
-	aside p {
+	.docs-layout > header p {
 		margin: 0 0 1.25rem;
 		font-size: 0.7rem;
 		font-weight: 600;
@@ -73,91 +46,114 @@
 		text-transform: uppercase;
 	}
 
-	aside nav {
-		display: grid;
-		gap: 0.65rem;
-	}
-
-	aside a {
-		color: #999;
-		font-size: 0.8rem;
-		text-decoration: none;
-	}
-
-	aside a:hover,
-	aside a:focus-visible {
-		color: #fff;
-	}
-
 	article {
-		max-width: 46rem;
+		min-width: 0;
+		max-width: 58rem;
 		padding-bottom: 4rem;
 	}
 
-	article header {
-		padding-bottom: clamp(4rem, 10vw, 7rem);
-	}
-
-	article h1,
-	article header p,
-	section h2,
-	section p {
+	.docs-layout > header h1 {
 		margin: 0;
-	}
-
-	article h1 {
-		font-size: clamp(2.5rem, 8vw, 6rem);
+		font-size: clamp(1.75rem, 4vw, 3.5rem);
 		letter-spacing: -0.05em;
+		word-break: break-word;
 	}
 
-	article header p {
-		max-width: 38rem;
-		margin-top: 1.5rem;
-		color: #bbb;
-		font-size: 1.15rem;
-		line-height: 1.6;
+	.readme {
+		overflow-wrap: anywhere;
 	}
 
-	section {
-		padding-block: 3rem;
+	.readme :global(#readme),
+	.readme :global(article) {
+		min-width: 0;
+	}
+
+	.readme :global(h1) {
+		display: none;
+	}
+
+	.readme :global(h2) {
+		margin: 4rem 0 1.25rem;
+		padding-top: 2rem;
 		border-top: 1px solid #444;
-		scroll-margin-top: 2rem;
+		font-size: clamp(1.35rem, 4vw, 1.8rem);
 	}
 
-	section h2 {
-		margin-bottom: 1.5rem;
-		font-size: 1.5rem;
+	.readme :global(h3) {
+		margin: 2.5rem 0 1rem;
+		font-size: 1.2rem;
 	}
 
-	section p,
-	li {
+	.readme :global(p),
+	.readme :global(li) {
 		color: #ccc;
 		line-height: 1.7;
 	}
 
-	section p + p {
-		margin-top: 1rem;
+	.readme :global(a) {
+		color: #fff;
+		text-underline-offset: 0.25em;
 	}
 
-	ul {
-		padding-left: 1.25rem;
+	.readme :global(.anchor) {
+		display: none;
 	}
 
-	li + li {
-		margin-top: 0.6rem;
-	}
-
-	pre {
+	.readme :global(pre) {
+		box-sizing: border-box;
+		max-width: 100%;
 		overflow-x: auto;
 		margin-block: 1.5rem;
 		padding: 1.25rem;
 		border: 1px solid #444;
 		background: #090909;
-		font-size: 0.8rem;
+		font-size: clamp(0.7rem, 2vw, 0.8rem);
 		line-height: 1.65;
 	}
 
+	.readme :global(code) {
+		font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	}
+
+	.readme :global(p code),
+	.readme :global(li code) {
+		padding: 0.15em 0.35em;
+		background: #1a1a1a;
+		font-size: 0.85em;
+	}
+
+	.readme :global(img) {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		margin-block: 2rem;
+	}
+
+	.readme :global(table) {
+		display: block;
+		width: 100%;
+		overflow-x: auto;
+		border-collapse: collapse;
+		font-size: 0.85rem;
+	}
+
+	.readme :global(th),
+	.readme :global(td) {
+		min-width: 8rem;
+		padding: 0.75rem;
+		border: 1px solid #444;
+		text-align: left;
+		vertical-align: top;
+	}
+
+	.unavailable {
+		color: #bbb;
+		line-height: 1.6;
+	}
+
 	.source {
+		display: inline-block;
+		margin-top: 4rem;
 		color: inherit;
 		font-size: 0.75rem;
 		font-weight: 600;
@@ -169,17 +165,22 @@
 	@media (max-width: 720px) {
 		.docs-layout {
 			grid-template-columns: 1fr;
-			gap: 4rem;
+			gap: 2.5rem;
 		}
 
-		aside {
+		.docs-layout > header {
 			position: static;
 		}
 
-		aside nav {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0.75rem 1rem;
+		.readme :global(h2) {
+			margin-top: 3rem;
+			padding-top: 1.5rem;
+		}
+
+		.readme :global(pre) {
+			margin-inline: calc(clamp(1.25rem, 4vw, 3rem) * -1);
+			padding-inline: clamp(1.25rem, 4vw, 3rem);
+			border-inline: 0;
 		}
 	}
 </style>
