@@ -7,6 +7,15 @@ node_modules
 .wrangler
 /.svelte-kit
 /build
+/playwright-report
+/test-results
+
+# Local context packs
+agents.md
+plan.md
+context/
+context.md
+implementation.md
 
 # OS
 .DS_Store

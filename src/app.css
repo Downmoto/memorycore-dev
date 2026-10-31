@@ -1,0 +1,18 @@
+@import '@memorycore/design/tokens.css';
+
+:root {
+	color-scheme: light dark;
+	font-family: var(--mc-font-family-sans, Roboto, sans-serif);
+	background: var(--mc-colour-brand-dark, #050507);
+	color: var(--mc-colour-brand-light, #e8e1d2);
+}
+
+body {
+	margin: 0;
+	min-width: 20rem;
+}
+
+:focus-visible {
+	outline: 2px solid var(--mc-colour-consumer-website-primary-dark, #4e8bb7);
+	outline-offset: 3px;
+}
