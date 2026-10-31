@@ -7,8 +7,8 @@
 	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
-<main>
+<div class="error-page">
 	<h1>Page unavailable</h1>
 	<p>The requested page is unavailable.</p>
 	<a href={resolve('/')}>Return to MemoryCore</a>
-</main>
+</div>

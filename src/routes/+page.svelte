@@ -1,19 +1,24 @@
+<script lang="ts">
+	import { site } from '../lib/content/site';
+</script>
+
 <svelte:head>
-	<title>MemoryCore</title>
-	<meta
-		name="description"
-		content="MemoryCore creates commercial creative software and the open-source libraries powering it."
+	<title>{site.metadata.title}</title>
+	<meta name="description" content={site.metadata.description} />
+	<link
+		rel="canonical"
+		href={`${site.canonicalOrigin}${site.metadata.canonicalPath}`}
 	/>
 </svelte:head>
 
-<main class="welcome">
+<div class="welcome">
 	<p class="eyebrow">MemoryCore</p>
 	<h1>Creative tools for unusual work</h1>
 	<p>
 		MemoryCore creates commercial creative software and the open-source
 		libraries powering it.
 	</p>
-</main>
+</div>
 
 <style>
 	.welcome {
