@@ -12,13 +12,15 @@ Replace the existing website with the approved static SvelteKit experience while
 
 Phase 2 is implemented on `feat/website-overhaul`. The stable SvelteKit foundation, static adapter, verification commands, and Cloudflare Preview configuration are in place. The clean-checkout and deployed-preview parts of the Phase 2 exit gate still require confirmation in their target environments.
 
-Phase 3 is in progress. The working tree contains the first shared-foundation slice: design-library styles and fonts, typed site, Tool, library, destination, and metadata records, build-time content validation, a validation unit test, and the initial semantic header, footer, main landmark, and skip link.
+Phase 3 is in progress. Commit `d27805c` records the approved context pack, implementation plan, typed catalogue and metadata foundation, content validation, design-library styles and fonts, and initial semantic shell.
+
+The current working tree contains the route-skeleton slice. Home, Tools, both Tool pages, Libraries, both library pages, Resources, Community, About, and the Privacy structure now prerender with truthful outline-level content. The shared shell includes desktop navigation, a progressively enhanced modal small-screen menu, a no-JavaScript fallback, footer navigation, breadcrumbs, typed metadata, and generated sitemap inventory. One shared error view supplies both SvelteKit error entry points. Route, metadata, accessibility, no-JavaScript, and unknown-route tests pass in Chromium.
 
 ### Resume point
 
-Start with the route-skeleton checkpoint below. First extract the duplicated error markup into one shared site component while retaining both SvelteKit entry points: `+error.svelte` for framework errors and `/404` to emit Cloudflare's required `404.html`. Then add the unconditional route outlines with real high-level content. Activate shared navigation only when every linked route exists and prerenders.
+Review the route skeleton's content hierarchy and placement before beginning detailed visual refinement. Resolve accepted outline changes in the shared records and route markup. Then complete the remaining shared Pass 1 items: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
-Do not begin detailed page styling, final imagery, or page-specific motion before the route-skeleton review is complete.
+After the route-skeleton review is accepted, begin Pass 2 with Home as the first visual benchmark.
 
 ## Implementation approach
 
@@ -33,16 +35,19 @@ Establish the complete information architecture using genuine outline-level copy
 - [x] Add typed site, Tool, library, destination, relationship, publication, and metadata records.
 - [x] Run `validateContent()` from the root server layout and from a unit test.
 - [x] Add the initial semantic shell, skip link, header, footer, and design-library styles.
-- [ ] Extract one shared error view for `+error.svelte` and the `/404` build route.
-- [ ] Add real outline-level content for Home, Tools, both Tool pages, Libraries, both library pages, Resources, Community, About, and the Privacy structure.
+- [x] Extract one shared error view for `+error.svelte` and the `/404` build route.
+- [x] Add real outline-level content for Home, Tools, both Tool pages, Libraries, both library pages, Resources, Community, About, and the Privacy structure.
 - [ ] Add the documentation indexes only when the documentation manifest can supply their real published inventory.
-- [ ] Add desktop navigation after all of its destinations prerender successfully.
-- [ ] Add the accessible small-screen menu with the same order and destinations.
-- [ ] Add breadcrumbs to nested route families.
-- [ ] Add the shared metadata helper, canonical URLs, indexing rules, and initial structured-data boundaries.
-- [ ] Add font licence files, headers, redirects, sitemap generation, and robots generation.
-- [ ] Confirm the shell and primary content remain useful with JavaScript disabled.
-- [ ] Review the whole skeleton at 320, 768, 1200, and 1440 CSS px.
+- [x] Add desktop navigation after all of its destinations prerender successfully.
+- [x] Add the accessible small-screen menu with the same order and destinations.
+- [x] Add breadcrumbs to nested route families.
+- [ ] Add the shared metadata helper, canonical URLs, indexing rules, and initial structured-data boundaries. The helper, canonicals, and indexing rules are complete; structured-data boundaries remain.
+- [ ] Add font licence files.
+- [x] Review the committed security headers and robots file against the skeleton.
+- [x] Generate the sitemap from published indexable records.
+- [x] Review redirect requirements. No route aliases are currently approved.
+- [x] Confirm the shell and primary content remain useful with JavaScript disabled.
+- [x] Review the whole skeleton at 320, 768, 1200, and 1440 CSS px.
 
 Checkpoint: every unconditional route exists with truthful content, coherent hierarchy, valid relationships, one `h1`, working shell navigation, appropriate indexing, and no public placeholder claims. Layout and typography may remain deliberately rough.
 

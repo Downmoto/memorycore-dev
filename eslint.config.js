@@ -13,6 +13,14 @@ export default [
 		}
 	},
 	{
+		files: ['**/*.svelte'],
+		languageOptions: {
+			parserOptions: {
+				parser: tseslint.parser
+			}
+		}
+	},
+	{
 		ignores: [
 			'.svelte-kit/',
 			'build/',

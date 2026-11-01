@@ -1,3 +1,5 @@
+import type { RouteId } from '$app/types';
+
 export type PublicationState =
 	'draft' | 'preview' | 'scheduled' | 'published' | 'withdrawn' | 'superseded';
 
@@ -11,7 +13,7 @@ export type ReviewFields = {
 export type PageMetadata = {
 	title: string;
 	description: string;
-	canonicalPath: `/${string}` | '/';
+	canonicalPath: RouteId;
 	indexing: Indexing;
 	updatedAt?: string;
 };
@@ -22,9 +24,14 @@ export type MaintainedRecord = ReviewFields & {
 	metadata: PageMetadata;
 };
 
+export type FixedPage = MaintainedRecord & {
+	name: string;
+	summary: string;
+};
+
 export type NavigationItem = {
 	label: string;
-	href: `/${string}` | '/';
+	href: RouteId;
 	prominent?: boolean;
 };
 

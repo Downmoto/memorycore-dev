@@ -1,5 +1,6 @@
 import { libraries, tools } from './catalogue';
 import { externalDestinations } from './external-destinations';
+import { fixedPages } from './pages';
 import { site } from './site';
 
 function assertUnique<T extends { id: string }>(
@@ -41,7 +42,8 @@ function assertCanonicalPath(id: string, value: string): void {
 }
 
 export function validateContent(): void {
-	const records = [...tools, ...libraries];
+	const catalogueRecords = [...tools, ...libraries];
+	const records = [...catalogueRecords, ...fixedPages];
 	const destinationIds = new Set(externalDestinations.map(({ id }) => id));
 	const toolsById = new Map(tools.map((tool) => [tool.id, tool]));
 	const librariesById = new Map(
@@ -49,7 +51,7 @@ export function validateContent(): void {
 	);
 
 	assertUnique(records, 'id', ({ id }) => id);
-	assertUnique(records, 'slug', ({ slug }) => slug);
+	assertUnique(catalogueRecords, 'slug', ({ slug }) => slug);
 	assertUnique(
 		records,
 		'metadata.canonicalPath',
@@ -79,6 +81,9 @@ export function validateContent(): void {
 				`${record.id}.metadata.indexing: indexable content must be published`
 			);
 		}
+	}
+
+	for (const record of catalogueRecords) {
 		for (const destination of record.destinations) {
 			if (!destinationIds.has(destination)) {
 				throw new Error(

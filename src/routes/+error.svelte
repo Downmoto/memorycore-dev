@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
+	import ErrorView from '../lib/components/site/ErrorView.svelte';
 </script>
 
 <svelte:head>
@@ -7,8 +7,4 @@
 	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
-<div class="error-page">
-	<h1>Page unavailable</h1>
-	<p>The requested page is unavailable.</p>
-	<a href={resolve('/')}>Return to MemoryCore</a>
-</div>
+<ErrorView />
