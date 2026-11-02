@@ -7,6 +7,17 @@ export default defineConfig({
 	plugins: [
 		sveltekit({
 			adapter: adapter(),
+			csp: {
+				mode: 'hash',
+				directives: {
+					'default-src': ['self'],
+					'base-uri': ['self'],
+					'form-action': ['self'],
+					'object-src': ['none'],
+					'script-src': ['self'],
+					'style-src': ['self']
+				}
+			},
 			compilerOptions: {
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true

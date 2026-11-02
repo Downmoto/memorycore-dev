@@ -124,7 +124,6 @@
 
 	.desktop-navigation :global(.mc-button),
 	.mobile-links :global(.mc-button) {
-		color: inherit;
 		font-weight: var(--mc-font-weight-medium);
 		text-underline-offset: var(--mc-space-1);
 	}
@@ -146,30 +145,55 @@
 		gap: var(--mc-space-2);
 	}
 
-	.mobile-links :global(.mc-button) {
-		font-family: var(--mc-font-family-space-mono, monospace);
-		font-size: clamp(1.5rem, 8vw, 2.5rem);
-		padding-block: var(--mc-space-2);
-	}
-
 	details {
 		position: relative;
 	}
 
 	summary {
+		align-items: center;
+		background: var(--mc-colour-surface-low);
+		border-radius: var(--mc-radius-1);
+		color: var(--mc-colour-interactive);
 		cursor: pointer;
-		font-weight: var(--mc-font-weight-bold);
-		padding: var(--mc-space-3);
+		display: inline-flex;
+		min-block-size: var(--mc-size-control-standard);
+		padding-inline: var(--mc-space-4);
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary :global(.mc-typography) {
+		color: inherit;
+		font-family: var(--mc-typography-label-family);
+		font-size: var(--mc-typography-label-size);
+		font-weight: var(--mc-typography-label-weight);
 	}
 
 	.fallback-links {
-		background: var(--mc-brand-dark);
-		border: var(--mc-border-width-default) solid currentColor;
+		background: var(--mc-colour-surface-high);
+		border-radius: var(--mc-radius-1);
+		box-shadow: var(--mc-shadow-2);
 		inline-size: min(18rem, calc(100vw - var(--mc-space-7)));
+		inset-block-start: calc(100% + var(--mc-space-2));
 		inset-inline-end: 0;
-		padding: var(--mc-space-4);
+		padding: var(--mc-space-1);
 		position: absolute;
 		z-index: var(--mc-layer-overlay);
+	}
+
+	.fallback-links :global(.mc-button) {
+		align-items: center;
+		border-radius: var(--mc-radius-1);
+		color: var(--mc-colour-text-primary);
+		display: flex;
+		font-family: var(--mc-typography-label-family);
+		font-size: var(--mc-typography-label-size);
+		font-weight: var(--mc-typography-label-weight);
+		min-block-size: var(--mc-size-control-standard);
+		padding-inline: var(--mc-space-2);
+		text-decoration: none;
 	}
 
 	@media (max-width: 52rem) {

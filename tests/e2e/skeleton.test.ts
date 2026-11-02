@@ -62,6 +62,9 @@ test('no-JavaScript navigation exposes every primary destination', async ({
 test('small-screen menu opens, closes, and navigates', async ({ page }) => {
 	await page.setViewportSize({ width: 390, height: 844 });
 	await page.goto('/');
+	await expect(
+		page.locator('meta[http-equiv="content-security-policy"]')
+	).toHaveAttribute('content', /script-src[^;]*'sha256-/);
 
 	const trigger = page.getByRole('button', { name: 'Menu' });
 	await trigger.click();
@@ -88,6 +91,22 @@ test('footer logo link only covers the mark', async ({ page }) => {
 	expect(linkBounds).not.toBeNull();
 	expect(logoBounds).not.toBeNull();
 	expect(linkBounds!.width).toBeLessThanOrEqual(logoBounds!.width + 2);
+});
+
+test('header links use the website Consumer colour', async ({ page }) => {
+	await page.goto('/');
+	const headerLink = page
+		.locator('.desktop-navigation')
+		.getByRole('link', { name: 'Tools' });
+	const footerLink = page
+		.getByRole('contentinfo')
+		.getByRole('link', { name: 'Tools' });
+
+	expect(
+		await headerLink.evaluate((element) => getComputedStyle(element).color)
+	).toBe(
+		await footerLink.evaluate((element) => getComputedStyle(element).color)
+	);
 });
 
 test('unknown routes use the error response', async ({ page }) => {
