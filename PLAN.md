@@ -10,7 +10,9 @@ Replace the existing website with the approved static SvelteKit experience while
 
 ## Current position
 
-Phase 2 is implemented on `feat/website-overhaul`. The stable SvelteKit foundation, static adapter, verification commands, and Cloudflare Preview configuration are in place. The clean-checkout part of the Phase 2 exit gate still requires confirmation. The corrected Content Security Policy and enhanced menu pass local and deployed Wrangler Preview validation. The deployed small-screen menu opens with no browser errors, and the header link uses the Consumer colour.
+Phase 2 is implemented on `feat/website-overhaul`. The stable SvelteKit foundation, static adapter, verification commands, and Cloudflare Preview configuration are in place. The clean-checkout part of the Phase 2 exit gate still requires confirmation. The enhanced small-screen menu opens on the deployed Wrangler Preview, and the header link uses the Consumer colour.
+
+The first Preview deployment of the approved Home hero exposed additional Content Security Policy blocks for inlined design fonts, generated image load handlers, and menu style attributes. The scoped policy update and browser console check pass locally; the branch Preview requires one more deployment and smoke test.
 
 Phase 3 is in progress. Commit `d27805c` records the approved context pack, implementation plan, typed catalogue and metadata foundation, content validation, design-library styles and fonts, and initial semantic shell.
 

@@ -12,11 +12,17 @@ export default defineConfig({
 				directives: {
 					'default-src': ['self'],
 					'base-uri': ['self'],
+					'font-src': ['self', 'data:'],
 					'form-action': ['self'],
 					'img-src': ['self', 'data:'],
 					'object-src': ['none'],
 					'script-src': ['self'],
-					'style-src': ['self']
+					'script-src-attr': [
+						'unsafe-hashes',
+						'sha256-7dQwUgLau1NFCCGjfn9FsYptB6ZtWxJin6VohGIu20I='
+					],
+					'style-src': ['self'],
+					'style-src-attr': ['unsafe-inline']
 				}
 			},
 			compilerOptions: {

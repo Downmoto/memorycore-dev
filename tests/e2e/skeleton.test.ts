@@ -60,6 +60,15 @@ test('no-JavaScript navigation exposes every primary destination', async ({
 });
 
 test('small-screen menu opens, closes, and navigates', async ({ page }) => {
+	const cspErrors: string[] = [];
+	page.on('console', (message) => {
+		if (
+			message.type() === 'error' &&
+			message.text().includes('Content Security Policy')
+		) {
+			cspErrors.push(message.text());
+		}
+	});
 	await page.setViewportSize({ width: 390, height: 844 });
 	await page.goto('/');
 	await expect(
@@ -78,6 +87,7 @@ test('small-screen menu opens, closes, and navigates', async ({ page }) => {
 	await trigger.click();
 	await page.getByRole('menuitem', { name: 'Tools' }).click();
 	await expect(page).toHaveURL('/tools');
+	expect(cspErrors).toEqual([]);
 });
 
 test('footer logo link only covers the mark', async ({ page }) => {
