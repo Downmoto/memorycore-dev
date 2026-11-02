@@ -77,6 +77,19 @@ test('small-screen menu opens, closes, and navigates', async ({ page }) => {
 	await expect(page).toHaveURL('/tools');
 });
 
+test('footer logo link only covers the mark', async ({ page }) => {
+	await page.goto('/tools');
+	const link = page
+		.getByRole('contentinfo')
+		.getByRole('link', { name: 'MemoryCore home' });
+	const linkBounds = await link.boundingBox();
+	const logoBounds = await link.locator('img').boundingBox();
+
+	expect(linkBounds).not.toBeNull();
+	expect(logoBounds).not.toBeNull();
+	expect(linkBounds!.width).toBeLessThanOrEqual(logoBounds!.width + 2);
+});
+
 test('unknown routes use the error response', async ({ page }) => {
 	const response = await page.goto('/missing-page');
 

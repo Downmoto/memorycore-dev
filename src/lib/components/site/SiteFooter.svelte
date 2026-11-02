@@ -113,6 +113,7 @@
 		align-content: start;
 		display: grid;
 		gap: var(--mc-space-2);
+		justify-items: start;
 	}
 
 	:global(.footer-logo) {
@@ -137,6 +138,7 @@
 		align-content: start;
 		display: grid;
 		gap: var(--mc-space-2);
+		justify-items: start;
 	}
 
 	.footer-section :global(.section-heading) {
