@@ -10,7 +10,7 @@ Replace the existing website with the approved static SvelteKit experience while
 
 ## Current position
 
-Phase 2 is implemented on `feat/website-overhaul`. The stable SvelteKit foundation, static adapter, verification commands, and Cloudflare Preview configuration are in place. The clean-checkout part of the Phase 2 exit gate still requires confirmation. A Wrangler branch preview exposed a Content Security Policy rule that blocked SvelteKit hydration; the corrected policy and enhanced menu pass local Wrangler validation, and the remote preview requires redeployment and review.
+Phase 2 is implemented on `feat/website-overhaul`. The stable SvelteKit foundation, static adapter, verification commands, and Cloudflare Preview configuration are in place. The clean-checkout part of the Phase 2 exit gate still requires confirmation. The corrected Content Security Policy and enhanced menu pass local and deployed Wrangler Preview validation. The deployed small-screen menu opens with no browser errors, and the header link uses the Consumer colour.
 
 Phase 3 is in progress. Commit `d27805c` records the approved context pack, implementation plan, typed catalogue and metadata foundation, content validation, design-library styles and fonts, and initial semantic shell.
 
@@ -24,7 +24,7 @@ The supplied Riemersma image is present across the complete Home surface, from n
 
 ### Resume point
 
-Confirm the corrected Content Security Policy and menu on a redeployed branch preview. Then settle shared shell spacing, focus behaviour, responsive behaviour, and viewport checks before moving to Home as the first page benchmark.
+Settle shared shell spacing, focus behaviour, responsive behaviour, and viewport checks before moving to Home as the first page benchmark.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
