@@ -18,11 +18,13 @@ Commit `495c2de` records the approved route skeleton. Home, Tools, both Tool pag
 
 Focused refinement is in progress. The design-library dependency is updated to `@memorycore/design` 0.2.0, and the root site tree uses the `website` Consumer mapping. The header identity and desktop primary navigation have passed owner review, including the design Logo, centred links, right-aligned Community action, uppercase labels, glass treatment, and spacing. The small-screen navigation now uses the design Menu and retains its no-JavaScript disclosure fallback. Header values use released design tokens where available.
 
+The footer has passed owner review. It uses the matching glass frame, a bordered Logo mark, three navigation groups for Tools and libraries, MemoryCore, and Legal, and compact GitHub and YouTube icon links beside the copyright. The site shell supplies the footer's bottom inset so Home imagery continues behind it.
+
 The supplied Riemersma image is present across the complete Home surface, from navigation through the footer, so it remains visible while the shared shell is refined. Final crop, responsive treatment, optimisation, and asset records remain part of the Home slice.
 
 ### Resume point
 
-Continue the shared site-shell refinement with the footer hierarchy and destinations. Then settle shell spacing, focus, and responsive behaviour before moving to Home as the first page benchmark.
+Settle shared shell spacing, focus behaviour, responsive behaviour, and viewport checks. Then move to Home as the first page benchmark.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
@@ -40,7 +42,7 @@ Complete and review one area at a time. Commit each approved checkpoint before m
    - [x] Update `@memorycore/design` to 0.2.0 and wrap the root site tree with `<Consumer consumer="website">`.
    - [x] Refine the header identity and primary navigation.
    - [x] Refine the small-screen navigation and no-JavaScript fallback.
-   - [ ] Refine the footer hierarchy and destinations.
+   - [x] Refine the footer hierarchy and destinations.
    - [ ] Settle shared shell spacing, focus behaviour, responsive behaviour, and viewport checks.
 2. Home
    - [x] Add the supplied Riemersma image across the complete Home surface as a visible refinement precursor.

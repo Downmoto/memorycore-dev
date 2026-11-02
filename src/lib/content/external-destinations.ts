@@ -2,6 +2,22 @@ import type { ExternalDestination } from './types';
 
 export const externalDestinations = [
 	{
+		id: 'memorycore-github',
+		label: 'GitHub',
+		kind: 'source',
+		url: 'https://github.com/Downmoto',
+		owner: 'Arad Fadaei',
+		reviewedAt: '2026-11-02'
+	},
+	{
+		id: 'memorycore-youtube',
+		label: 'YouTube',
+		kind: 'video',
+		url: 'https://www.youtube.com/@MemoryCoreDev',
+		owner: 'Arad Fadaei',
+		reviewedAt: '2026-11-02'
+	},
+	{
 		id: 'ditherlib-source',
 		label: 'ditherlib source on GitHub',
 		kind: 'source',

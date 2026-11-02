@@ -26,6 +26,7 @@
 <style>
 	.site-shell {
 		min-block-size: 100svh;
+		padding-block-end: var(--mc-space-5);
 		padding-block-start: var(--mc-space-5);
 	}
 
