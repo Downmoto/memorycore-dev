@@ -12,7 +12,7 @@ Replace the existing website with the approved static SvelteKit experience while
 
 Phase 2 is implemented on `feat/website-overhaul`. The stable SvelteKit foundation, static adapter, verification commands, and Cloudflare Preview configuration are in place. The clean-checkout part of the Phase 2 exit gate still requires confirmation. The enhanced small-screen menu opens on the deployed Wrangler Preview, and the header link uses the Consumer colour.
 
-The first Preview deployment of the approved Home hero exposed additional Content Security Policy blocks for inlined design fonts, generated image load handlers, and menu style attributes. The scoped policy update and browser console check pass locally; the branch Preview requires one more deployment and smoke test.
+The approved Home hero and scoped Content Security Policy fix are deployed to the branch Preview. Desktop and phone smoke tests confirm that Icarus, the footer logo, and the small-screen menu load without browser console or page errors. The Preview still serves `noindex` and the expected security headers.
 
 Phase 3 is in progress. Commit `d27805c` records the approved context pack, implementation plan, typed catalogue and metadata foundation, content validation, design-library styles and fonts, and initial semantic shell.
 
@@ -28,7 +28,7 @@ The supplied Riemersma image is present across the complete Home surface, from n
 
 ### Resume point
 
-Redeploy the approved Home hero to the branch Preview and confirm that its image, footer logo, and small-screen menu load there. Then refine the Home Tools section as the next focused slice.
+Refine the Home Tools section as the next focused slice. Review its content, hierarchy, and placement before moving to Libraries.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
