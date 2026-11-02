@@ -2,8 +2,8 @@
 
 :root {
 	color-scheme: light dark;
-	--content-width: 80rem;
-	--page-margin: clamp(1.5rem, 5vw, 3rem);
+	--content-width: var(--mc-size-container-maximum);
+	--page-margin: var(--mc-grid-margin-fluid);
 	background: var(--mc-brand-dark, #050507);
 	color: var(--mc-brand-light, #e8e1d2);
 	font-family: var(--mc-font-family-roboto, sans-serif);

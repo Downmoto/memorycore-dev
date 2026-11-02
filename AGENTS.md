@@ -24,6 +24,7 @@ Do not load every context file by default. Read the files named for the current 
 - Keep navigation, reading content, downloads, documentation, external links, Privacy, and the error response useful without client JavaScript.
 - Use JavaScript only for approved progressive enhancements such as the small-screen menu, previews, dialogs, and copy controls.
 - Consume the released `@memorycore/design` package through documented public exports.
+- Use `@memorycore/design` tokens for UI values wherever a matching token exists, including spacing, colour, typography, radii, borders, shadows, and layers. Keep values without a matching token local to the owning component or page.
 - Keep website compositions and page templates in this repository.
 - Keep content in typed TypeScript records, route-local Svelte content, and mdsvex documentation topics.
 - Fail the build when content, relationships, publication states, local assets, routes, or metadata violate the approved contracts.

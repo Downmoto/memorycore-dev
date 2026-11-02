@@ -8,15 +8,17 @@
 
 <PageMetadata metadata={site.metadata} />
 
-<div class="welcome page-shell">
-	<Typography class="eyebrow" variant="muted">MemoryCore</Typography>
-	<Typography class="hero-title" variant="h1"
-		>Creative tools for unusual work</Typography
-	>
-	<Typography class="hero-summary" variant="lead">
-		MemoryCore creates commercial creative software and the open-source
-		libraries powering it.
-	</Typography>
+<div class="welcome">
+	<div class="welcome-content page-shell">
+		<Typography class="eyebrow" variant="muted">MemoryCore</Typography>
+		<Typography class="hero-title" variant="h1"
+			>Creative tools for unusual work</Typography
+		>
+		<Typography class="hero-summary" variant="lead">
+			MemoryCore creates commercial creative software and the open-source
+			libraries powering it.
+		</Typography>
+	</div>
 </div>
 
 <section class="content-section page-shell" aria-labelledby="tools-heading">
@@ -94,10 +96,14 @@
 
 <style>
 	.welcome {
+		min-height: 100svh;
+	}
+
+	.welcome-content {
 		align-content: center;
 		display: grid;
 		gap: 1.5rem;
-		min-height: 100svh;
+		min-height: inherit;
 		padding-block: clamp(4rem, 9vw, 8rem);
 	}
 

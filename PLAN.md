@@ -1,7 +1,7 @@
 # Plan: memorycore.dev overhaul
 
 Status: Current
-Last reviewed: 2026-10-30
+Last reviewed: 2026-11-02
 Owner: Arad Fadaei
 
 ## Objective
@@ -14,19 +14,56 @@ Phase 2 is implemented on `feat/website-overhaul`. The stable SvelteKit foundati
 
 Phase 3 is in progress. Commit `d27805c` records the approved context pack, implementation plan, typed catalogue and metadata foundation, content validation, design-library styles and fonts, and initial semantic shell.
 
-The current working tree contains the route-skeleton slice. Home, Tools, both Tool pages, Libraries, both library pages, Resources, Community, About, and the Privacy structure now prerender with truthful outline-level content. The shared shell includes desktop navigation, a progressively enhanced modal small-screen menu, a no-JavaScript fallback, footer navigation, breadcrumbs, typed metadata, and generated sitemap inventory. One shared error view supplies both SvelteKit error entry points. Route, metadata, accessibility, no-JavaScript, and unknown-route tests pass in Chromium.
+Commit `495c2de` records the approved route skeleton. Home, Tools, both Tool pages, Libraries, both library pages, Resources, Community, About, and the Privacy structure prerender with truthful outline-level content. The shared shell includes desktop navigation, a progressively enhanced modal small-screen menu, a no-JavaScript fallback, footer navigation, typed metadata, and generated sitemap inventory. One shared error view supplies both SvelteKit error entry points. Route, metadata, accessibility, no-JavaScript, and unknown-route tests pass in Chromium.
+
+Focused refinement is in progress. The design-library dependency is updated to `@memorycore/design` 0.2.0, and the root site tree uses the `website` Consumer mapping. The header identity and desktop primary navigation have passed owner review, including the design Logo, centred links, right-aligned Community action, uppercase labels, glass treatment, and spacing. Header values use released design tokens where available.
+
+The supplied Riemersma image is present across the complete Home surface, from navigation through the footer, so it remains visible while the shared shell is refined. Final crop, responsive treatment, optimisation, and asset records remain part of the Home slice.
 
 ### Resume point
 
-Review the route skeleton's content hierarchy and placement before beginning detailed visual refinement. Resolve accepted outline changes in the shared records and route markup. Then complete the remaining shared Pass 1 items: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
+Continue the shared site-shell refinement with the small-screen navigation and its no-JavaScript fallback. Then review the footer and remaining shell spacing, focus, and responsive behaviour before moving to Home as the first page benchmark.
 
-After the route-skeleton review is accepted, begin Pass 2 with Home as the first visual benchmark.
+The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
 ## Implementation approach
 
 Use a skeleton-first sequence followed by focused refinement in vertical slices. Each pass should leave the site coherent and verifiable so work can stop and resume safely between chats.
 
 At the end of every implementation slice, update **Current position**, **Resume point**, and the applicable checklist in the same commit. Record newly discovered blockers or gates beside the affected checkpoint.
+
+### Focused refinement sequence
+
+Complete and review one area at a time. Commit each approved checkpoint before moving to the next area.
+
+1. Shared site shell
+   - [x] Update `@memorycore/design` to 0.2.0 and wrap the root site tree with `<Consumer consumer="website">`.
+   - [x] Refine the header identity and primary navigation.
+   - [ ] Refine the small-screen navigation and no-JavaScript fallback.
+   - [ ] Refine the footer hierarchy and destinations.
+   - [ ] Settle shared shell spacing, focus behaviour, responsive behaviour, and viewport checks.
+2. Home
+   - [x] Add the supplied Riemersma image across the complete Home surface as a visible refinement precursor.
+   - [ ] Refine the first viewport and page hierarchy.
+   - [ ] Refine the Tool, library, About, and Community sections.
+   - [ ] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.
+3. Tool pages
+   - [ ] Refine DitherTool as the representative Tool page.
+   - [ ] Apply the approved pattern to AethelTool.
+   - [ ] Refine the Tools collection page.
+4. Library pages
+   - [ ] Refine ditherlib as the representative library page.
+   - [ ] Apply the approved pattern to aethellib.
+   - [ ] Refine the Libraries collection page.
+5. Remaining public pages
+   - [ ] Refine Resources.
+   - [ ] Refine Community.
+   - [ ] Refine About.
+   - [ ] Refine Privacy while preserving its publication gates.
+6. Error response and whole-site polish
+   - [ ] Refine the shared error response and verify deployed `404.html` behaviour.
+   - [ ] Resolve cross-site typography, spacing, alignment, density, and responsive inconsistencies.
+   - [ ] Complete whole-site accessibility, metadata, performance, privacy, and browser review.
 
 ### Pass 1: Route skeleton and shared structure
 
@@ -40,7 +77,6 @@ Establish the complete information architecture using genuine outline-level copy
 - [ ] Add the documentation indexes only when the documentation manifest can supply their real published inventory.
 - [x] Add desktop navigation after all of its destinations prerender successfully.
 - [x] Add the accessible small-screen menu with the same order and destinations.
-- [x] Add breadcrumbs to nested route families.
 - [ ] Add the shared metadata helper, canonical URLs, indexing rules, and initial structured-data boundaries. The helper, canonicals, and indexing rules are complete; structured-data boundaries remain.
 - [ ] Add font licence files.
 - [x] Review the committed security headers and robots file against the skeleton.
@@ -132,7 +168,7 @@ Exit: `npm ci` and `npm run verify` pass from a clean checkout, and the minimal 
 ## Phase 3: Build shared foundations
 
 - Follow Pass 1 and the shared work exposed by the representative pages in Pass 2.
-- Add self-hosted fonts and licences, global styles, shell, navigation, footer, breadcrumbs, themes, metadata helpers, headers, redirects, sitemap, and robots generation.
+- Add self-hosted fonts and licences, global styles, shell, navigation, footer, themes, metadata helpers, headers, redirects, sitemap, and robots generation.
 - Add typed content records, relationships, publication states, and `validateContent()`.
 - Add only the shared website compositions required by approved routes.
 
