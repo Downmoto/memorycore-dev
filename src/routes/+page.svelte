@@ -8,17 +8,46 @@
 
 <PageMetadata metadata={site.metadata} />
 
-<div class="welcome">
-	<div class="welcome-content page-shell">
-		<Typography class="eyebrow" variant="muted">MemoryCore</Typography>
-		<Typography class="hero-title" variant="h1"
-			>Creative tools for unusual work</Typography
-		>
-		<Typography class="hero-summary" variant="lead">
-			MemoryCore creates commercial creative software and the open-source
-			libraries powering it.
-		</Typography>
+<div class="welcome page-shell">
+	<div class="welcome-content">
+		<h1>
+			<Typography class="hero-title" variant="display"
+				>Creative tools for unusual work</Typography
+			>
+		</h1>
 	</div>
+	<div class="hero-art" aria-hidden="true">
+		<img
+			class="blurred-art"
+			src="/images/home/icarus.webp"
+			alt=""
+			width="1328"
+			height="1184"
+			fetchpriority="high"
+		/>
+		<img
+			class="clear-art"
+			src="/images/home/icarus.webp"
+			alt=""
+			width="1328"
+			height="1184"
+		/>
+	</div>
+	<figure class="hero-quote">
+		<blockquote
+			cite="https://beta.perseus.tufts.edu/urn:cts:latinLit:phi0959.phi006.perseus-eng3:8/"
+		>
+			<Typography variant="small">
+				And as he called upon his father's name his voice was smothered in the
+				dark blue sea, now called Icarian from the dead boy's name.
+			</Typography>
+		</blockquote>
+		<figcaption>
+			<Typography variant="muted"
+				>Ovid · Metamorphoses VIII · Brookes More (1922)</Typography
+			>
+		</figcaption>
+	</figure>
 </div>
 
 <section class="content-section page-shell" aria-labelledby="tools-heading">
@@ -96,34 +125,118 @@
 
 <style>
 	.welcome {
-		min-height: 100svh;
+		background: color-mix(in srgb, var(--mc-brand-light) 8%, transparent);
+		border: var(--mc-border-width-default) solid
+			color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+		border-radius: var(--mc-radius-2);
+		box-shadow: var(--mc-shadow-1);
+		display: grid;
+		isolation: isolate;
+		margin-block-start: var(--mc-space-5);
+		min-height: calc(100svh - 5rem - var(--mc-space-5) - var(--mc-space-5));
+		overflow: hidden;
+		position: relative;
+		-webkit-backdrop-filter: blur(5px);
+		backdrop-filter: blur(5px);
 	}
 
 	.welcome-content {
 		align-content: center;
 		display: grid;
-		gap: 1.5rem;
-		min-height: inherit;
+		inline-size: min(68%, 52rem);
 		padding-block: clamp(4rem, 9vw, 8rem);
+		padding-inline: var(--mc-space-6);
+		position: relative;
+		z-index: 1;
 	}
 
-	:global(.eyebrow) {
-		font-family: var(--mc-font-family-space-mono, monospace);
-		margin: 0;
-		text-transform: uppercase;
+	.hero-art {
+		align-items: center;
+		display: grid;
+		inline-size: min(64%, 52rem);
+		inset-block: 0;
+		inset-inline-end: 0;
+		pointer-events: none;
+		position: absolute;
 	}
 
-	:global(.hero-title) {
-		font-family: var(--mc-font-family-manufacturing-consent, serif);
-		font-size: clamp(4.5rem, 11vw, 10.5rem);
-		line-height: 0.8;
+	.hero-art img {
+		block-size: auto;
+		grid-area: 1 / 1;
+		inline-size: 100%;
+	}
+
+	.hero-art .blurred-art {
+		filter: blur(10px);
+	}
+
+	.hero-art .clear-art {
+		-webkit-mask-image: linear-gradient(
+			to bottom right,
+			transparent 5%,
+			black 80%
+		);
+		mask-image: linear-gradient(to bottom right, transparent 5%, black 80%);
+	}
+
+	.welcome-content h1 {
 		margin: 0;
 	}
 
-	:global(.hero-summary) {
-		font-size: clamp(1.125rem, 1.4vw, 1.375rem);
-		line-height: 1.5;
+	.hero-quote {
+		display: grid;
+		gap: var(--mc-space-2);
+		inline-size: min(40%, 24rem);
+		inset-block-end: var(--mc-space-6);
+		inset-inline-start: var(--mc-space-6);
 		margin: 0;
-		max-inline-size: 40rem;
+		position: absolute;
+		z-index: 1;
+	}
+
+	.hero-quote blockquote {
+		margin: 0;
+	}
+
+	.hero-quote :global(.mc-typography) {
+		font-family: var(--mc-font-family-space-mono);
+	}
+
+	.content-section:first-of-type {
+		border-block-start: 0;
+	}
+
+	@media (max-width: 52rem) {
+		.welcome-content {
+			inline-size: 100%;
+			mix-blend-mode: difference;
+			padding-inline: var(--mc-space-4);
+		}
+
+		.welcome-content :global(.mc-typography) {
+			color: white;
+			text-shadow:
+				1px 1px 0 var(--mc-brand-dark),
+				-1px -1px 0 var(--mc-brand-dark),
+				1px -1px 0 var(--mc-brand-dark),
+				-1px 1px 0 var(--mc-brand-dark);
+		}
+
+		.hero-art {
+			inline-size: min(100%, 34rem);
+		}
+
+		.hero-quote {
+			inline-size: min(
+				calc(100% - var(--mc-space-4) - var(--mc-space-4)),
+				24rem
+			);
+			inset-block-end: var(--mc-space-4);
+			inset-inline-start: var(--mc-space-4);
+		}
+
+		.welcome :global(.hero-title) {
+			font-size: clamp(2.5rem, 11vw, 3rem);
+		}
 	}
 </style>

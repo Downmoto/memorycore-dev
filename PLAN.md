@@ -18,15 +18,15 @@ Commit `495c2de` records the approved route skeleton. Home, Tools, both Tool pag
 
 Focused refinement is in progress. The design-library dependency is updated to `@memorycore/design` 0.2.0, and the root site tree uses the `website` Consumer mapping. The header identity and desktop primary navigation have passed owner review, including the design Logo, centred links, right-aligned Community action, uppercase labels, glass treatment, and spacing. The small-screen navigation now uses the design Menu and retains its no-JavaScript disclosure fallback. Header values use released design tokens where available.
 
-The footer has passed owner review. It uses the matching glass frame, a bordered Logo mark, three navigation groups for Tools and libraries, MemoryCore, and Legal, and compact GitHub and YouTube icon links beside the copyright. The site shell supplies the footer's bottom inset so Home imagery continues behind it.
+The footer has passed owner review. It uses the matching glass frame, a bordered Logo mark, three navigation groups for Tools and libraries, MemoryCore, and Legal, and compact GitHub and YouTube icon links beside the copyright. The site shell supplies the footer's bottom inset so Home imagery continues behind it. A Content Security Policy adjustment now permits the design library's inlined logo image, and a browser check verifies that the mark loads.
 
-The shared site shell has passed owner review. Its remaining keyboard, viewport, and cross-site consistency checks are covered by the Home and whole-site verification steps below.
+The shared site shell has passed owner review. Keyboard and viewport checks passed owner review on 2026-11-02. Cross-site consistency checks remain in the whole-site review.
 
-The supplied Riemersma image is present across the complete Home surface, from navigation through the footer, so it remains visible while the shared shell is refined. Final crop, responsive treatment, optimisation, and asset records remain part of the Home slice.
+The supplied Riemersma image is present across the complete Home surface, from navigation through the footer. The Home hero has passed owner review: the display-variant title places the supplied Icarus figure inside a glass frame with a diagonal blur that clears toward its hand. At small widths, the title overlays the figure with blended colour and a contrast edge. An attributed quotation from Ovid's _Metamorphoses_, translated by Brookes More, sits below the visual action. The line above Tools is removed locally. Final crop, responsive treatment, and asset records remain part of the Home release checks.
 
 ### Resume point
 
-Refine Home as the first page benchmark, starting with its first viewport and page hierarchy.
+Redeploy the approved Home hero to the branch Preview and confirm that its image, footer logo, and small-screen menu load there. Then refine the Home Tools section as the next focused slice.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
@@ -45,10 +45,11 @@ Complete and review one area at a time. Commit each approved checkpoint before m
    - [x] Refine the header identity and primary navigation.
    - [x] Refine the small-screen navigation and no-JavaScript fallback.
    - [x] Refine the footer hierarchy and destinations.
-   - [x] Approve shared shell spacing and responsive presentation. Carry keyboard and viewport verification into Home and whole-site review.
+   - [x] Approve shared shell spacing, responsive presentation, keyboard behaviour, and viewport checks. Carry cross-site consistency checks into whole-site review.
 2. Home
    - [x] Add the supplied Riemersma image across the complete Home surface as a visible refinement precursor.
-   - [ ] Refine the first viewport and page hierarchy.
+   - [x] Refine and approve the hero first viewport.
+   - [ ] Refine the page hierarchy through the remaining sections.
    - [ ] Refine the Tool, library, About, and Community sections.
    - [ ] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.
 3. Tool pages
