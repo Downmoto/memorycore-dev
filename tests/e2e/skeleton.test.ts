@@ -86,10 +86,15 @@ test('footer logo link only covers the mark', async ({ page }) => {
 		.getByRole('contentinfo')
 		.getByRole('link', { name: 'MemoryCore home' });
 	const linkBounds = await link.boundingBox();
-	const logoBounds = await link.locator('img').boundingBox();
+	const logo = link.locator('img');
+	const logoBounds = await logo.boundingBox();
 
 	expect(linkBounds).not.toBeNull();
 	expect(logoBounds).not.toBeNull();
+	expect(
+		await logo.evaluate((image) => (image as HTMLImageElement).naturalWidth)
+	).toBeGreaterThan(0);
+	expect(logoBounds!.height).toBeGreaterThan(0);
 	expect(linkBounds!.width).toBeLessThanOrEqual(logoBounds!.width + 2);
 });
 

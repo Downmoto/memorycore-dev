@@ -13,6 +13,7 @@ export default defineConfig({
 					'default-src': ['self'],
 					'base-uri': ['self'],
 					'form-action': ['self'],
+					'img-src': ['self', 'data:'],
 					'object-src': ['none'],
 					'script-src': ['self'],
 					'style-src': ['self']

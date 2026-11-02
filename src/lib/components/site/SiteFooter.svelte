@@ -116,7 +116,8 @@
 		justify-items: start;
 	}
 
-	:global(.footer-logo) {
+	.site-footer :global(.footer-logo) {
+		block-size: var(--mc-size-control-large);
 		inline-size: var(--mc-size-control-large);
 	}
 
