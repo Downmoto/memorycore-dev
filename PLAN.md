@@ -14,15 +14,15 @@ Phase 2 is implemented on `feat/website-overhaul`. The stable SvelteKit foundati
 
 Phase 3 is in progress. Commit `d27805c` records the approved context pack, implementation plan, typed catalogue and metadata foundation, content validation, design-library styles and fonts, and initial semantic shell.
 
-Commit `495c2de` records the approved route skeleton. Home, Tools, both Tool pages, Libraries, both library pages, Resources, Community, About, and the Privacy structure prerender with truthful outline-level content. The shared shell includes desktop navigation, a progressively enhanced modal small-screen menu, a no-JavaScript fallback, footer navigation, typed metadata, and generated sitemap inventory. One shared error view supplies both SvelteKit error entry points. Route, metadata, accessibility, no-JavaScript, and unknown-route tests pass in Chromium.
+Commit `495c2de` records the approved route skeleton. Home, Tools, both Tool pages, Libraries, both library pages, Resources, Community, About, and the Privacy structure prerender with truthful outline-level content. The shared shell includes desktop navigation, progressively enhanced small-screen navigation, a no-JavaScript fallback, footer navigation, typed metadata, and generated sitemap inventory. One shared error view supplies both SvelteKit error entry points. Route, metadata, accessibility, no-JavaScript, and unknown-route tests pass in Chromium.
 
-Focused refinement is in progress. The design-library dependency is updated to `@memorycore/design` 0.2.0, and the root site tree uses the `website` Consumer mapping. The header identity and desktop primary navigation have passed owner review, including the design Logo, centred links, right-aligned Community action, uppercase labels, glass treatment, and spacing. Header values use released design tokens where available.
+Focused refinement is in progress. The design-library dependency is updated to `@memorycore/design` 0.2.0, and the root site tree uses the `website` Consumer mapping. The header identity and desktop primary navigation have passed owner review, including the design Logo, centred links, right-aligned Community action, uppercase labels, glass treatment, and spacing. The small-screen navigation now uses the design Menu and retains its no-JavaScript disclosure fallback. Header values use released design tokens where available.
 
 The supplied Riemersma image is present across the complete Home surface, from navigation through the footer, so it remains visible while the shared shell is refined. Final crop, responsive treatment, optimisation, and asset records remain part of the Home slice.
 
 ### Resume point
 
-Continue the shared site-shell refinement with the small-screen navigation and its no-JavaScript fallback. Then review the footer and remaining shell spacing, focus, and responsive behaviour before moving to Home as the first page benchmark.
+Continue the shared site-shell refinement with the footer hierarchy and destinations. Then settle shell spacing, focus, and responsive behaviour before moving to Home as the first page benchmark.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
@@ -39,7 +39,7 @@ Complete and review one area at a time. Commit each approved checkpoint before m
 1. Shared site shell
    - [x] Update `@memorycore/design` to 0.2.0 and wrap the root site tree with `<Consumer consumer="website">`.
    - [x] Refine the header identity and primary navigation.
-   - [ ] Refine the small-screen navigation and no-JavaScript fallback.
+   - [x] Refine the small-screen navigation and no-JavaScript fallback.
    - [ ] Refine the footer hierarchy and destinations.
    - [ ] Settle shared shell spacing, focus behaviour, responsive behaviour, and viewport checks.
 2. Home

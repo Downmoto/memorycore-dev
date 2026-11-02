@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { Button, Dialog, Logo, Typography } from '@memorycore/design';
+	import { Button, Logo, Menu, MenuItem, Typography } from '@memorycore/design';
 	import { onMount } from 'svelte';
 	import { site } from '../../content/site';
 
-	let menuOpen = $state(false);
 	let enhanced = $state(false);
 
 	onMount(() => {
@@ -50,25 +49,20 @@
 	</nav>
 	<div class="mobile-navigation">
 		{#if enhanced}
-			<Button
-				appearance="secondary"
-				consumer="website"
-				aria-haspopup="dialog"
-				aria-expanded={menuOpen}
-				onclick={() => (menuOpen = true)}>Menu</Button
-			>
-			<Dialog bind:open={menuOpen} consumer="website" size="large" title="Menu">
-				<nav class="mobile-links" aria-label="Primary">
+			<nav aria-label="Primary">
+				<Menu align="end" label="Primary navigation">
+					{#snippet trigger(props)}
+						<Button appearance="secondary" {...props}>Menu</Button>
+					{/snippet}
 					{#each site.navigation as item (item.href)}
-						<Button
-							appearance="link"
+						<MenuItem
 							href={resolve(item.href)}
 							aria-current={isCurrent(item.href) ? 'page' : undefined}
-							onclick={() => (menuOpen = false)}>{item.label}</Button
+							>{item.label}</MenuItem
 						>
 					{/each}
-				</nav>
-			</Dialog>
+				</Menu>
+			</nav>
 		{:else}
 			<details>
 				<summary><Typography variant="small">Menu</Typography></summary>

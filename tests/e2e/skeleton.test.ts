@@ -59,6 +59,24 @@ test('no-JavaScript navigation exposes every primary destination', async ({
 	await context.close();
 });
 
+test('small-screen menu opens, closes, and navigates', async ({ page }) => {
+	await page.setViewportSize({ width: 390, height: 844 });
+	await page.goto('/');
+
+	const trigger = page.getByRole('button', { name: 'Menu' });
+	await trigger.click();
+	await expect(page.getByRole('menu')).toBeVisible();
+	await expect(page.getByRole('menuitem')).toHaveCount(5);
+
+	await page.keyboard.press('Escape');
+	await expect(page.getByRole('menu')).toBeHidden();
+	await expect(trigger).toBeFocused();
+
+	await trigger.click();
+	await page.getByRole('menuitem', { name: 'Tools' }).click();
+	await expect(page).toHaveURL('/tools');
+});
+
 test('unknown routes use the error response', async ({ page }) => {
 	const response = await page.goto('/missing-page');
 
