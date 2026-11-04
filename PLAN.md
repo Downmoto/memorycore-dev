@@ -1,7 +1,7 @@
 # Plan: memorycore.dev overhaul
 
 Status: Current
-Last reviewed: 2026-11-02
+Last reviewed: 2026-11-04
 Owner: Arad Fadaei
 
 ## Objective
@@ -26,11 +26,17 @@ The shared site shell has passed owner review. Keyboard and viewport checks pass
 
 The supplied Riemersma image is present across the complete Home surface, from navigation through the footer. The Home hero has passed owner review: the display-variant title places the supplied Icarus figure inside a glass frame with a diagonal blur that clears toward its hand. At small widths, the title overlays the figure with blended colour and a contrast edge. An attributed quotation from Ovid's _Metamorphoses_, translated by Brookes More, sits below the visual action. The line above Tools is removed locally. Final crop, responsive treatment, and asset records remain part of the Home release checks.
 
-The Home Tools section now has a visual pass awaiting owner review: one framed spread gives DitherTool the larger position, shows the supplied 200 px Riemersma eye output at the right, identifies AethelTool as planned, and stacks both entries at narrower widths. The Home Libraries section uses the same framed treatment with equal space for ditherlib and aethellib, and omits version labels and introductory copy. Both groups link directly to their two detail pages without collection actions. Both sections use design spacing tokens for reduced vertical and panel padding. The separator above About is removed. Record the eye image's source, creator, rights, and any modifications before production release, and confirm its resolution at the final display size.
+The Home Tools and Libraries sections passed owner visual review on 2026-11-04. One framed spread gives DitherTool the larger position, shows the supplied 200 px Riemersma eye output at the right, identifies AethelTool as planned, and stacks both entries at narrower widths. Libraries uses the same framed treatment with equal space for ditherlib and aethellib, and omits version labels and introductory copy. Both groups link directly to their two detail pages without collection actions. Both sections use design spacing tokens for reduced vertical and panel padding. The separator above About is removed. Record the eye image's source, creator, rights, and any modifications before production release, and confirm its resolution at the final display size.
+
+The Home About section passed owner visual review on 2026-11-04. It pairs a dark display-heading panel labelled About with a pale panel for MemoryCore's purpose, Arad Fadaei's role, and a route to About. The composition stacks at narrow widths and uses the released design tokens and Typography component.
+
+The Home Community section passed owner visual review on 2026-11-04. It uses a compact cobalt editorial panel with the label at upper left, display heading at lower left, enlarged supporting copy at upper right, and two large-size design buttons at lower right without surrounding cards or button-specific styles. The right column keeps both buttons on one row at 1031 px; the panel stacks below 1024 px and the buttons wrap only when space requires it. The separator above it is removed. The owner supplied a Discord invite on 2026-11-04; the Community page now exposes it with external-service context. Check the invite and conduct/privacy information during the Community page release review.
+
+The Home quality check passed `npm run verify` with 17 browser tests, including axe, and checked heading order, image loading, no-JavaScript content, links, and horizontal reflow at 320, 390, 768, 1031, and 1440 CSS px. Direct imports for the two footer icons reduced the shared client chunk from about 1.02 MB to 11.6 KB gzipped. A production-preview estimate at 390 and 1440 px measured about 526 KB compressed initial transfer, with 60 KB JavaScript, 28 KB CSS, and 123 KB fonts. Initial requests remain at 35 against the 25-request Home target. Reduce that count or document an approved budget exception before marking the Home quality gate complete.
 
 ### Resume point
 
-Review the Home Tools and Libraries spreads in the local Preview, including the supplied DitherTool image and responsive layout. Then refine their content and placement before moving to About and Community.
+Refine DitherTool as the first Tool-detail benchmark. Keep the Home request-count and asset provenance/resolution items open for its final quality gate. Review the Community page's invite and conduct/privacy context before publishing it.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
@@ -55,6 +61,7 @@ Complete and review one area at a time. Commit each approved checkpoint before m
    - [x] Refine and approve the hero first viewport.
    - [ ] Review and approve the Home Tools spread.
    - [ ] Review and approve the Home Libraries spread.
+   - [ ] Review and approve the Home About section.
    - [ ] Refine the page hierarchy through the remaining sections.
    - [ ] Refine the Tool, library, About, and Community sections.
    - [ ] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.

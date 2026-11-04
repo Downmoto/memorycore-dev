@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { Typography } from '@memorycore/design';
+	import { Button, Typography } from '@memorycore/design';
 	import PageIntro from '../../lib/components/site/PageIntro.svelte';
 	import PageMetadata from '../../lib/components/site/PageMetadata.svelte';
+	import { communityInvite } from '../../lib/content/external-destinations';
 	import { pages } from '../../lib/content/pages';
 </script>
 
@@ -23,9 +24,12 @@
 				open-source libraries, and the creative practices around them.
 			</Typography>
 			<Typography variant="p">
-				The intended space is the MemoryCore Discord server. A direct invitation
-				is currently unavailable on this site.
+				The MemoryCore Discord server hosts development updates, discussion,
+				feedback, and initial bug reports.
 			</Typography>
+			<Button appearance="primary" href={communityInvite.url} rel="external"
+				>Join Discord</Button
+			>
 		</div>
 	</section>
 	<section class="content-section" aria-labelledby="expectations-heading">
@@ -36,8 +40,8 @@
 				the people sharing work and technical knowledge.
 			</Typography>
 			<Typography variant="p">
-				Community access will be published with clear conduct and privacy
-				context.
+				Joining opens Discord, an external service. Review its privacy
+				information before participating.
 			</Typography>
 		</div>
 	</section>

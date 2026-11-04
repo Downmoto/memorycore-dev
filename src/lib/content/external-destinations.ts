@@ -1,6 +1,16 @@
 import type { ExternalDestination } from './types';
 
+export const communityInvite = {
+	id: 'memorycore-discord',
+	label: 'Join Discord',
+	kind: 'community',
+	url: 'https://discord.gg/deJfdDJ6Nm',
+	owner: 'Arad Fadaei',
+	reviewedAt: '2026-11-04'
+} satisfies ExternalDestination;
+
 export const externalDestinations = [
+	communityInvite,
 	{
 		id: 'memorycore-github',
 		label: 'GitHub',

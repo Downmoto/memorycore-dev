@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { Button, Logo, Typography } from '@memorycore/design';
-	import { GithubLogoIcon, YoutubeLogoIcon } from 'phosphor-svelte';
+	import GithubLogoIcon from 'phosphor-svelte/lib/GithubLogoIcon';
+	import YoutubeLogoIcon from 'phosphor-svelte/lib/YoutubeLogoIcon';
 	import { externalDestinations } from '../../content/external-destinations';
 	import { site } from '../../content/site';
 

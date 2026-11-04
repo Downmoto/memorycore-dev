@@ -3,6 +3,7 @@
 	import { Button, Typography } from '@memorycore/design';
 	import PageMetadata from '../lib/components/site/PageMetadata.svelte';
 	import { libraries, tools } from '../lib/content/catalogue';
+	import { communityInvite } from '../lib/content/external-destinations';
 	import { site } from '../lib/content/site';
 </script>
 
@@ -114,28 +115,57 @@
 	class="content-section page-shell about-section"
 	aria-labelledby="about-heading"
 >
-	<Typography variant="h2" id="about-heading"
-		>Made with a point of view</Typography
-	>
-	<div class="reading-copy">
-		<Typography variant="p">
-			MemoryCore builds authored creative instruments and publishes the reusable
-			foundations beneath them.
-		</Typography>
-		<Button appearance="link" href={resolve('/about')}>About MemoryCore</Button>
+	<div class="about-spread">
+		<div class="about-statement">
+			<Typography variant="small" class="about-index">About</Typography>
+			<h2 id="about-heading">
+				<Typography variant="display">Built for strange ideas</Typography>
+			</h2>
+		</div>
+		<div class="about-editorial">
+			<Typography variant="p" class="about-copy">
+				MemoryCore develops creative software and open-source libraries.
+			</Typography>
+			<Typography variant="p" class="about-copy">
+				Arad Fadaei leads work on image transformation, generative language, and
+				the systems behind both.
+			</Typography>
+			<Button class="about-link" appearance="link" href={resolve('/about')}
+				>About MemoryCore</Button
+			>
+		</div>
 	</div>
 </section>
 
-<section class="content-section page-shell" aria-labelledby="community-heading">
-	<Typography variant="h2" id="community-heading">Community</Typography>
-	<div class="reading-copy">
-		<Typography variant="p">
-			Follow the work, discuss the tools, and share unusual creative and
-			technical practice.
-		</Typography>
-		<Button appearance="link" href={resolve('/community')}
-			>Explore Community</Button
-		>
+<section
+	class="content-section page-shell community-section"
+	aria-labelledby="community-heading"
+>
+	<div class="community-spread">
+		<div class="community-statement">
+			<Typography variant="small" class="community-index">Community</Typography>
+			<h2 id="community-heading">
+				<Typography variant="display">Follow the work as it develops</Typography
+				>
+			</h2>
+		</div>
+		<div class="community-details">
+			<Typography variant="p" class="community-copy">
+				The MemoryCore Discord is a place for development updates, discussion,
+				feedback, and initial bug reports.
+			</Typography>
+			<div class="community-actions">
+				<Button
+					appearance="primary"
+					size="large"
+					href={communityInvite.url}
+					rel="external">Join Discord</Button
+				>
+				<Button appearance="secondary" size="large" href={resolve('/community')}
+					>Learn about the community</Button
+				>
+			</div>
+		</div>
 	</div>
 </section>
 
@@ -233,6 +263,130 @@
 
 	.about-section {
 		border-block-start: 0;
+		padding-block: var(--mc-space-6);
+	}
+
+	.about-spread {
+		border-radius: var(--mc-radius-2);
+		display: grid;
+		grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+		min-block-size: 38rem;
+		overflow: hidden;
+	}
+
+	.about-statement,
+	.about-editorial {
+		display: grid;
+		padding: var(--mc-space-8);
+	}
+
+	.about-statement {
+		align-content: space-between;
+		background: var(--mc-brand-dark);
+		color: var(--mc-brand-light);
+	}
+
+	.about-statement h2 {
+		margin: 0;
+	}
+
+	.about-statement :global(.mc-typography) {
+		color: inherit;
+	}
+
+	.about-statement :global(.mc-typography.about-index) {
+		font-family: var(--mc-font-family-space-mono);
+		text-transform: uppercase;
+	}
+
+	.about-statement h2 :global(.mc-typography) {
+		font-size: clamp(var(--mc-font-size-5), 5vw, var(--mc-font-size-6));
+	}
+
+	.about-editorial {
+		align-content: center;
+		background: var(--mc-brand-light);
+		color: var(--mc-brand-dark);
+		gap: var(--mc-space-7);
+	}
+
+	.about-editorial :global(.mc-typography.about-copy) {
+		color: inherit;
+		font-size: clamp(var(--mc-font-size-4), 2.5vw, var(--mc-font-size-5));
+		font-weight: var(--mc-font-weight-bold);
+		line-height: var(--mc-line-height-2);
+	}
+
+	.about-editorial :global(.mc-button.about-link) {
+		color: var(--mc-brand-dark);
+		justify-self: start;
+		text-decoration: underline;
+		text-underline-offset: var(--mc-space-2);
+	}
+
+	.community-section {
+		border-block-start: 0;
+		padding-block: var(--mc-space-6);
+	}
+
+	.community-spread {
+		background: color-mix(
+			in srgb,
+			var(--mc-colour-consumer-website-primary-light) 75%,
+			var(--mc-brand-dark)
+		);
+		border-radius: var(--mc-radius-2);
+		color: var(--mc-brand-light);
+		display: grid;
+		gap: var(--mc-space-8);
+		grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+		min-block-size: 28rem;
+		overflow: hidden;
+		padding: var(--mc-space-8);
+	}
+
+	.community-statement {
+		align-content: space-between;
+		display: grid;
+		gap: var(--mc-space-7);
+	}
+
+	.community-statement h2 {
+		margin: 0;
+	}
+
+	.community-statement :global(.mc-typography) {
+		color: inherit;
+	}
+
+	.community-statement :global(.mc-typography.community-index) {
+		font-family: var(--mc-font-family-space-mono);
+		text-transform: uppercase;
+	}
+
+	.community-statement h2 :global(.mc-typography) {
+		font-size: clamp(var(--mc-font-size-5), 5vw, var(--mc-font-size-6));
+		max-inline-size: 9ch;
+	}
+
+	.community-details {
+		display: grid;
+		gap: var(--mc-space-6);
+		grid-template-rows: 1fr auto;
+	}
+
+	.community-details :global(.mc-typography.community-copy) {
+		color: inherit;
+		font-size: clamp(var(--mc-font-size-3), 2.5vw, var(--mc-font-size-4));
+		font-weight: var(--mc-font-weight-bold);
+		line-height: var(--mc-line-height-2);
+	}
+
+	.community-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--mc-space-4);
+		justify-content: flex-end;
 	}
 
 	.feature-spread {
@@ -311,6 +465,34 @@
 	}
 
 	@media (max-width: 64rem) {
+		.about-statement,
+		.about-editorial {
+			padding: var(--mc-space-7);
+		}
+
+		.community-spread {
+			gap: var(--mc-space-7);
+			grid-template-columns: minmax(0, 1fr);
+			min-block-size: 0;
+			padding: var(--mc-space-6);
+		}
+
+		.community-statement {
+			gap: var(--mc-space-8);
+		}
+
+		.community-statement h2 :global(.mc-typography) {
+			font-size: clamp(var(--mc-font-size-3), 8vw, var(--mc-font-size-5));
+		}
+
+		.community-details {
+			grid-template-rows: auto auto;
+		}
+
+		.community-actions {
+			justify-content: flex-start;
+		}
+
 		.feature-spread,
 		.libraries-section .feature-spread {
 			grid-template-columns: minmax(0, 1fr);
@@ -324,6 +506,28 @@
 	}
 
 	@media (max-width: 52rem) {
+		.about-spread {
+			grid-template-columns: minmax(0, 1fr);
+			min-block-size: 0;
+		}
+
+		.about-statement,
+		.about-editorial {
+			padding: var(--mc-space-6);
+		}
+
+		.about-statement {
+			gap: var(--mc-space-8);
+		}
+
+		.about-editorial {
+			gap: var(--mc-space-6);
+		}
+
+		.about-editorial :global(.mc-typography.about-copy) {
+			font-size: clamp(var(--mc-font-size-3), 6vw, var(--mc-font-size-4));
+		}
+
 		.welcome-content {
 			inline-size: 100%;
 			mix-blend-mode: difference;
