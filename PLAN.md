@@ -10,33 +10,15 @@ Replace the existing website with the approved static SvelteKit experience while
 
 ## Current position
 
-Phase 2 is implemented on `feat/website-overhaul`. The stable SvelteKit foundation, static adapter, verification commands, and Cloudflare Preview configuration are in place. The clean-checkout part of the Phase 2 exit gate still requires confirmation. The enhanced small-screen menu opens on the deployed Wrangler Preview, and the header link uses the Consumer colour.
+Phase 2 and the shared Pass 1 foundations are implemented on `feat/website-overhaul`. The remaining Phase 2 exit evidence is a clean-checkout `npm ci` and `npm run verify` run. The deployed branch Preview remains non-indexable and has the expected security headers.
 
-The approved Home hero and scoped Content Security Policy fix are deployed to the branch Preview. Desktop and phone smoke tests confirm that Icarus, the footer logo, and the small-screen menu load without browser console or page errors. The Preview still serves `noindex` and the expected security headers.
+Shared shell refinement and all Home visual reviews have passed owner review. Home remains open only for release-quality gates: reduce its initial request count from 35 to the 25-request target, or document an approved exception; record and clear the Riemersma-eye asset provenance and confirm its final display resolution. Cross-site consistency belongs to whole-site review.
 
-Phase 3 is in progress. Commit `d27805c` records the approved context pack, implementation plan, typed catalogue and metadata foundation, content validation, design-library styles and fonts, and initial semantic shell.
-
-Commit `495c2de` records the approved route skeleton. Home, Tools, both Tool pages, Libraries, both library pages, Resources, Community, About, and the Privacy structure prerender with truthful outline-level content. The shared shell includes desktop navigation, progressively enhanced small-screen navigation, a no-JavaScript fallback, footer navigation, typed metadata, and generated sitemap inventory. One shared error view supplies both SvelteKit error entry points. Route, metadata, accessibility, no-JavaScript, and unknown-route tests pass in Chromium.
-
-Focused refinement is in progress. The design-library dependency is updated to `@memorycore/design` 0.2.0, and the root site tree uses the `website` Consumer mapping. The header identity and desktop primary navigation have passed owner review, including the design Logo, centred links, right-aligned Community action, uppercase labels, glass treatment, and spacing. The small-screen navigation now uses the design Menu and retains its no-JavaScript disclosure fallback. Header values use released design tokens where available.
-
-The footer has passed owner review. It uses the matching glass frame, a bordered Logo mark, three navigation groups for Tools and libraries, MemoryCore, and Legal, and compact GitHub and YouTube icon links beside the copyright. The site shell supplies the footer's bottom inset so Home imagery continues behind it. A Content Security Policy adjustment now permits the design library's inlined logo image, and a browser check verifies that the mark loads.
-
-The shared site shell has passed owner review. Keyboard and viewport checks passed owner review on 2026-11-02. Cross-site consistency checks remain in the whole-site review.
-
-The supplied Riemersma image is present across the complete Home surface, from navigation through the footer. The Home hero has passed owner review: the display-variant title places the supplied Icarus figure inside a glass frame with a diagonal blur that clears toward its hand. At small widths, the title overlays the figure with blended colour and a contrast edge. An attributed quotation from Ovid's _Metamorphoses_, translated by Brookes More, sits below the visual action. The line above Tools is removed locally. Final crop, responsive treatment, and asset records remain part of the Home release checks.
-
-The Home Tools and Libraries sections passed owner visual review on 2026-11-04. One framed spread gives DitherTool the larger position, shows the supplied 200 px Riemersma eye output at the right, identifies AethelTool as planned, and stacks both entries at narrower widths. Libraries uses the same framed treatment with equal space for ditherlib and aethellib, and omits version labels and introductory copy. Both groups link directly to their two detail pages without collection actions. Both sections use design spacing tokens for reduced vertical and panel padding. The separator above About is removed. Record the eye image's source, creator, rights, and any modifications before production release, and confirm its resolution at the final display size.
-
-The Home About section passed owner visual review on 2026-11-04. It pairs a dark display-heading panel labelled About with a pale panel for MemoryCore's purpose, Arad Fadaei's role, and a route to About. The composition stacks at narrow widths and uses the released design tokens and Typography component.
-
-The Home Community section passed owner visual review on 2026-11-04. It uses a compact cobalt editorial panel with the label at upper left, display heading at lower left, enlarged supporting copy at upper right, and two large-size design buttons at lower right without surrounding cards or button-specific styles. The right column keeps both buttons on one row at 1031 px; the panel stacks below 1024 px and the buttons wrap only when space requires it. The separator above it is removed. The owner supplied a Discord invite on 2026-11-04; the Community page now exposes it with external-service context. Check the invite and conduct/privacy information during the Community page release review.
-
-The Home quality check passed `npm run verify` with 17 browser tests, including axe, and checked heading order, image loading, no-JavaScript content, links, and horizontal reflow at 320, 390, 768, 1031, and 1440 CSS px. Direct imports for the two footer icons reduced the shared client chunk from about 1.02 MB to 11.6 KB gzipped. A production-preview estimate at 390 and 1440 px measured about 526 KB compressed initial transfer, with 60 KB JavaScript, 28 KB CSS, and 123 KB fonts. Initial requests remain at 35 against the 25-request Home target. Reduce that count or document an approved budget exception before marking the Home quality gate complete.
+Focused refinement has moved to Tool pages. DitherTool is the current representative-page benchmark; its approved pattern will then guide AethelTool and the Tools collection page. The Community page still needs its Discord invite and conduct/privacy context reviewed before publication.
 
 ### Resume point
 
-Refine DitherTool as the first Tool-detail benchmark. Keep the Home request-count and asset provenance/resolution items open for its final quality gate. Review the Community page's invite and conduct/privacy context before publishing it.
+Refine DitherTool as the first Tool-detail benchmark. Keep the Home request-count and asset provenance/resolution gates open. Review the Community page's invite and conduct/privacy context before publishing it.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
@@ -44,7 +26,7 @@ The remaining shared Pass 1 items stay queued: retain the font licence texts in 
 
 Use a skeleton-first sequence followed by focused refinement in vertical slices. Each pass should leave the site coherent and verifiable so work can stop and resume safely between chats.
 
-At the end of every implementation slice, update **Current position**, **Resume point**, and the applicable checklist in the same commit. Record newly discovered blockers or gates beside the affected checkpoint.
+At the end of every implementation slice, update the applicable checklist and revise **Current position** or **Resume point** only when the active area, decision, or remaining gate changes. Keep those sections as a concise snapshot; do not repeat implementation history. Record newly discovered blockers or gates beside the affected checkpoint.
 
 ### Focused refinement sequence
 
@@ -59,11 +41,11 @@ Complete and review one area at a time. Commit each approved checkpoint before m
 2. Home
    - [x] Add the supplied Riemersma image across the complete Home surface as a visible refinement precursor.
    - [x] Refine and approve the hero first viewport.
-   - [ ] Review and approve the Home Tools spread.
-   - [ ] Review and approve the Home Libraries spread.
-   - [ ] Review and approve the Home About section.
-   - [ ] Refine the page hierarchy through the remaining sections.
-   - [ ] Refine the Tool, library, About, and Community sections.
+   - [x] Review and approve the Home Tools spread.
+   - [x] Review and approve the Home Libraries spread.
+   - [x] Review and approve the Home About section.
+   - [x] Refine the page hierarchy through the remaining sections.
+   - [x] Refine the Tool, library, About, and Community sections.
    - [ ] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.
 3. Tool pages
    - [ ] Refine DitherTool as the representative Tool page.
