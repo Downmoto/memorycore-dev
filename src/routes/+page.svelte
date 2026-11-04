@@ -50,54 +50,70 @@
 	</figure>
 </div>
 
-<section class="content-section page-shell" aria-labelledby="tools-heading">
+<section
+	class="content-section page-shell home-feature-section"
+	aria-labelledby="tools-heading"
+>
 	<Typography variant="h2" id="tools-heading">Tools</Typography>
-	<div class="card-grid">
+	<div class="feature-spread">
 		{#each tools as tool (tool.id)}
-			<article class="outline-card">
-				<Typography class="status-label" variant="muted">
-					{tool.status === 'planned' ? 'Planned' : 'In active development'}
-				</Typography>
-				<Typography variant="h3"
-					><Button appearance="link" href={resolve(tool.metadata.canonicalPath)}
-						>{tool.name}</Button
-					></Typography
-				>
-				<Typography variant="p">{tool.summary}</Typography>
+			<article
+				class="feature-entry tool-feature"
+				class:featured={tool.id === 'dithertool'}
+			>
+				<div class="tool-copy">
+					<Typography class="status-label" variant="muted">
+						{tool.status === 'planned' ? 'Planned' : 'In active development'}
+					</Typography>
+					<Typography class="feature-name" variant="h3">{tool.name}</Typography>
+					<Typography variant="p">{tool.summary}</Typography>
+					<Button
+						appearance={tool.id === 'dithertool' ? 'primary' : 'secondary'}
+						href={resolve(tool.metadata.canonicalPath)}
+						>Explore {tool.name}</Button
+					>
+				</div>
+				{#if tool.id === 'dithertool'}
+					<figure class="tool-image-slot">
+						<img
+							src="/images/home/dithertool-riemersma.png"
+							alt="Dithered close-up of an eye"
+							width="200"
+							height="200"
+							loading="lazy"
+						/>
+					</figure>
+				{/if}
 			</article>
 		{/each}
 	</div>
-	<Button appearance="link" href={resolve('/tools')}>Explore all Tools</Button>
 </section>
 
-<section class="content-section page-shell" aria-labelledby="libraries-heading">
+<section
+	class="content-section page-shell home-feature-section libraries-section"
+	aria-labelledby="libraries-heading"
+>
 	<Typography variant="h2" id="libraries-heading">Libraries</Typography>
-	<Typography class="reading-copy" variant="p">
-		Open-source foundations expose the technical systems beneath each Tool.
-	</Typography>
-	<div class="card-grid">
+	<div class="feature-spread">
 		{#each libraries as library (library.id)}
-			<article class="outline-card">
-				<Typography class="status-label" variant="muted"
-					>Version {library.documentedVersion}</Typography
-				>
-				<Typography variant="h3"
-					><Button
-						appearance="link"
-						href={resolve(library.metadata.canonicalPath)}
-						>{library.name}</Button
-					></Typography
+			<article class="feature-entry library-feature">
+				<Typography class="feature-name" variant="h3">{library.name}</Typography
 				>
 				<Typography variant="p">{library.summary}</Typography>
+				<Button
+					appearance="primary"
+					href={resolve(library.metadata.canonicalPath)}
+					>Explore {library.name}</Button
+				>
 			</article>
 		{/each}
 	</div>
-	<Button appearance="link" href={resolve('/libraries')}
-		>Explore all libraries</Button
-	>
 </section>
 
-<section class="content-section page-shell" aria-labelledby="about-heading">
+<section
+	class="content-section page-shell about-section"
+	aria-labelledby="about-heading"
+>
 	<Typography variant="h2" id="about-heading"
 		>Made with a point of view</Typography
 	>
@@ -206,6 +222,107 @@
 		border-block-start: 0;
 	}
 
+	.home-feature-section {
+		gap: var(--mc-space-5);
+		padding-block: var(--mc-space-6);
+	}
+
+	.libraries-section {
+		border-block-start: 0;
+	}
+
+	.about-section {
+		border-block-start: 0;
+	}
+
+	.feature-spread {
+		background: color-mix(in srgb, var(--mc-brand-light) 8%, transparent);
+		border: var(--mc-border-width-default) solid
+			color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+		border-radius: var(--mc-radius-2);
+		display: grid;
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+		overflow: hidden;
+		-webkit-backdrop-filter: blur(5px);
+		backdrop-filter: blur(5px);
+	}
+
+	.libraries-section .feature-spread {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.feature-entry {
+		align-content: center;
+		display: grid;
+		gap: var(--mc-space-4);
+		min-inline-size: 0;
+		padding: var(--mc-space-5);
+	}
+
+	.feature-entry + .feature-entry {
+		border-inline-start: var(--mc-border-width-default) solid
+			color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+	}
+
+	.tool-feature.featured {
+		gap: 0;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+		min-block-size: 20rem;
+		padding: 0;
+	}
+
+	.tool-copy {
+		display: grid;
+		gap: var(--mc-space-4);
+	}
+
+	.tool-feature.featured .tool-copy {
+		padding: var(--mc-space-5);
+	}
+
+	.tool-image-slot {
+		border-inline-start: var(--mc-border-width-default) solid
+			color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+		margin: 0;
+		min-block-size: 20rem;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.tool-image-slot img {
+		block-size: 100%;
+		image-rendering: pixelated;
+		inline-size: 100%;
+		inset: 0;
+		object-fit: cover;
+		position: absolute;
+	}
+
+	.featured :global(.mc-typography.feature-name) {
+		font-size: clamp(
+			var(--mc-typography-page-title-size),
+			6vw,
+			var(--mc-typography-display-size)
+		);
+	}
+
+	.feature-entry :global(.mc-button) {
+		justify-self: start;
+	}
+
+	@media (max-width: 64rem) {
+		.feature-spread,
+		.libraries-section .feature-spread {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.feature-entry + .feature-entry {
+			border-block-start: var(--mc-border-width-default) solid
+				color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+			border-inline-start: 0;
+		}
+	}
+
 	@media (max-width: 52rem) {
 		.welcome-content {
 			inline-size: 100%;
@@ -237,6 +354,18 @@
 
 		.welcome :global(.hero-title) {
 			font-size: clamp(2.5rem, 11vw, 3rem);
+		}
+
+		.tool-feature.featured {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.tool-image-slot {
+			aspect-ratio: 4 / 3;
+			border-block-start: var(--mc-border-width-default) solid
+				color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+			border-inline-start: 0;
+			min-block-size: 0;
 		}
 	}
 </style>

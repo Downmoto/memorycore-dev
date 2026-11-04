@@ -26,9 +26,11 @@ The shared site shell has passed owner review. Keyboard and viewport checks pass
 
 The supplied Riemersma image is present across the complete Home surface, from navigation through the footer. The Home hero has passed owner review: the display-variant title places the supplied Icarus figure inside a glass frame with a diagonal blur that clears toward its hand. At small widths, the title overlays the figure with blended colour and a contrast edge. An attributed quotation from Ovid's _Metamorphoses_, translated by Brookes More, sits below the visual action. The line above Tools is removed locally. Final crop, responsive treatment, and asset records remain part of the Home release checks.
 
+The Home Tools section now has a visual pass awaiting owner review: one framed spread gives DitherTool the larger position, shows the supplied 200 px Riemersma eye output at the right, identifies AethelTool as planned, and stacks both entries at narrower widths. The Home Libraries section uses the same framed treatment with equal space for ditherlib and aethellib, and omits version labels and introductory copy. Both groups link directly to their two detail pages without collection actions. Both sections use design spacing tokens for reduced vertical and panel padding. The separator above About is removed. Record the eye image's source, creator, rights, and any modifications before production release, and confirm its resolution at the final display size.
+
 ### Resume point
 
-Refine the Home Tools section as the next focused slice. Review its content, hierarchy, and placement before moving to Libraries.
+Review the Home Tools and Libraries spreads in the local Preview, including the supplied DitherTool image and responsive layout. Then refine their content and placement before moving to About and Community.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
@@ -51,6 +53,8 @@ Complete and review one area at a time. Commit each approved checkpoint before m
 2. Home
    - [x] Add the supplied Riemersma image across the complete Home surface as a visible refinement precursor.
    - [x] Refine and approve the hero first viewport.
+   - [ ] Review and approve the Home Tools spread.
+   - [ ] Review and approve the Home Libraries spread.
    - [ ] Refine the page hierarchy through the remaining sections.
    - [ ] Refine the Tool, library, About, and Community sections.
    - [ ] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.
