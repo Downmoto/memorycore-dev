@@ -5,15 +5,29 @@
 		eyebrow,
 		title,
 		summary,
-		status
-	}: { eyebrow?: string; title: string; summary: string; status?: string } =
-		$props();
+		status,
+		displayTitle = false,
+		compact = false
+	}: {
+		eyebrow?: string;
+		title: string;
+		summary: string;
+		status?: string;
+		displayTitle?: boolean;
+		compact?: boolean;
+	} = $props();
 </script>
 
-<header class="page-intro">
+<header class="page-intro" class:compact>
 	{#if eyebrow}<Typography class="eyebrow" variant="muted">{eyebrow}</Typography
 		>{/if}
-	<Typography class="title" variant="h1">{title}</Typography>
+	{#if displayTitle}
+		<h1 class="display-title">
+			<Typography class="title" variant="display">{title}</Typography>
+		</h1>
+	{:else}
+		<Typography class="title" variant="h1">{title}</Typography>
+	{/if}
 	<Typography class="summary" variant="lead">{summary}</Typography>
 	{#if status}<Typography class="status" variant="small">{status}</Typography
 		>{/if}
@@ -26,10 +40,18 @@
 		padding-block: clamp(4rem, 9vw, 8rem);
 	}
 
+	.page-intro.compact {
+		gap: 0;
+		padding-block: var(--mc-space-7) var(--mc-space-5);
+	}
+
 	:global(.title) {
-		font-family: var(--mc-font-family-space-mono, monospace);
 		font-size: clamp(2.5rem, 6vw, 5.5rem);
 		line-height: 0.96;
+	}
+
+	.display-title {
+		margin: 0;
 	}
 
 	:global(.eyebrow),

@@ -73,6 +73,70 @@ a {
 	padding: clamp(1.25rem, 3vw, 2rem);
 }
 
+.collection-grid {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.collection-glass {
+	background: transparent;
+	border: var(--mc-border-width-default) solid
+		color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+	border-radius: var(--mc-radius-2);
+	box-shadow: var(--mc-shadow-1);
+	margin-block-end: var(--mc-space-5);
+	margin-block-start: var(--mc-space-5);
+	overflow: hidden;
+	padding-inline: var(--mc-space-5);
+	-webkit-backdrop-filter: blur(5px);
+	backdrop-filter: blur(5px);
+}
+
+.collection-section {
+	border-block-start: 0;
+	padding-block: 0 var(--mc-space-5);
+}
+
+.collection-card {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-block-size: clamp(19rem, 33vw, 26rem);
+}
+
+.collection-card-header,
+.collection-card-content,
+.collection-card-footer {
+	padding-inline: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.collection-card-footer {
+	background: var(--mc-colour-surface-low) !important;
+}
+
+.collection-card-header {
+	flex-direction: column;
+	gap: var(--mc-space-5);
+	justify-content: flex-start;
+	padding-block: clamp(1.5rem, 3vw, 2.5rem) 0;
+}
+
+.collection-card-content {
+	display: grid;
+	align-content: start;
+	gap: 1rem;
+	padding-block: 1rem clamp(2rem, 5vw, 4rem);
+}
+
+.collection-card .status-label {
+	color: var(--mc-colour-consumer-website-supporting-pale-blue, #d3dae0);
+}
+
+.collection-relationship {
+	margin: 0;
+	padding-block: 1rem;
+}
+
 .status-label {
 	font-family: var(--mc-font-family-space-mono, monospace);
 	font-size: 0.75rem;
@@ -89,8 +153,13 @@ a {
 }
 
 @media (max-width: 42rem) {
-	.card-grid {
+	.card-grid,
+	.collection-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.collection-card {
+		min-block-size: 0;
 	}
 }
 

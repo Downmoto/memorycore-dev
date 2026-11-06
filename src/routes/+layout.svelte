@@ -9,7 +9,12 @@
 </script>
 
 <Consumer consumer="website">
-	<div class="site-shell" class:home={page.route.id === '/'}>
+	<div
+		class="site-shell"
+		class:textured={page.route.id === '/' ||
+			page.route.id === '/tools' ||
+			page.route.id === '/libraries'}
+	>
 		<div class="skip-link">
 			<Button appearance="link" href="#main-content"
 				>Skip to main content</Button
@@ -30,17 +35,13 @@
 		padding-block-start: var(--mc-space-5);
 	}
 
-	.site-shell.home {
-		background:
-			linear-gradient(rgb(5 5 7 / 60%), rgb(5 5 7 / 60%)) center / cover
-				no-repeat,
-			var(--mc-colour-consumer-website-primary-light, #2f6892)
-				url('/images/home/riemersma.png') center top / cover no-repeat;
+	.site-shell.textured {
+		background: var(--mc-colour-consumer-website-primary-light, #2f6892)
+			url('/images/home/riemersma.png') center top / cover no-repeat;
 	}
 
 	main {
 		display: block;
-		min-block-size: calc(100svh - 5rem);
 	}
 
 	.skip-link {

@@ -4,8 +4,7 @@ export const pages = {
 	tools: {
 		id: 'tools',
 		name: 'Tools',
-		summary:
-			'Commercial creative software shaped around unusual image and language work.',
+		summary: 'Some ideas need their own tools.',
 		publicationState: 'published',
 		owner: 'Arad Fadaei',
 		reviewedAt: '2026-10-30',
@@ -20,7 +19,7 @@ export const pages = {
 	libraries: {
 		id: 'libraries',
 		name: 'Libraries',
-		summary: 'Open-source Rust foundations for MemoryCore creative software.',
+		summary: 'Good software starts with good foundations.',
 		publicationState: 'published',
 		owner: 'Arad Fadaei',
 		reviewedAt: '2026-10-30',
