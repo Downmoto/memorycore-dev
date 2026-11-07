@@ -84,15 +84,9 @@
 			size="icon-compact"
 		>
 			{#if darkTheme}
-				<SunIcon
-					aria-hidden="true"
-					weight="bold"
-				/>
+				<SunIcon aria-hidden="true" weight="bold" />
 			{:else}
-				<MoonIcon
-					aria-hidden="true"
-					weight="bold"
-				/>
+				<MoonIcon aria-hidden="true" weight="bold" />
 			{/if}
 		</Toggle>
 		<div class="social-links">

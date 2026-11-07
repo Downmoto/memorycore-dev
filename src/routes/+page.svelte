@@ -63,9 +63,6 @@
 				class:featured={tool.id === 'dithertool'}
 			>
 				<div class="tool-copy">
-					<Typography class="status-label" variant="muted">
-						{tool.status === 'planned' ? 'Planned' : 'In active development'}
-					</Typography>
 					<Typography class="feature-name" variant="h3">{tool.name}</Typography>
 					<Typography variant="p">{tool.summary}</Typography>
 					<Button
@@ -428,6 +425,13 @@
 	.tool-copy {
 		display: grid;
 		gap: var(--mc-space-4);
+		grid-template-rows: auto minmax(0, 1fr) auto;
+		min-block-size: 100%;
+	}
+
+	.library-feature {
+		align-content: stretch;
+		grid-template-rows: auto minmax(0, 1fr) auto;
 	}
 
 	.tool-feature.featured .tool-copy {
