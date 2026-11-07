@@ -35,7 +35,8 @@
 		class:textured={page.route.id === '/' ||
 			page.route.id === '/tools' ||
 			page.route.id === '/libraries'}
-		class:about-background={page.route.id === '/about'}
+		class:about-background={page.route.id === '/about' ||
+			page.route.id === '/community'}
 	>
 		<div class="skip-link">
 			<Button appearance="link" href="#main-content"

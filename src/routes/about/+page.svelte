@@ -9,20 +9,44 @@
 
 <div class="page-shell">
 	<div class="collection-glass">
-		<PageIntro title={pages.about.name} displayTitle compact />
-		<div class="about-statement">
-			<Typography variant="p">
-				MemoryCore is an independent creative software studio focused on
-				building tools for people who make things differently.
-			</Typography>
-			<Typography variant="p">
-				Good software should encourage exploration, respect the creative
-				process, and leave room for the unexpected.
-			</Typography>
-			<Typography variant="p">
-				MemoryCore's work spans creative applications, experimental ideas, and
-				the open-source foundations that support them.
-			</Typography>
+		<div class="about-lead">
+			<div class="about-copy">
+				<PageIntro title={pages.about.name} displayTitle compact />
+				<div class="about-statement">
+					<Typography variant="p">
+						MemoryCore is an independent creative software studio focused on
+						building tools for people who make things differently.
+					</Typography>
+					<Typography variant="p">
+						Good software should encourage exploration, respect the creative
+						process, and leave room for the unexpected.
+					</Typography>
+					<Typography variant="p">
+						MemoryCore's work spans creative applications, experimental ideas,
+						and the open-source foundations that support them.
+					</Typography>
+				</div>
+			</div>
+			<div class="about-art" aria-hidden="true">
+				<img
+					class="glow-art"
+					src="/images/about/reclining-figure.png"
+					alt=""
+					width="1536"
+					height="1024"
+					loading="lazy"
+					decoding="async"
+				/>
+				<img
+					class="clear-art"
+					src="/images/about/reclining-figure.png"
+					alt=""
+					width="1536"
+					height="1024"
+					loading="lazy"
+					decoding="async"
+				/>
+			</div>
 		</div>
 		<section class="principles" aria-labelledby="principles-heading">
 			<Typography variant="h2" id="principles-heading"
@@ -56,6 +80,18 @@
 </div>
 
 <style>
+	.about-lead {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.about-copy {
+		align-content: start;
+		display: grid;
+		position: relative;
+		z-index: 1;
+	}
+
 	.about-statement {
 		display: grid;
 		gap: var(--mc-space-4);
@@ -67,9 +103,31 @@
 		margin: 0;
 	}
 
+	.about-art {
+		align-self: center;
+		display: grid;
+		max-block-size: 32rem;
+		pointer-events: none;
+		transform: translateY(var(--mc-space-3));
+	}
+
+	.about-art img {
+		block-size: 100%;
+		grid-area: 1 / 1;
+		inline-size: 100%;
+		object-fit: contain;
+		transform: scaleX(-1);
+	}
+
+	.about-art .glow-art {
+		filter: blur(var(--mc-space-3));
+		opacity: 0.45;
+	}
+
 	.principles {
 		display: grid;
 		gap: var(--mc-space-5);
+		max-inline-size: 64rem;
 		padding-block: var(--mc-space-5);
 	}
 
@@ -89,6 +147,15 @@
 	}
 
 	@media (max-width: 52rem) {
+		.about-lead {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.about-art {
+			inline-size: min(100%, 28rem);
+			justify-self: center;
+		}
+
 		.principles-grid {
 			grid-template-columns: minmax(0, 1fr);
 		}

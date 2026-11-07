@@ -20,7 +20,7 @@
 	<div class="hero-art" aria-hidden="true">
 		<img
 			class="blurred-art"
-			src="/images/home/icarus.webp"
+			src="/images/home/phaethon.webp"
 			alt=""
 			width="1328"
 			height="1184"
@@ -28,7 +28,7 @@
 		/>
 		<img
 			class="clear-art"
-			src="/images/home/icarus.webp"
+			src="/images/home/phaethon.webp"
 			alt=""
 			width="1328"
 			height="1184"
@@ -36,16 +36,16 @@
 	</div>
 	<figure class="hero-quote">
 		<blockquote
-			cite="https://beta.perseus.tufts.edu/urn:cts:latinLit:phi0959.phi006.perseus-eng3:8/"
+			cite="https://beta.perseus.tufts.edu/urn:cts:latinLit:phi0959.phi006.perseus-eng3:2/"
 		>
 			<Typography variant="small">
-				And as he called upon his father's name his voice was smothered in the
-				dark blue sea, now called Icarian from the dead boy's name.
+				And far fell Phaethon with flaming hair; as haply from the summer sky
+				appears a falling star, although it never drops to startled earth.
 			</Typography>
 		</blockquote>
 		<figcaption>
 			<Typography variant="muted"
-				>Ovid · Metamorphoses VIII · Brookes More (1922)</Typography
+				>Ovid · Metamorphoses II · Brookes More (1922)</Typography
 			>
 		</figcaption>
 	</figure>
