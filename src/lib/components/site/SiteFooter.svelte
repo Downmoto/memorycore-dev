@@ -38,10 +38,8 @@
 		<Typography variant="p">{site.tagline}</Typography>
 	</div>
 	<nav class="footer-navigation" aria-label="Footer">
-		<div class="footer-section" role="group" aria-label="Tools and libraries">
-			<Typography class="section-heading" variant="small"
-				>Tools and libraries</Typography
-			>
+		<div class="footer-section" role="group" aria-label="Stuff">
+			<Typography class="section-heading" variant="small">Stuff</Typography>
 			<Button appearance="link" href={resolve('/tools')}
 				><Typography variant="small">Tools</Typography></Button
 			>
