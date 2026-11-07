@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 	import { site } from '../../content/site';
 
+	let { darkTheme = true }: { darkTheme?: boolean } = $props();
 	let enhanced = $state(false);
 
 	onMount(() => {
@@ -24,7 +25,11 @@
 		class="site-identity"
 		href={resolve('/')}
 		aria-label="MemoryCore home"
-		><Logo appearance="inverse" alt="" class="site-logo" /></Button
+		><Logo
+			appearance={darkTheme ? 'inverse' : 'default'}
+			alt=""
+			class="site-logo"
+		/></Button
 	>
 	<nav class="desktop-navigation" aria-label="Primary">
 		<div class="primary-links">
@@ -83,7 +88,7 @@
 		align-items: center;
 		background: transparent;
 		border: var(--mc-border-width-default) solid
-			color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+			color-mix(in srgb, var(--mc-colour-border) 30%, transparent);
 		border-radius: var(--mc-radius-2);
 		box-shadow: var(--mc-shadow-1);
 		display: grid;

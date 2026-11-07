@@ -4,8 +4,8 @@
 	color-scheme: light dark;
 	--content-width: var(--mc-size-container-maximum);
 	--page-margin: var(--mc-grid-margin-fluid);
-	background: var(--mc-brand-dark, #050507);
-	color: var(--mc-brand-light, #e8e1d2);
+	background: var(--mc-colour-background);
+	color: var(--mc-colour-text-primary);
 	font-family: var(--mc-font-family-roboto, sans-serif);
 }
 
@@ -82,7 +82,7 @@ a {
 .collection-glass {
 	background: transparent;
 	border: var(--mc-border-width-default) solid
-		color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+		color-mix(in srgb, var(--mc-colour-border) 30%, transparent);
 	border-radius: var(--mc-radius-2);
 	box-shadow: var(--mc-shadow-1);
 	margin-block-end: var(--mc-space-5);
@@ -129,7 +129,7 @@ a {
 }
 
 .collection-card .status-label {
-	color: var(--mc-colour-consumer-website-supporting-pale-blue, #d3dae0);
+	color: var(--mc-colour-text-secondary);
 }
 
 .collection-relationship {
@@ -164,6 +164,6 @@ a {
 }
 
 :focus-visible {
-	outline: 2px solid var(--mc-colour-consumer-website-primary-dark, #4e8bb7);
+	outline: 2px solid var(--mc-colour-interactive);
 	outline-offset: 3px;
 }

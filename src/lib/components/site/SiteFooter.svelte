@@ -1,22 +1,35 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { Button, Logo, Typography } from '@memorycore/design';
+	import { Button, Logo, Toggle, Typography } from '@memorycore/design';
 	import GithubLogoIcon from 'phosphor-svelte/lib/GithubLogoIcon';
+	import MoonIcon from 'phosphor-svelte/lib/MoonIcon';
+	import SunIcon from 'phosphor-svelte/lib/SunIcon';
 	import YoutubeLogoIcon from 'phosphor-svelte/lib/YoutubeLogoIcon';
 	import { externalDestinations } from '../../content/external-destinations';
 	import { site } from '../../content/site';
 
 	const year = new Date().getUTCFullYear();
+	let {
+		darkTheme = true,
+		onThemeChange
+	}: {
+		darkTheme?: boolean;
+		onThemeChange?: (dark: boolean) => void;
+	} = $props();
 	const socialDestinations = externalDestinations.filter(
 		({ id }) => id === 'memorycore-github' || id === 'memorycore-youtube'
 	);
+
+	function updateTheme(pressed: boolean): void {
+		onThemeChange?.(pressed);
+	}
 </script>
 
 <footer class="site-footer">
 	<div class="introduction">
 		<Button appearance="link" href={resolve('/')} aria-label="MemoryCore home">
 			<Logo
-				appearance="inverse"
+				appearance={darkTheme ? 'inverse' : 'default'}
 				variant="mark-bordered"
 				alt=""
 				class="footer-logo"
@@ -64,6 +77,24 @@
 		<Typography class="copyright" variant="small"
 			>© {year} MemoryCore</Typography
 		>
+		<Toggle
+			aria-label="Dark mode"
+			appearance="ghost"
+			bind:pressed={() => darkTheme, updateTheme}
+			size="icon-compact"
+		>
+			{#if darkTheme}
+				<SunIcon
+					aria-hidden="true"
+					weight="bold"
+				/>
+			{:else}
+				<MoonIcon
+					aria-hidden="true"
+					weight="bold"
+				/>
+			{/if}
+		</Toggle>
 		<div class="social-links">
 			{#each socialDestinations as destination (destination.id)}
 				<Button
@@ -89,7 +120,7 @@
 		align-items: start;
 		background: transparent;
 		border: var(--mc-border-width-default) solid
-			color-mix(in srgb, var(--mc-brand-light) 30%, transparent);
+			color-mix(in srgb, var(--mc-colour-border) 30%, transparent);
 		border-radius: var(--mc-radius-2);
 		box-shadow: var(--mc-shadow-1);
 		display: grid;

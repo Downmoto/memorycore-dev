@@ -124,6 +124,24 @@ test('header links use the website Consumer colour', async ({ page }) => {
 	);
 });
 
+test('footer theme toggle applies and persists the selected theme', async ({
+	page
+}) => {
+	await page.goto('/tools');
+	const themeToggle = page.getByRole('button', { name: 'Dark mode' });
+
+	await expect(themeToggle).toHaveAttribute('aria-pressed', 'true');
+	await themeToggle.click();
+	await expect(page.locator('html')).toHaveAttribute('data-mc-theme', 'light');
+	await expect(
+		page.getByRole('contentinfo').locator('.footer-logo')
+	).toHaveAttribute('data-appearance', 'default');
+
+	await page.reload();
+	await expect(themeToggle).toHaveAttribute('aria-pressed', 'false');
+	await expect(page.locator('html')).toHaveAttribute('data-mc-theme', 'light');
+});
+
 test('unknown routes use the error response', async ({ page }) => {
 	const response = await page.goto('/missing-page');
 

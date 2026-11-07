@@ -1,16 +1,37 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/state';
-	import { Button, Consumer } from '@memorycore/design';
+	import {
+		Button,
+		Consumer,
+		initialiseTheme,
+		setTheme
+	} from '@memorycore/design';
+	import { onMount } from 'svelte';
 	import SiteFooter from '../lib/components/site/SiteFooter.svelte';
 	import SiteHeader from '../lib/components/site/SiteHeader.svelte';
 
 	let { children } = $props();
+	let darkTheme = $state(true);
+
+	onMount(() => {
+		const theme = initialiseTheme();
+		darkTheme =
+			theme === 'dark' ||
+			(theme === 'system' &&
+				!window.matchMedia('(prefers-color-scheme: light)').matches);
+	});
+
+	function updateTheme(dark: boolean): void {
+		darkTheme = dark;
+		setTheme(dark ? 'dark' : 'light');
+	}
 </script>
 
 <Consumer consumer="website">
 	<div
 		class="site-shell"
+		class:dark-theme={darkTheme}
 		class:textured={page.route.id === '/' ||
 			page.route.id === '/tools' ||
 			page.route.id === '/libraries'}
@@ -20,11 +41,11 @@
 				>Skip to main content</Button
 			>
 		</div>
-		<SiteHeader />
+		<SiteHeader {darkTheme} />
 		<main id="main-content" tabindex="-1">
 			{@render children()}
 		</main>
-		<SiteFooter />
+		<SiteFooter {darkTheme} onThemeChange={updateTheme} />
 	</div>
 </Consumer>
 
@@ -36,8 +57,17 @@
 	}
 
 	.site-shell.textured {
-		background: var(--mc-colour-consumer-website-primary-light, #2f6892)
-			url('/images/home/riemersma.png') center top / cover no-repeat;
+		--texture-shade: transparent;
+
+		background:
+			linear-gradient(var(--texture-shade), var(--texture-shade)) center / cover
+				no-repeat,
+			var(--mc-colour-consumer-website-primary-light, #2f6892)
+				url('/images/home/riemersma.png') center top / cover no-repeat;
+	}
+
+	.site-shell.textured.dark-theme {
+		--texture-shade: rgb(5 5 7 / 50%);
 	}
 
 	main {
