@@ -11,7 +11,7 @@
 	}: {
 		eyebrow?: string;
 		title: string;
-		summary: string;
+		summary?: string;
 		status?: string;
 		displayTitle?: boolean;
 		compact?: boolean;
@@ -28,7 +28,8 @@
 	{:else}
 		<Typography class="title" variant="h1">{title}</Typography>
 	{/if}
-	<Typography class="summary" variant="lead">{summary}</Typography>
+	{#if summary}<Typography class="summary" variant="lead">{summary}</Typography
+		>{/if}
 	{#if status}<Typography class="status" variant="small">{status}</Typography
 		>{/if}
 </header>

@@ -14,11 +14,11 @@ Phase 2 and the shared Pass 1 foundations are implemented on `feat/website-overh
 
 Shared shell refinement and all Home visual reviews have passed owner review. Home remains open only for release-quality gates: reduce its initial request count from 35 to the 25-request target, or document an approved exception; record and clear the Riemersma-eye asset provenance and confirm its final display resolution. Cross-site consistency belongs to whole-site review.
 
-Focused refinement is on the paired Tools and Libraries collection routes. Their shared treatment presents the complete published catalogue with clear status and reciprocal relationships. Review both routes before using the resulting hierarchy for their detail-page benchmarks. The Community page still needs its Discord invite and conduct/privacy context reviewed before publication.
+The Tools and Libraries collection routes and About are approved. Focused refinement now moves through Community and Privacy before returning to the Tool and Library detail benchmarks. The Community page still needs its Discord invite and conduct/privacy context reviewed before publication.
 
 ### Resume point
 
-Review `/tools` and `/libraries`, including their responsive layouts. Then refine DitherTool as the first Tool-detail benchmark. Keep the Home request-count and asset provenance/resolution gates open. Review the Community page's invite and conduct/privacy context before publishing it.
+Refine `/community`, then `/privacy`. Keep the Home request-count and asset provenance/resolution gates open. Return to `/tools/dithertool` after those pages are approved.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
@@ -47,20 +47,21 @@ Complete and review one area at a time. Commit each approved checkpoint before m
    - [x] Refine the page hierarchy through the remaining sections.
    - [x] Refine the Tool, library, About, and Community sections.
    - [ ] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.
-3. Tool pages
-   - [ ] Refine the Tools collection page alongside the Libraries collection page.
+3. Main pages
+   - [x] Refine About.
+   - [ ] Refine Community.
+   - [ ] Refine Privacy while preserving its publication gates.
+4. Tool pages
+   - [x] Refine the Tools collection page alongside the Libraries collection page.
    - [ ] Refine DitherTool as the representative Tool page.
    - [ ] Apply the approved pattern to AethelTool.
-4. Library pages
-   - [ ] Refine the Libraries collection page alongside the Tools collection page.
+5. Library pages
+   - [x] Refine the Libraries collection page alongside the Tools collection page.
    - [ ] Refine ditherlib as the representative library page.
    - [ ] Apply the approved pattern to aethellib.
-5. Remaining public pages
+6. Remaining public pages
    - [ ] Refine Resources.
-   - [ ] Refine Community.
-   - [ ] Refine About.
-   - [ ] Refine Privacy while preserving its publication gates.
-6. Error response and whole-site polish
+7. Error response and whole-site polish
    - [ ] Refine the shared error response and verify deployed `404.html` behaviour.
    - [ ] Resolve cross-site typography, spacing, alignment, density, and responsive inconsistencies.
    - [ ] Complete whole-site accessibility, metadata, performance, privacy, and browser review.

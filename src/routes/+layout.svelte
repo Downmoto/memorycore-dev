@@ -35,6 +35,7 @@
 		class:textured={page.route.id === '/' ||
 			page.route.id === '/tools' ||
 			page.route.id === '/libraries'}
+		class:about-background={page.route.id === '/about'}
 	>
 		<div class="skip-link">
 			<Button appearance="link" href="#main-content"
@@ -68,6 +69,19 @@
 
 	.site-shell.textured.dark-theme {
 		--texture-shade: rgb(5 5 7 / 50%);
+	}
+
+	.site-shell.about-background {
+		--about-shade: transparent;
+
+		background:
+			linear-gradient(var(--about-shade), var(--about-shade)) center / cover
+				no-repeat,
+			url('/images/about/floyd-steinberg.png') center top / cover no-repeat;
+	}
+
+	.site-shell.about-background.dark-theme {
+		--about-shade: rgb(5 5 7 / 50%);
 	}
 
 	main {
