@@ -81,15 +81,16 @@ export const pages = {
 	},
 	privacy: {
 		id: 'privacy',
-		name: 'Privacy',
-		summary: 'The privacy structure for the redesigned MemoryCore website.',
+		name: 'Privacy policy',
+		summary:
+			'How MemoryCore handles personal information and third-party services.',
 		publicationState: 'preview',
 		owner: 'Arad Fadaei',
 		reviewedAt: '2026-10-30',
 		metadata: {
-			title: 'Privacy',
+			title: 'Privacy policy',
 			description:
-				'Review the current privacy implementation boundaries for the MemoryCore website.',
+				'Learn how MemoryCore handles personal information, software data, third-party services, and community participation.',
 			canonicalPath: '/privacy',
 			indexing: 'noindex'
 		}

@@ -12,13 +12,11 @@ Replace the existing website with the approved static SvelteKit experience while
 
 Phase 2 and the shared Pass 1 foundations are implemented on `feat/website-overhaul`. The remaining Phase 2 exit evidence is a clean-checkout `npm ci` and `npm run verify` run. The deployed branch Preview remains non-indexable and has the expected security headers.
 
-Shared shell refinement and all Home visual reviews have passed owner review. Home remains open only for release-quality gates: reduce its initial request count from 35 to the 25-request target, or document an approved exception; record and clear the Riemersma-eye asset provenance and confirm its final display resolution. Cross-site consistency belongs to whole-site review.
-
-The Tools and Libraries collection routes and About are approved. Focused refinement now moves through Community and Privacy before returning to the Tool and Library detail benchmarks. The Community page still needs its Discord invite and conduct/privacy context reviewed before publication.
+Home, the Tools and Libraries collection routes, About, Community, and the Privacy presentation are approved. Home retains its request-count and asset provenance/resolution gates. Privacy retains its legal and operational publication gates and remains `preview` and `noindex`.
 
 ### Resume point
 
-Refine `/community`, then `/privacy`. Keep the Home request-count and asset provenance/resolution gates open. Return to `/tools/dithertool` after those pages are approved.
+Refine `/resources`, then return to `/tools/dithertool` and the remaining Tool and Library detail routes. Keep the Home and Privacy release gates open.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
@@ -33,7 +31,7 @@ At the end of every implementation slice, update the applicable checklist and re
 Complete and review one area at a time. Commit each approved checkpoint before moving to the next area.
 
 1. Shared site shell
-   - [x] Update `@memorycore/design` to 0.2.0 and wrap the root site tree with `<Consumer consumer="website">`.
+   - [x] Update `@memorycore/design` to 0.2.1 and wrap the root site tree with `<Consumer consumer="website">`.
    - [x] Refine the header identity and primary navigation.
    - [x] Refine the small-screen navigation and no-JavaScript fallback.
    - [x] Refine the footer hierarchy and destinations.
@@ -49,8 +47,8 @@ Complete and review one area at a time. Commit each approved checkpoint before m
    - [ ] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.
 3. Main pages
    - [x] Refine About.
-   - [ ] Refine Community.
-   - [ ] Refine Privacy while preserving its publication gates.
+   - [x] Refine Community.
+   - [x] Refine Privacy while preserving its publication gates.
 4. Tool pages
    - [x] Refine the Tools collection page alongside the Libraries collection page.
    - [ ] Refine DitherTool as the representative Tool page.
@@ -97,7 +95,7 @@ Refine one representative from each page family. Settle the shared visual langua
 - [ ] ditherlib: establish the library-detail structure, technical hierarchy, Tool relationship, documentation action, examples, and labelled external destinations.
 - [ ] One documentation page: establish calm reading layout, hierarchy, navigation, code treatment, applicability, and technical links.
 - [ ] Resources: establish the approved empty state and keep the route `noindex, follow`.
-- [ ] Privacy: establish the readable policy structure while preserving its operational and legal publication gates.
+- [x] Privacy: establish the readable policy structure while preserving its operational and legal publication gates.
 - [ ] Error response: establish concise recovery actions and verify the deployed `404.html` behaviour.
 
 For each representative page:
@@ -117,8 +115,8 @@ Apply the proven family patterns to the remaining pages while preserving their c
 
 - [ ] Complete AethelTool from the reviewed Tool-detail pattern.
 - [ ] Complete aethellib from the reviewed library-detail pattern.
-- [ ] Complete the Tools and Libraries collection pages.
-- [ ] Complete Community and About.
+- [x] Complete the Tools and Libraries collection pages.
+- [x] Complete Community and About.
 - [ ] Complete the maintained documentation topic sets for both libraries.
 - [ ] Complete Home sections that depend on finished family content.
 - [ ] Complete Privacy after its launch gates and legal review are satisfied.

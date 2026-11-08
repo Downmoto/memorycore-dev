@@ -37,6 +37,7 @@
 			page.route.id === '/libraries'}
 		class:about-background={page.route.id === '/about' ||
 			page.route.id === '/community'}
+		class:privacy-background={page.route.id === '/privacy'}
 	>
 		<div class="skip-link">
 			<Button appearance="link" href="#main-content"
@@ -83,6 +84,24 @@
 
 	.site-shell.about-background.dark-theme {
 		--about-shade: rgb(5 5 7 / 50%);
+	}
+
+	.site-shell.privacy-background {
+		--privacy-shade: color-mix(
+			in srgb,
+			var(--mc-colour-background) 82%,
+			transparent
+		);
+
+		background:
+			linear-gradient(var(--privacy-shade), var(--privacy-shade)) center / cover
+				no-repeat,
+			url('/images/privacy/floyd-steinberg.png') center calc(0% - 25vh) / cover
+				no-repeat #000;
+	}
+
+	.site-shell.privacy-background.dark-theme {
+		--privacy-shade: rgb(5 5 7 / 25%);
 	}
 
 	main {
