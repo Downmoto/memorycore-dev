@@ -43,8 +43,11 @@
 					>{resource.summary}</Typography
 				>
 				<div class="resource-actions">
-					<Button appearance="primary" size="large" href="#files"
-						>Browse the packet</Button
+					<Button
+						class="resource-packet-button"
+						appearance="secondary"
+						size="large"
+						href="#files">Browse the packet</Button
 					>
 					{#if video}
 						<Button
@@ -60,18 +63,11 @@
 			</div>
 
 			<aside class="resource-record" aria-label="Resource record">
-				<div class="resource-record-heading">
-					<Typography class="resource-code" variant="large"
-						>{resource.code}</Typography
-					>
-					<div class="resource-stamp">Resource<br />record</div>
-				</div>
-				<div class="resource-symbol" aria-hidden="true">{resource.symbol}</div>
+				<Typography class="resource-code" variant="large"
+					>{resource.code}</Typography
+				>
+				<div class="resource-number" aria-hidden="true">1</div>
 				<dl>
-					<div>
-						<dt>Reference</dt>
-						<dd>{resource.reference}</dd>
-					</div>
 					<div>
 						<dt>Files</dt>
 						<dd>{String(resource.assets.length).padStart(2, '0')}</dd>
@@ -90,8 +86,7 @@
 
 		<section class="packet-manifest" aria-labelledby="manifest-heading">
 			<Typography variant="small">Packet manifest</Typography>
-			<Typography id="manifest-heading" variant="h2"
-				>A record made to be inspected</Typography
+			<Typography id="manifest-heading" variant="h2">Packet contents</Typography
 			>
 			<div class="manifest-grid">
 				<div>
@@ -100,12 +95,12 @@
 					>
 				</div>
 				<div>
-					<span>02</span><strong>Evidence</strong><small
+					<span>02</span><strong>Citations</strong><small
 						>{resource.citations.length} sources</small
 					>
 				</div>
 				<div>
-					<span>03</span><strong>Reading</strong><small
+					<span>03</span><strong>Research</strong><small
 						>{resource.research.length} sources</small
 					>
 				</div>
@@ -155,8 +150,11 @@
 							<Typography variant="h3">{source.title}</Typography>
 							<Typography variant="p">{source.description}</Typography>
 						</div>
-						<Button appearance="link" href={source.url} rel="external"
-							>{source.kind}</Button
+						<Button
+							class="source-link"
+							appearance="link"
+							href={source.url}
+							rel="external">{source.kind}</Button
 						>
 					</article>
 				{/each}
@@ -267,7 +265,7 @@
 	.resource-hero h1 {
 		margin-block: auto;
 	}
-	.resource-hero-main :global(.resource-title-line) {
+	.resource-hero-main :global(.mc-typography.resource-title-line) {
 		display: block;
 		font-size: clamp(4rem, 8vw, 9.5rem);
 		letter-spacing: -0.055em;
@@ -285,6 +283,15 @@
 		gap: var(--mc-space-3);
 		margin-block-start: var(--mc-space-5);
 	}
+	.resource-actions :global(.mc-button.resource-packet-button) {
+		background: transparent;
+		border: var(--mc-border-width-default) solid var(--resource-cream);
+		color: var(--resource-cream);
+	}
+	.resource-actions :global(.mc-button.resource-packet-button:hover) {
+		background: var(--resource-cream);
+		color: var(--resource-blue);
+	}
 	.resource-record {
 		background: color-mix(in srgb, var(--resource-black) 10%, transparent);
 		display: flex;
@@ -292,32 +299,13 @@
 		justify-content: space-between;
 		padding: var(--mc-space-5);
 	}
-	.resource-record-heading {
-		align-items: start;
-		display: flex;
-		justify-content: space-between;
-	}
 	.resource-record :global(.resource-code) {
 		font-family: var(--mc-font-family-space-mono, monospace);
 		font-size: clamp(2.5rem, 4vw, 4.5rem);
 		font-weight: bold;
 		letter-spacing: -0.08em;
 	}
-	.resource-stamp {
-		align-items: center;
-		aspect-ratio: 1;
-		border: var(--mc-border-width-default) solid currentColor;
-		border-radius: 50%;
-		display: flex;
-		font-family: var(--mc-font-family-space-mono, monospace);
-		font-size: var(--mc-typography-caption-size);
-		inline-size: 6rem;
-		justify-content: center;
-		text-align: center;
-		text-transform: uppercase;
-		transform: rotate(8deg);
-	}
-	.resource-symbol {
+	.resource-number {
 		align-items: center;
 		aspect-ratio: 1;
 		border: var(--mc-border-width-default) solid
@@ -481,9 +469,6 @@
 			gap: var(--mc-space-5);
 			grid-template-columns: 1fr 1fr;
 		}
-		.resource-record-heading {
-			grid-column: 1 / -1;
-		}
 		.manifest-grid {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
@@ -492,7 +477,7 @@
 		.resource-breadcrumb {
 			overflow: hidden;
 		}
-		.resource-hero-main :global(.resource-title-line) {
+		.resource-hero-main :global(.mc-typography.resource-title-line) {
 			font-size: clamp(3.25rem, 15vw, 5rem);
 		}
 		.resource-record,
@@ -501,16 +486,13 @@
 		.related-grid {
 			grid-template-columns: minmax(0, 1fr);
 		}
-		.resource-record-heading {
-			grid-column: auto;
-		}
 		.file-row,
 		.source-row {
 			align-items: start;
 			grid-template-columns: auto minmax(0, 1fr);
 		}
 		.file-row > :last-child,
-		.source-row > :last-child {
+		.source-row :global(.mc-button.source-link) {
 			grid-column: 2;
 			justify-self: start;
 		}

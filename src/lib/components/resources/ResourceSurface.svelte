@@ -61,7 +61,7 @@
 		--mc-colour-text-secondary: var(--resource-blue-pale);
 
 		background: var(--resource-blue);
-		border-block: var(--mc-space-2) solid var(--resource-black);
+		border-radius: var(--mc-radius-2);
 		color: var(--resource-cream);
 		overflow: hidden;
 		position: relative;

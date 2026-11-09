@@ -21,12 +21,12 @@
 		},
 		{
 			index: '02',
-			name: 'Evidence',
+			name: 'Citations',
 			description: 'Direct citations for claims and definitions'
 		},
 		{
 			index: '03',
-			name: 'Reading',
+			name: 'Research',
 			description: 'Research that shaped the finished work'
 		},
 		{

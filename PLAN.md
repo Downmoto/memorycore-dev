@@ -1,7 +1,7 @@
 # Plan: memorycore.dev overhaul
 
 Status: Current
-Last reviewed: 2026-11-04
+Last reviewed: 2026-11-08
 Owner: Arad Fadaei
 
 ## Objective
@@ -12,11 +12,11 @@ Replace the existing website with the approved static SvelteKit experience while
 
 Phase 2 and the shared Pass 1 foundations are implemented on `feat/website-overhaul`. The remaining Phase 2 exit evidence is a clean-checkout `npm ci` and `npm run verify` run. The deployed branch Preview remains non-indexable and has the expected security headers.
 
-Home, the Tools and Libraries collection routes, About, Community, and the Privacy presentation are approved. Home retains its request-count and asset provenance/resolution gates. Privacy retains its legal and operational publication gates and remains `preview` and `noindex`.
+Home, the Tools and Libraries collection routes, About, Community, the Resources archive and preview detail template, and the Privacy presentation are approved. The Resources overview and preview detail remain `noindex`; the preview publishes no downloadable files. Home retains its request-count and asset provenance/resolution gates. Privacy retains its legal and operational publication gates and remains `preview` and `noindex`.
 
 ### Resume point
 
-Refine `/resources`, then return to `/tools/dithertool` and the remaining Tool and Library detail routes. Keep the Home and Privacy release gates open.
+Refine `/libraries/ditherlib` as the representative library page, then apply the approved pattern to `/libraries/aethellib`. Complete the remaining documentation and error-response page work before returning to DitherTool and AethelTool as the final page family. Keep the Home, Resource publication, and Privacy release gates open.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository, define the initial structured-data boundaries, and establish documentation manifests from verified immutable library sources before adding documentation routes.
 
@@ -49,18 +49,22 @@ Complete and review one area at a time. Commit each approved checkpoint before m
    - [x] Refine About.
    - [x] Refine Community.
    - [x] Refine Privacy while preserving its publication gates.
-4. Tool pages
-   - [x] Refine the Tools collection page alongside the Libraries collection page.
-   - [ ] Refine DitherTool as the representative Tool page.
-   - [ ] Apply the approved pattern to AethelTool.
+4. Resources
+   - [x] Complete the requested refinements to the archive and its catalogue-driven preview detail template while preserving the publication gates.
 5. Library pages
    - [x] Refine the Libraries collection page alongside the Tools collection page.
    - [ ] Refine ditherlib as the representative library page.
    - [ ] Apply the approved pattern to aethellib.
-6. Remaining public pages
-   - [ ] Refine Resources.
-7. Error response and whole-site polish
+6. Documentation pages
+   - [ ] Establish verified manifests and refine one representative documentation page.
+   - [ ] Complete the maintained documentation topic sets for both libraries.
+7. Error response
    - [ ] Refine the shared error response and verify deployed `404.html` behaviour.
+8. Tool pages
+   - [x] Refine the Tools collection page alongside the Libraries collection page.
+   - [ ] Refine DitherTool as the representative Tool page.
+   - [ ] Apply the approved pattern to AethelTool.
+9. Whole-site polish
    - [ ] Resolve cross-site typography, spacing, alignment, density, and responsive inconsistencies.
    - [ ] Complete whole-site accessibility, metadata, performance, privacy, and browser review.
 
@@ -91,12 +95,12 @@ Checkpoint: every unconditional route exists with truthful content, coherent hie
 Refine one representative from each page family. Settle the shared visual language and component contracts against several real contexts before applying them across sibling pages.
 
 - [ ] Home: establish the cobalt environment, first-viewport hierarchy, major section rhythm, and connections to Tools, libraries, About, and Community.
-- [ ] DitherTool: establish the Tool-detail structure, active-development status, authentic evidence treatment, library relationship, and Community action.
 - [ ] ditherlib: establish the library-detail structure, technical hierarchy, Tool relationship, documentation action, examples, and labelled external destinations.
 - [ ] One documentation page: establish calm reading layout, hierarchy, navigation, code treatment, applicability, and technical links.
-- [ ] Resources: establish the approved empty state and keep the route `noindex, follow`.
+- [x] Resources: complete the archive and catalogue-driven preview detail refinements while keeping both routes `noindex, follow` and publishing no downloadable files.
 - [x] Privacy: establish the readable policy structure while preserving its operational and legal publication gates.
 - [ ] Error response: establish concise recovery actions and verify the deployed `404.html` behaviour.
+- [ ] DitherTool: establish the Tool-detail structure, active-development status, authentic evidence treatment, library relationship, and Community action.
 
 For each representative page:
 
@@ -113,13 +117,13 @@ Checkpoint: the representative set expresses the approved direction, establishes
 
 Apply the proven family patterns to the remaining pages while preserving their content-specific expression.
 
-- [ ] Complete AethelTool from the reviewed Tool-detail pattern.
 - [ ] Complete aethellib from the reviewed library-detail pattern.
 - [x] Complete the Tools and Libraries collection pages.
 - [x] Complete Community and About.
 - [ ] Complete the maintained documentation topic sets for both libraries.
 - [ ] Complete Home sections that depend on finished family content.
 - [ ] Complete Privacy after its launch gates and legal review are satisfied.
+- [ ] Complete AethelTool from the reviewed Tool-detail pattern after the other page families.
 
 Checkpoint: every unconditional route is content-complete, visually reviewed, accessible, prerendered, and covered by its applicable tests.
 
@@ -188,9 +192,10 @@ Exit: every unconditional route is complete in preview. Privacy remains gated by
 
 Exit: every published topic appears once in its manifest, prerenders correctly, and passes technical-owner review.
 
-## Phase 6: Implement Resources when material exists
+## Phase 6: Publish Resources when material exists
 
-- Keep the approved empty overview as the shipping baseline.
+- Use the refined archive and no-download preview detail as the shipping baseline after approval.
+- Keep the overview and preview detail `noindex, follow` until a complete reviewed Resource is published.
 - Add a Resource record and detail route only for a complete reviewed source packet.
 - Use repository storage first and activate R2 only at the approved threshold.
 
