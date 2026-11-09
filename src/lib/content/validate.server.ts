@@ -1,6 +1,7 @@
 import { libraries, tools } from './catalogue';
 import { externalDestinations } from './external-destinations';
 import { fixedPages } from './pages';
+import { resources } from './resources';
 import { site } from './site';
 
 function assertUnique<T extends { id: string }>(
@@ -43,8 +44,11 @@ function assertCanonicalPath(id: string, value: string): void {
 
 export function validateContent(): void {
 	const catalogueRecords = [...tools, ...libraries];
-	const records = [...catalogueRecords, ...fixedPages];
+	const records = [...catalogueRecords, ...resources, ...fixedPages];
 	const destinationIds = new Set(externalDestinations.map(({ id }) => id));
+	const destinationsById = new Map(
+		externalDestinations.map((destination) => [destination.id, destination])
+	);
 	const toolsById = new Map(tools.map((tool) => [tool.id, tool]));
 	const librariesById = new Map(
 		libraries.map((library) => [library.id, library])
@@ -52,6 +56,7 @@ export function validateContent(): void {
 
 	assertUnique(records, 'id', ({ id }) => id);
 	assertUnique(catalogueRecords, 'slug', ({ slug }) => slug);
+	assertUnique(resources, 'reference', ({ reference }) => reference);
 	assertUnique(
 		records,
 		'metadata.canonicalPath',
@@ -100,6 +105,62 @@ export function validateContent(): void {
 			!destination.url.startsWith('mailto:')
 		) {
 			throw new Error(`${destination.id}.url: expected HTTPS or mailto`);
+		}
+	}
+
+	const resourceAssets = resources.flatMap((resource) => resource.assets);
+	const resourceSources = resources.flatMap((resource) => [
+		...resource.citations,
+		...resource.research
+	]);
+	assertUnique(resourceAssets, 'id', ({ id }) => id);
+	assertUnique(resourceSources, 'id', ({ id }) => id);
+
+	for (const resource of resources) {
+		if (
+			resource.metadata.canonicalPath !== `/resources/${resource.reference}`
+		) {
+			throw new Error(
+				`${resource.id}.metadata.canonicalPath: must match its Resource reference`
+			);
+		}
+
+		const video = destinationsById.get(resource.videoDestination);
+		if (!video || video.kind !== 'video') {
+			throw new Error(
+				`${resource.id}.videoDestination: expected a known video destination`
+			);
+		}
+
+		for (const asset of resource.assets) {
+			assertDate(asset.id, 'revisionDate', asset.revisionDate);
+		}
+		for (const correction of resource.corrections) {
+			assertDate(resource.id, 'corrections.date', correction.date);
+		}
+
+		if (resource.publicationState === 'published') {
+			if (resource.metadata.indexing !== 'index') {
+				throw new Error(
+					`${resource.id}.metadata.indexing: published Resources must be indexable`
+				);
+			}
+			if (resource.assets.length === 0) {
+				throw new Error(
+					`${resource.id}.assets: published Resources need files`
+				);
+			}
+			for (const asset of resource.assets) {
+				if (
+					!asset.downloadUrl ||
+					!asset.rights.trim() ||
+					!asset.licence.trim()
+				) {
+					throw new Error(
+						`${asset.id}: published files need a download, rights, and licence`
+					);
+				}
+			}
 		}
 	}
 

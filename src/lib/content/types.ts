@@ -13,7 +13,7 @@ export type ReviewFields = {
 export type PageMetadata = {
 	title: string;
 	description: string;
-	canonicalPath: RouteId;
+	canonicalPath: `/${string}`;
 	indexing: Indexing;
 	updatedAt?: string;
 };
@@ -71,4 +71,55 @@ export type Library = MaintainedRecord & {
 	maturity: 'stable' | 'pre-release';
 	supportingTool: Tool['id'];
 	destinations: readonly ExternalDestination['id'][];
+};
+
+export type ResourceAsset = {
+	id: string;
+	name: string;
+	description: string;
+	type: string;
+	format: string;
+	size: string;
+	revision: string;
+	revisionDate: string;
+	rights: string;
+	licence: string;
+	downloadUrl?: `/${string}` | `https://${string}`;
+};
+
+export type ResourceSource = {
+	id: string;
+	title: string;
+	description: string;
+	kind: string;
+	url: `https://${string}`;
+};
+
+export type ResourceRelationship = {
+	id: string;
+	name: string;
+	description: string;
+	href: RouteId;
+};
+
+export type ResourceCorrection = {
+	date: string;
+	description: string;
+};
+
+export type Resource = MaintainedRecord & {
+	reference: string;
+	code: string;
+	title: string;
+	titleLines: readonly [string, ...string[]];
+	summary: string;
+	category: string;
+	symbol: string;
+	videoDestination: ExternalDestination['id'];
+	assets: readonly ResourceAsset[];
+	citations: readonly ResourceSource[];
+	research: readonly ResourceSource[];
+	relationships: readonly ResourceRelationship[];
+	rightsStatement: string;
+	corrections: readonly ResourceCorrection[];
 };
