@@ -72,19 +72,20 @@ export const aethellib = {
 	name: 'aethellib',
 	crate: 'aethellib',
 	summary:
-		'An open-source foundation for rule-based, corpus-consuming random text generation.',
+		'An open-source Rust library for rule-based text generation, currently under construction.',
 	maturity: 'pre-release',
 	supportingTool: 'aetheltool',
 	destinations: ['aethellib-source', 'aethellib-package', 'aethellib-api'],
 	publicationState: 'published',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-10-30',
+	reviewedAt: '2026-11-18',
 	metadata: {
 		title: 'aethellib',
 		description:
-			'Explore aethellib, the open-source text-generation foundation planned for AethelTool.',
+			'Follow aethellib, an open-source Rust library for rule-based text generation currently under construction.',
 		canonicalPath: '/libraries/aethellib',
-		indexing: 'index'
+		indexing: 'index',
+		updatedAt: '2026-11-18'
 	}
 } satisfies Library;
 

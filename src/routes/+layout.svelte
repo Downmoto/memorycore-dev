@@ -38,7 +38,8 @@
 		class:about-background={page.route.id === '/about' ||
 			page.route.id === '/community'}
 		class:privacy-background={page.route.id === '/privacy'}
-		class:ditherlib-background={page.route.id === '/libraries/ditherlib'}
+		class:ditherlib-background={page.route.id === '/libraries/ditherlib' ||
+			page.route.id === '/libraries/aethellib'}
 	>
 		<div class="skip-link">
 			<Button appearance="link" href="#main-content"
