@@ -18,7 +18,7 @@
 		eyebrow="Rust library"
 		title={aethellib.name}
 		summary={aethellib.summary}
-		status={`Pre-release · ${aethellib.documentedVersion}`}
+		status="Pre-release"
 	/>
 	<section class="content-section" aria-labelledby="purpose-heading">
 		<Typography variant="h2" id="purpose-heading"
@@ -30,8 +30,8 @@
 				rules and source corpora.
 			</Typography>
 			<Typography variant="p">
-				Version {aethellib.documentedVersion} is the current public release recorded
-				for this website baseline.
+				aethellib remains under active development, and its public API may
+				change as the library and AethelTool take shape.
 			</Typography>
 		</div>
 	</section>
@@ -48,9 +48,7 @@
 		>
 	</section>
 	<section class="content-section" aria-labelledby="destinations-heading">
-		<Typography variant="h2" id="destinations-heading"
-			>Technical destinations</Typography
-		>
+		<Typography variant="h2" id="destinations-heading">Destinations</Typography>
 		<ul class="link-list">
 			{#each destinations as destination (destination.id)}
 				<li>

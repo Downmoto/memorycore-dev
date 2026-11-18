@@ -47,9 +47,9 @@ export const externalDestinations = [
 		id: 'ditherlib-api',
 		label: 'ditherlib API reference on docs.rs',
 		kind: 'api-reference',
-		url: 'https://docs.rs/ditherlib/1.0.0',
+		url: 'https://docs.rs/ditherlib/latest/ditherlib/',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30'
+		reviewedAt: '2026-11-17'
 	},
 	{
 		id: 'aethellib-source',
@@ -71,8 +71,8 @@ export const externalDestinations = [
 		id: 'aethellib-api',
 		label: 'aethellib API reference on docs.rs',
 		kind: 'api-reference',
-		url: 'https://docs.rs/aethellib/0.10.1',
+		url: 'https://docs.rs/aethellib/latest/aethellib/',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30'
+		reviewedAt: '2026-11-17'
 	}
 ] satisfies readonly ExternalDestination[];

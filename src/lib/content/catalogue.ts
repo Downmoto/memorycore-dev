@@ -48,21 +48,21 @@ export const ditherlib = {
 	slug: 'ditherlib',
 	name: 'ditherlib',
 	crate: 'ditherlib',
-	documentedVersion: '1.0.0',
 	summary:
-		'An open-source image-effects and dithering library that powers DitherTool.',
+		'A Rust library for non-destructive image effects and dithering across whole images, selected regions, and ordered pipelines.',
 	maturity: 'stable',
 	supportingTool: 'dithertool',
 	destinations: ['ditherlib-source', 'ditherlib-package', 'ditherlib-api'],
 	publicationState: 'published',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-10-30',
+	reviewedAt: '2026-11-17',
 	metadata: {
 		title: 'ditherlib',
 		description:
-			'Explore ditherlib, the open-source image-effects and dithering foundation for DitherTool.',
+			'Explore ditherlib, a Rust library for non-destructive image effects, dithering, palettes, selections, and ordered pipelines.',
 		canonicalPath: '/libraries/ditherlib',
-		indexing: 'index'
+		indexing: 'index',
+		updatedAt: '2026-11-17'
 	}
 } satisfies Library;
 
@@ -71,7 +71,6 @@ export const aethellib = {
 	slug: 'aethellib',
 	name: 'aethellib',
 	crate: 'aethellib',
-	documentedVersion: '0.10.1',
 	summary:
 		'An open-source foundation for rule-based, corpus-consuming random text generation.',
 	maturity: 'pre-release',

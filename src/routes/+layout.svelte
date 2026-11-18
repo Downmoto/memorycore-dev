@@ -38,6 +38,7 @@
 		class:about-background={page.route.id === '/about' ||
 			page.route.id === '/community'}
 		class:privacy-background={page.route.id === '/privacy'}
+		class:ditherlib-background={page.route.id === '/libraries/ditherlib'}
 	>
 		<div class="skip-link">
 			<Button appearance="link" href="#main-content"
@@ -102,6 +103,22 @@
 
 	.site-shell.privacy-background.dark-theme {
 		--privacy-shade: rgb(5 5 7 / 25%);
+	}
+
+	.site-shell.ditherlib-background {
+		--ditherlib-shade: rgb(255 253 248 / 84%);
+
+		/* Photo by Takeshi Arai on Pexels, Pexels licence. Cropped and shaded with CSS.
+		   https://www.pexels.com/photo/shadows-on-geometric-gray-surface-19630487/ */
+		background:
+			linear-gradient(var(--ditherlib-shade), var(--ditherlib-shade)) center /
+				cover repeat-y,
+			url('/images/libraries/ditherlib/shadows-geometric-gray-surface.jpg')
+				center top / 100% auto repeat-y;
+	}
+
+	.site-shell.ditherlib-background.dark-theme {
+		--ditherlib-shade: rgb(5 5 7 / 72%);
 	}
 
 	main {

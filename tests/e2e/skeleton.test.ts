@@ -142,6 +142,64 @@ test('footer theme toggle applies and persists the selected theme', async ({
 	await expect(page.locator('html')).toHaveAttribute('data-mc-theme', 'light');
 });
 
+test('image comparison follows the pointer and supports the keyboard', async ({
+	page
+}) => {
+	await page.goto('/libraries/ditherlib');
+
+	const slider = page.getByRole('slider', {
+		name: 'Compare Original and Logical pixels'
+	});
+	const comparison = page.locator('.image-comparison').filter({ has: slider });
+	await comparison.scrollIntoViewIfNeeded();
+	const bounds = await comparison.boundingBox();
+	expect(bounds).not.toBeNull();
+
+	await page.mouse.move(
+		bounds!.x + bounds!.width * 0.75,
+		bounds!.y + bounds!.height / 2
+	);
+	const pointerPosition = await comparison.evaluate((element) =>
+		Number.parseFloat(
+			getComputedStyle(element).getPropertyValue('--comparison-position')
+		)
+	);
+	expect(pointerPosition).toBeGreaterThan(70);
+	expect(pointerPosition).toBeLessThan(80);
+
+	await slider.press('Home');
+	await expect(slider).toHaveValue('0');
+});
+
+test('image comparisons use a static split on small screens', async ({
+	page
+}) => {
+	await page.setViewportSize({ width: 390, height: 844 });
+	await page.goto('/libraries/ditherlib');
+
+	for (const comparison of await page.locator('.image-comparison').all()) {
+		await expect(comparison.locator('.edited-image img')).toBeVisible();
+		await expect(comparison.locator('.original-image')).toBeVisible();
+		await expect(comparison.locator('.comparison-label')).toHaveCount(2);
+		await expect(comparison.locator('.comparison-divider')).toBeVisible();
+		await expect(comparison.locator('input')).toBeHidden();
+		expect(
+			await comparison
+				.locator('.edited-image')
+				.evaluate((element) => getComputedStyle(element).clipPath)
+		).toContain('50%');
+	}
+});
+
+test('render control titles stay out of compact layouts', async ({ page }) => {
+	await page.setViewportSize({ width: 865, height: 976 });
+	await page.goto('/libraries/ditherlib');
+	await expect(page.locator('.control-card-header').first()).toBeHidden();
+
+	await page.setViewportSize({ width: 390, height: 844 });
+	await expect(page.locator('.control-card-header').first()).toBeHidden();
+});
+
 test('unknown routes use the error response', async ({ page }) => {
 	const response = await page.goto('/missing-page');
 

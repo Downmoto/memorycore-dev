@@ -66,7 +66,6 @@ export type Library = MaintainedRecord & {
 	slug: string;
 	name: string;
 	crate: string;
-	documentedVersion: string;
 	summary: string;
 	maturity: 'stable' | 'pre-release';
 	supportingTool: Tool['id'];
