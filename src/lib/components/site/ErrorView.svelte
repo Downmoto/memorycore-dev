@@ -5,6 +5,15 @@
 
 <section class="page-shell error-view" aria-labelledby="error-title">
 	<div class="error-code" aria-hidden="true">
+		<img
+			class="error-art"
+			src="/images/error/falling-figure-in-flames.webp"
+			alt=""
+			width="1254"
+			height="1254"
+			decoding="async"
+			fetchpriority="high"
+		/>
 		<Typography class="code" variant="display">404</Typography>
 	</div>
 	<div class="error-content">
@@ -33,7 +42,6 @@
 
 <style>
 	.error-view {
-		border-block: var(--mc-border-width-default) solid var(--mc-colour-border);
 		display: grid;
 		grid-template-columns: minmax(0, 0.8fr) minmax(20rem, 1fr);
 		margin-block: var(--mc-space-7);
@@ -42,21 +50,44 @@
 
 	.error-code {
 		align-items: center;
-		background: var(--mc-colour-surface-low);
-		border-inline-end: var(--mc-border-width-default) solid
-			var(--mc-colour-border);
+		background: var(--mc-brand-dark, #050507);
 		display: flex;
+		isolation: isolate;
+		justify-content: center;
 		overflow: hidden;
 		padding: clamp(var(--mc-space-6), 6vw, var(--mc-space-9));
+		position: relative;
+	}
+
+	.error-code::after {
+		background: linear-gradient(135deg, rgb(5 5 7 / 8%), rgb(5 5 7 / 42%));
+		content: '';
+		inset: 0;
+		position: absolute;
+		z-index: 1;
+	}
+
+	.error-art {
+		block-size: 100%;
+		filter: grayscale(1) contrast(1.08);
+		inline-size: 100%;
+		inset: 0;
+		object-fit: contain;
+		object-position: center;
+		opacity: 0.9;
+		position: absolute;
 	}
 
 	.error-code :global(.code) {
+		color: #fff;
 		font-family: var(--mc-font-family-space-mono, monospace);
 		font-size: clamp(7rem, 18vw, 17rem);
 		font-weight: var(--mc-font-weight-bold);
 		letter-spacing: -0.1em;
 		line-height: 0.75;
 		margin-inline-start: -0.08em;
+		position: relative;
+		z-index: 2;
 	}
 
 	.error-content {
@@ -88,8 +119,6 @@
 	}
 
 	nav {
-		border-block-start: var(--mc-border-width-default) solid
-			var(--mc-colour-border);
 		display: grid;
 		gap: var(--mc-space-3);
 		padding-block-start: var(--mc-space-5);
@@ -114,9 +143,6 @@
 		}
 
 		.error-code {
-			border-block-end: var(--mc-border-width-default) solid
-				var(--mc-colour-border);
-			border-inline-end: 0;
 			padding-block: var(--mc-space-7);
 		}
 

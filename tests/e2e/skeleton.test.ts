@@ -227,6 +227,25 @@ test('unknown routes use the error response', async ({ page }) => {
 			path
 		);
 	}
+	const errorArt = page.locator('.error-art');
+	await expect(errorArt).toBeVisible();
+	expect(
+		await errorArt.evaluate(
+			(image) =>
+				image instanceof HTMLImageElement && image.naturalWidth === 1254
+		)
+	).toBe(true);
+	expect(
+		await errorArt.evaluate((image) => getComputedStyle(image).objectFit)
+	).toBe('contain');
+	const errorCode = page.locator('.error-code').getByText('404');
+	await expect(errorCode).toBeVisible();
+	expect(
+		await errorCode.evaluate((code) => ({
+			colour: getComputedStyle(code).color,
+			blend: getComputedStyle(code).mixBlendMode
+		}))
+	).toEqual({ colour: 'rgb(255, 255, 255)', blend: 'normal' });
 
 	const findings = await new AxeBuilder({ page }).analyze();
 	expect(findings.violations).toEqual([]);
@@ -253,6 +272,9 @@ test('generated 404 document preserves recovery metadata and links', async () =>
 	expect(document).toContain('<title>Page unavailable | MemoryCore</title>');
 	expect(document).toContain('content="noindex, follow"');
 	expect(document).not.toContain('rel="canonical"');
+	expect(document).toContain(
+		'src="/images/error/falling-figure-in-flames.webp"'
+	);
 	for (const path of ['/', '/tools', '/resources', '/community']) {
 		expect(document).toContain(`href="${path}"`);
 	}
