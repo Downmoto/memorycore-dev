@@ -1,7 +1,7 @@
 # Website content and data context
 
 Status: Approved
-Last reviewed: 2026-10-21
+Last reviewed: 2026-11-19
 
 ## Ownership
 
@@ -23,13 +23,13 @@ Current ecosystem snapshot:
 - `ditherlib` v1.0.0 is the current public release and powers DitherTool.
 - `aethellib` v0.10.1 is the current public release and is the planned foundation for AethelTool.
 
-These versions are dated context. Verify the current release and choose an immutable tag or commit before publishing each documentation manifest.
+These versions are dated context. Verify the current release before linking it for launch. Choose an immutable tag or commit before publishing a future in-house documentation manifest.
 
 ## Authoring formats
 
-- Typed TypeScript records: site configuration, navigation, external destinations, Tool and library records, relationships, metadata, documentation manifests, Resources, providers, and privacy state.
+- Typed TypeScript records: site configuration, navigation, external destinations, Tool and library records, relationships, metadata, Resources, providers, and privacy state. Add documentation manifests when the in-house transition begins.
 - Route-local Svelte markup or adjacent typed modules: unique page copy and composed Resource narratives.
-- mdsvex `.svx`: library-documentation topics only.
+- mdsvex `.svx`: future in-house library-documentation topics only.
 - Repository-managed static files: fonts, licences, approved imagery, social images, icons when local, and eligible Resource downloads.
 
 Use TypeScript values with `satisfies`. Add no general schema dependency for the initial release. One focused `validateContent()` handles cross-record and filesystem rules.
@@ -77,7 +77,9 @@ Validation performs no network requests. Deployed response checks and external v
 
 ## Documentation workflow
 
-Maintain one curated documentation set per library in the website repository. Record the documented release or immutable source revision. Keep complete runnable examples in the library repository and compile or test them there whenever practical.
+For the initial release, link each library to its labelled API reference on docs.rs. Do not publish local documentation indexes or topics. Begin the reviewed transition to in-house documentation after DitherTool is ready.
+
+During that transition, maintain one curated documentation set per library in the website repository. Record the documented release or immutable source revision. Keep complete runnable examples in the library repository and compile or test them there whenever practical.
 
 Each library change or release receives a documentation-impact classification:
 

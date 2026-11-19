@@ -1,7 +1,7 @@
 # Website platform context
 
 Status: Approved
-Last reviewed: 2026-10-21
+Last reviewed: 2026-11-19
 
 ## Repository strategy
 
@@ -17,13 +17,15 @@ The existing implementation is historical reference. Its routes, layout, copy, a
 - Keep SvelteKit's `trailingSlash: 'never'`.
 - Set `paths.relative` to `false` so `404.html` assets resolve from nested unknown URLs.
 - Leave the adapter fallback unset.
-- Export entries for dynamic documentation and Resource routes from the same published inventory used by navigation and the sitemap.
+- Export entries for dynamic Resource routes from the same published inventory used by navigation and the sitemap. Apply the same rule to documentation routes when the approved in-house transition begins.
 - Use a `library` parameter matcher that accepts published library identifiers only.
 - Fail the build when a public route cannot be prerendered.
 
-Use JavaScript for the small-screen menu, requested Resource previews, optional code-copy controls, and other approved enhancements. Primary navigation, content, downloads, documentation, Privacy, and external links work without it.
+Use JavaScript for the small-screen menu, requested Resource previews, optional future code-copy controls, and other approved enhancements. Primary navigation, content, downloads, Privacy, and external links work without it. Future in-house documentation must meet the same baseline.
 
 ## Target structure
+
+Documentation-specific entries in this target are deferred until DitherTool is ready and the approved in-house transition begins.
 
 ```text
 .github/workflows/verify.yml
@@ -83,7 +85,7 @@ vite.config.ts
 wrangler.jsonc
 ```
 
-Use explicit routes for the two Tools and two libraries because their compositions differ. Use dynamic routes for documentation topics and Resource references only. Add directories when a real implementation responsibility needs them.
+Use explicit routes for the two Tools and two libraries because their compositions differ. Use dynamic routes for Resource references. Add dynamic documentation routes when the approved in-house transition begins. Add directories when a real implementation responsibility needs them.
 
 The root server layout enables prerendering and calls the server-only content validator. The content unit test calls the same validator.
 
@@ -129,7 +131,7 @@ Install Playwright browser binaries and operating-system dependencies after `npm
 
 ## Documentation subsystem
 
-Configure mdsvex inside the main application. Use one shared documentation layout and one explicit navigation manifest per library. Begin with callouts, code examples, figures, responsive tables, and cross-references. Reuse the site's metadata, canonical, sitemap, error, responsive, and accessibility systems.
+When the approved in-house documentation transition begins, configure mdsvex inside the main application. Use one shared documentation layout and one explicit navigation manifest per library. Begin with callouts, code examples, figures, responsive tables, and cross-references. Reuse the site's metadata, canonical, sitemap, error, responsive, and accessibility systems.
 
 Keep syntax highlighting at build time. Add no external documentation framework.
 

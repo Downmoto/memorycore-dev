@@ -1,7 +1,7 @@
 # Website scope and routes
 
 Status: Approved
-Last reviewed: 2026-10-21
+Last reviewed: 2026-11-19
 
 ## Purpose and audience
 
@@ -22,7 +22,7 @@ The experience should feel distinctive, focused, experimental, technically credi
 - AethelTool is a planned graphical application for rule-based, corpus-consuming random text generation. `aethellib` is its open-source foundation.
 - Every Tool and supporting library pair links in both directions and explains the relationship.
 - Tool pages lead primarily to Community during active development.
-- Library pages lead primarily to internal documentation, with GitHub, crates.io, and docs.rs as labelled external destinations.
+- Library pages lead primarily to the corresponding API reference on docs.rs for the initial release, with GitHub and crates.io as additional labelled external destinations.
 - Resources are open companion pages for MemoryCore videos. Product relationships appear only when the subject genuinely supports them.
 - About carries organisation, philosophy, founder, and authorship context.
 - Community explains the MemoryCore Discord server before sending visitors to it.
@@ -38,8 +38,6 @@ The experience should feel distinctive, focused, experimental, technically credi
 | `/libraries` | Libraries collection | Initial release |
 | `/libraries/ditherlib` | Image-processing library detail | Initial release |
 | `/libraries/aethellib` | Text-generation library detail | Initial release; review early Q1 2027 |
-| `/libraries/[library]/docs` | Documentation index | Initial release with a maintained, reviewed topic set |
-| `/libraries/[library]/docs/[...path]` | Documentation topic | Publish complete topics only |
 | `/resources` | Resources collection | Initial release with approved empty state; `noindex` until the first Resource publishes |
 | `/resources/[reference]` | Resource detail | Publish per complete source packet |
 | `/community` | Community | Initial release |
@@ -62,7 +60,7 @@ Wide header order:
 
 Use direct links without desktop dropdown menus. On small screens, use one labelled menu button and reveal the same destinations in the same order. The menu must expose its expanded state, manage focus, close with `Escape`, return focus to its trigger, and prevent background focus while modal.
 
-Nested pages use breadcrumbs. The current page is text with `aria-current="page"`; ancestors are links. Documentation breadcrumbs include the topic hierarchy. Resource breadcrumbs use the display title while the stable route reference remains unchanged.
+Nested pages use breadcrumbs. The current page is text with `aria-current="page"`; ancestors are links. Resource breadcrumbs use the display title while the stable route reference remains unchanged. Future in-house documentation breadcrumbs include the topic hierarchy.
 
 The footer exposes the complete public structure, external destinations, Privacy, the MemoryCore identity, the tagline `Creative tools for unusual work`, and a current copyright line.
 
@@ -72,7 +70,7 @@ The footer exposes the complete public structure, external destinations, Privacy
 - Collection pages introduce the group and list every published child once with accurate status.
 - Tool pages explain purpose, audience, active-development status, authentic evidence, the supporting library, relevant Resources, and Community.
 - Library pages explain purpose, capabilities, maturity, Tool relationship, documentation, examples, source, package, API reference, and licence.
-- Documentation pages provide stable local navigation, hierarchy, applicability, technical links, and reviewed task guidance.
+- Future in-house documentation pages provide stable local navigation, hierarchy, applicability, technical links, and reviewed task guidance.
 - Resource pages provide a stable reference, video link, source packet, file manifest, downloads, on-demand previews, citations, research, rights, corrections, and genuine relationships.
 - Community explains purpose, expectations, conduct, privacy context, and invite availability.
 - About establishes MemoryCore's purpose, philosophy, founder, current responsibilities, and body of work.
@@ -82,7 +80,7 @@ The footer exposes the complete public structure, external destinations, Privacy
 ## Primary journeys
 
 1. Creative practitioner: Home to Tool to Community to Discord.
-2. Developer: Library to documentation index to topic to source, package, API reference, or Tool context.
+2. Developer: Library to docs.rs, source, package, or Tool context.
 3. YouTube viewer: Resource to promised files and sources to related work or Community.
 4. Credibility: any substantive page to evidence to About to related work.
 
@@ -93,6 +91,10 @@ Deferred routes:
 - `/brand`
 - `/brand/design`
 - `/brand/product-design`
+- `/libraries/[library]/docs`
+- `/libraries/[library]/docs/[...path]`
+
+Keep library documentation on docs.rs for the initial release. Begin the reviewed transition to in-house documentation after DitherTool is ready. Add internal documentation routes only when their manifests can supply a complete maintained inventory.
 
 Add Brand navigation only when at least one complete designed presentation is publishable. The two presentation routes require a complete approved page-type blueprint.
 

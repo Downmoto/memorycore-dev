@@ -1,7 +1,7 @@
 # Website design context
 
 Status: Approved
-Last reviewed: 2026-10-23
+Last reviewed: 2026-11-19
 
 ## Direction
 
@@ -14,7 +14,7 @@ Core principles:
 3. Expressive material sits inside a usable grid and hierarchy.
 4. Shared cobalt, pale blue, pixel fragmentation, severe type, and classical imagery create continuity.
 5. DitherTool centres image transformation; AethelTool centres rules, corpora, syntax, and generated language.
-6. Promotional pages may be intense; documentation and utility pages remain calm and readable.
+6. Promotional pages may be intense; utility pages and future in-house documentation remain calm and readable.
 
 Approved composition studies define hierarchy and rhythm. Treat them as visual references rather than production markup. All included third-party imagery remains planning material until rights and attribution are cleared.
 
@@ -75,7 +75,7 @@ Generated CSS properties use the `--mc-` prefix. Tool pages are website surfaces
 
 `@memorycore/design` owns reusable tokens and approved primitives such as links, buttons, icon buttons, menu or disclosure behaviour, dialogs, alerts, status, progress, empty states, cards, lists, tables, and responsive overflow.
 
-The website owns its shell, header, footer, breadcrumbs, introductions, relationship panels, evidence compositions, documentation shell, Resource records and previews, supporting-page compositions, and page templates.
+The website owns its shell, header, footer, breadcrumbs, introductions, relationship panels, evidence compositions, Resource records and previews, supporting-page compositions, and page templates. It will own the documentation shell when the approved in-house transition begins.
 
 Keep page-specific heroes, visual studies, generation studies, archives, source packets, and founder compositions local until repeated use establishes a stable shared contract.
 
@@ -106,7 +106,7 @@ Keep page-specific heroes, visual studies, generation studies, archives, source 
 
 - Home uses the shared cobalt environment and largest display scale. Its navigation and hero fill the first viewport.
 - Tool pages share structure while their evidence stays medium-specific.
-- Libraries and documentation reduce decorative density and preserve stable navigation and reading measure.
+- Libraries reduce decorative density. Future in-house documentation preserves stable navigation and reading measure.
 - Resources use electric cobalt, archival composition, dense source annotation, file-led structure, and requested previews.
 
 ## Production checks

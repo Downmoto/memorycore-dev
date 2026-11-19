@@ -1,7 +1,7 @@
 # Project context router: memorycore.dev
 
 Status: Current
-Last reviewed: 2026-10-23
+Last reviewed: 2026-11-19
 Source: Approved MemoryCore website blueprint
 
 ## Project snapshot
@@ -34,7 +34,8 @@ The website is the first production consumer of `@memorycore/design`. The librar
 
 ## Current boundaries
 
-- Initial routes include Home, Tools, both Tool pages, Libraries, both library pages, both documentation indexes and publishable topics, Resources with its empty state, Community, About, Privacy, and `404`.
+- Initial routes include Home, Tools, both Tool pages, Libraries, both library pages, Resources with its empty state, Community, About, Privacy, and `404`.
+- Library documentation remains on docs.rs for the initial release. In-house documentation routes are deferred until DitherTool is ready.
 - Resource detail pages publish individually when their source packets and assets are complete.
 - `/brand`, `/brand/design`, and `/brand/product-design` remain deferred.
 - Accounts, newsletter, wishlist, search, comments, on-site community features, Tool interfaces, and speculative product claims remain outside the initial release.

@@ -1,7 +1,7 @@
 # memorycore.dev implementation contract
 
 Status: Approved
-Last reviewed: 2026-10-21
+Last reviewed: 2026-11-19
 Owner: Arad Fadaei
 
 ## Purpose
@@ -29,9 +29,9 @@ This file contains the stable constraints shared by implementation tasks. `CONTE
 
 ## Content contract
 
-- Use typed TypeScript values with `satisfies` for site configuration, destinations, Tools, libraries, documentation manifests, Resources, providers, and privacy state.
+- Use typed TypeScript values with `satisfies` for site configuration, destinations, Tools, libraries, Resources, providers, and privacy state. Add documentation manifests when the approved in-house documentation transition begins.
 - Use route-local Svelte markup or adjacent typed modules for unique composed pages.
-- Use mdsvex `.svx` files only for library-documentation topics.
+- Use mdsvex `.svx` files only for library-documentation topics after the approved in-house documentation transition begins.
 - Use one focused `validateContent()` path for cross-record, route, publication, rights, metadata, checksum, and filesystem rules TypeScript cannot prove.
 - Perform no network requests during content validation or the production build.
 - Keep draft, incomplete, withdrawn, and superseded content out of public navigation and indexing.
@@ -42,7 +42,7 @@ This file contains the stable constraints shared by implementation tasks. `CONTE
 - Use the Active LTS Node.js release available when implementation begins and pin the supported range.
 - Use strict TypeScript, `svelte-check`, ESLint with `eslint-plugin-svelte`, Prettier, Vitest, Playwright, `@axe-core/playwright`, and GitHub Actions.
 - Keep `npm run verify` as the single local and continuous-integration gate. It runs format checking, linting, Svelte and TypeScript checks, unit tests, the production build, and end-to-end tests.
-- Keep build-time syntax highlighting inside the documentation pipeline.
+- Keep build-time syntax highlighting inside the future in-house documentation pipeline.
 
 ## Deliberately absent infrastructure
 

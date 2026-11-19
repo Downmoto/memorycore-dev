@@ -1,7 +1,7 @@
 # Website quality context
 
 Status: Approved
-Last reviewed: 2026-10-21
+Last reviewed: 2026-11-19
 
 ## Metadata and discovery
 
@@ -88,7 +88,7 @@ Pre-release cold-build budgets at 390 by 844 and 1440 by 900 CSS px:
 | Initial requests | 20 | 25 |
 | Third-party requests before action | Production analytics beacon only | Production analytics beacon only |
 
-Resource pages transfer no preview or download bytes before activation. Documentation pages ship no search index, interactive-example runtime, WebAssembly, or client syntax-highlighting bundle unless the visible topic uses it.
+Resource pages transfer no preview or download bytes before activation. Future in-house documentation pages ship no search index, interactive-example runtime, WebAssembly, or client syntax-highlighting bundle unless the visible topic uses it.
 
 Loading rules:
 
@@ -120,11 +120,11 @@ Vitest covers content validation and pure non-trivial logic. Playwright runs aga
 - Every sitemap route and fixed `noindex` route.
 - Expected status, one `h1`, unique metadata, canonical, robots rules, shell, and console errors.
 - Direct and client-side unknown routes with HTTP `404`, recovery actions, and no canonical.
-- Navigation, breadcrumbs, footer, relationships, documentation hierarchy, fragments, and external labels.
+- Navigation, breadcrumbs, footer, relationships, fragments, and external labels. Add documentation hierarchy coverage when the in-house transition begins.
 - Primary audience journeys.
 - Download names, response, media type, disposition, size, checksum, requested previews, and preview failure.
 - Keyboard behaviour, focus, themes, reduced motion, forced colours, and approved viewports.
-- JavaScript-disabled shell, reading, documentation, downloads, and external links.
+- JavaScript-disabled shell, reading, downloads, and external links. Add in-house documentation coverage when those routes publish.
 - Request, byte, font, image, script, stylesheet, third-party, and eager-preview budgets.
 - Absence of analytics and unapproved origins outside production.
 
@@ -139,7 +139,7 @@ Before initial release, manually smoke-test current Chrome, Firefox, Safari, and
 
 ## Manual review
 
-- Compare Home, both Tool variations, one library, one documentation page, an available Resource state, Privacy, and `404` with approved direction at 320, 768, 1200, and 1440 CSS px.
+- Compare Home, both Tool variations, one library, an available Resource state, Privacy, and `404` with approved direction at 320, 768, 1200, and 1440 CSS px. Add one documentation page to this review after the approved in-house transition begins.
 - Review copy, Canadian spelling, status, dates, identity, relationships, baselines, citations, rights, licences, and labels.
 - Open every changed external destination from preview.
 - Inspect responsive images, font fallback, theme colours, print output, and optional-media failure.
