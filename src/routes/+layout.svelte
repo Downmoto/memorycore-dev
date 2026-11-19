@@ -38,6 +38,8 @@
 		class:about-background={page.route.id === '/about' ||
 			page.route.id === '/community'}
 		class:privacy-background={page.route.id === '/privacy'}
+		class:tool-background={page.route.id === '/tools/dithertool' ||
+			page.route.id === '/tools/aetheltool'}
 		class:ditherlib-background={page.route.id === '/libraries/ditherlib' ||
 			page.route.id === '/libraries/aethellib'}
 	>
@@ -104,6 +106,19 @@
 
 	.site-shell.privacy-background.dark-theme {
 		--privacy-shade: rgb(5 5 7 / 25%);
+	}
+
+	.site-shell.tool-background {
+		--tool-shade: rgb(255 253 248 / 84%);
+
+		background:
+			linear-gradient(var(--tool-shade), var(--tool-shade)) center / cover
+				no-repeat,
+			url('/images/tools/halftone-monochrome.jpg') center top / cover no-repeat;
+	}
+
+	.site-shell.tool-background.dark-theme {
+		--tool-shade: rgb(5 5 7 / 35%);
 	}
 
 	.site-shell.ditherlib-background {

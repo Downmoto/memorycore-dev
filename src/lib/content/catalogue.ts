@@ -4,17 +4,17 @@ export const dithertool = {
 	id: 'dithertool',
 	slug: 'dithertool',
 	name: 'DitherTool',
-	summary: 'A photobashing image-effect application in active development.',
+	summary: 'A creative image-effects tool currently under construction.',
 	status: 'active-development',
 	supportingLibrary: 'ditherlib',
 	destinations: [],
 	publicationState: 'published',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-10-30',
+	reviewedAt: '2026-11-18',
 	metadata: {
 		title: 'DitherTool',
 		description:
-			'Explore DitherTool, a photobashing image-effect application powered by ditherlib.',
+			'DitherTool is a creative image-effects tool currently under construction.',
 		canonicalPath: '/tools/dithertool',
 		indexing: 'index'
 	}
@@ -24,18 +24,17 @@ export const aetheltool = {
 	id: 'aetheltool',
 	slug: 'aetheltool',
 	name: 'AethelTool',
-	summary:
-		'A planned graphical application for rule-based, corpus-consuming text generation.',
+	summary: 'A creative text-generation tool currently under construction.',
 	status: 'planned',
 	supportingLibrary: 'aethellib',
 	destinations: [],
 	publicationState: 'published',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-10-30',
+	reviewedAt: '2026-11-18',
 	metadata: {
 		title: 'AethelTool',
 		description:
-			'Discover the planned AethelTool application for rule-based text generation.',
+			'AethelTool is a creative text-generation tool currently under construction.',
 		canonicalPath: '/tools/aetheltool',
 		indexing: 'index'
 	}

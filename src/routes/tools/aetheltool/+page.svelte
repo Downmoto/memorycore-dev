@@ -1,55 +1,35 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
-	import { Button, Typography } from '@memorycore/design';
+	import { Typography } from '@memorycore/design';
 	import PageIntro from '../../../lib/components/site/PageIntro.svelte';
 	import PageMetadata from '../../../lib/components/site/PageMetadata.svelte';
-	import { aethellib, aetheltool } from '../../../lib/content/catalogue';
+	import { aetheltool } from '../../../lib/content/catalogue';
 </script>
 
 <PageMetadata metadata={aetheltool.metadata} />
 
-<div class="page-shell">
+<div class="page-shell tool-page">
 	<PageIntro
-		eyebrow="Generated language"
+		eyebrow="Creative tool"
 		title={aetheltool.name}
 		summary={aetheltool.summary}
-		status="Planned"
 	/>
-	<section class="content-section" aria-labelledby="purpose-heading">
-		<Typography variant="h2" id="purpose-heading"
-			>Rules, corpora, and generated text</Typography
+	<section class="content-section" aria-labelledby="construction-heading">
+		<Typography variant="h2" id="construction-heading"
+			>Under construction</Typography
 		>
-		<div class="reading-copy">
-			<Typography variant="p">
-				AethelTool is planned as a graphical environment for constructing
-				rule-based text systems from authored rules and source corpora.
-			</Typography>
-			<Typography variant="p">
-				Interface claims and visual evidence will follow a real application
-				build.
-			</Typography>
-		</div>
-	</section>
-	<section class="content-section" aria-labelledby="foundation-heading">
-		<Typography variant="h2" id="foundation-heading"
-			>Planned foundation</Typography
-		>
-		<div class="reading-copy">
-			<Typography variant="p">
-				<Button appearance="link" href={resolve('/libraries/aethellib')}
-					>{aethellib.name}</Button
-				> is the planned open-source foundation for AethelTool.
-			</Typography>
-			<Typography variant="p">
-				The relationship and product description are scheduled for review in
-				early Q1 2027.
-			</Typography>
-		</div>
-	</section>
-	<section class="content-section" aria-labelledby="follow-heading">
-		<Typography variant="h2" id="follow-heading">Follow the work</Typography>
-		<Button appearance="link" href={resolve('/community')}
-			>Explore Community</Button
-		>
+		<Typography class="reading-copy" variant="p">
+			AethelTool is being rebuilt. A complete public overview will arrive with
+			the new application.
+		</Typography>
 	</section>
 </div>
+
+<style>
+	.tool-page {
+		margin-block-end: var(--mc-space-5);
+	}
+
+	.tool-page :global(.content-section) {
+		border: 0;
+	}
+</style>
