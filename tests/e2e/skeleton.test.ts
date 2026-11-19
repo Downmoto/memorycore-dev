@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
 
 const routes = [
 	'/',
@@ -212,6 +213,49 @@ test('unknown routes use the error response', async ({ page }) => {
 		'noindex, follow'
 	);
 	await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+
+	const recovery = page.getByRole('navigation', { name: 'Recovery' });
+	await expect(recovery.getByRole('link')).toHaveCount(4);
+	for (const [label, path] of [
+		['Home', '/'],
+		['Tools', '/tools'],
+		['Resources', '/resources'],
+		['Community', '/community']
+	] as const) {
+		await expect(recovery.getByRole('link', { name: label })).toHaveAttribute(
+			'href',
+			path
+		);
+	}
+
+	const findings = await new AxeBuilder({ page }).analyze();
+	expect(findings.violations).toEqual([]);
+
+	await page.setViewportSize({ width: 320, height: 700 });
+	expect(
+		await page
+			.locator('h1')
+			.evaluate(
+				(heading) =>
+					Math.ceil(heading.scrollWidth) <= Math.ceil(heading.clientWidth)
+			)
+	).toBe(true);
+	expect(
+		await page.evaluate(
+			() => document.documentElement.scrollWidth <= window.innerWidth
+		)
+	).toBe(true);
+});
+
+test('generated 404 document preserves recovery metadata and links', async () => {
+	const document = await readFile('build/404.html', 'utf8');
+
+	expect(document).toContain('<title>Page unavailable | MemoryCore</title>');
+	expect(document).toContain('content="noindex, follow"');
+	expect(document).not.toContain('rel="canonical"');
+	for (const path of ['/', '/tools', '/resources', '/community']) {
+		expect(document).toContain(`href="${path}"`);
+	}
 });
 
 test('sitemap includes published indexable routes', async ({ request }) => {

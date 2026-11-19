@@ -18,7 +18,7 @@ Library documentation remains external on docs.rs for the initial release. In-ho
 
 ### Resume point
 
-Review the implemented library and Tool detail pages, then refine the error response. Complete the remaining shared items and whole-site review while keeping the Home, Resource publication, and Privacy release gates open.
+Review the implemented library and Tool detail pages, then complete the remaining shared items and whole-site review while keeping the Home, Resource publication, and Privacy release gates open.
 
 The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository and define the initial structured-data boundaries.
 
@@ -61,7 +61,7 @@ Complete and review one area at a time. Commit each approved checkpoint before m
    - [ ] Establish verified manifests and refine one representative documentation page.
    - [ ] Complete the maintained documentation topic sets for both libraries.
 7. Error response
-   - [ ] Refine the shared error response and verify deployed `404.html` behaviour.
+   - [x] Refine the shared error response and verify generated `404.html` behaviour plus the deployed-style unknown-route response.
 8. Tool pages
    - [x] Refine the Tools collection page alongside the Libraries collection page.
    - [x] Refine DitherTool with truthful construction messaging.
@@ -101,7 +101,7 @@ Refine one representative from each page family. Settle the shared visual langua
 - [ ] After DitherTool is ready, establish one documentation page with calm reading layout, hierarchy, navigation, code treatment, applicability, and technical links.
 - [x] Resources: complete the archive and catalogue-driven preview detail refinements while keeping both routes `noindex, follow` and publishing no downloadable files.
 - [x] Privacy: establish the readable policy structure while preserving its operational and legal publication gates.
-- [ ] Error response: establish concise recovery actions and verify the deployed `404.html` behaviour.
+- [x] Error response: establish concise recovery actions and verify generated `404.html` behaviour plus the deployed-style unknown-route response.
 - [x] DitherTool: establish the Tool-detail structure, active-development status, authentic evidence treatment, library relationship, and Community action.
 
 For each representative page:
