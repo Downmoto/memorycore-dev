@@ -5,7 +5,7 @@ export const site = {
 	tagline: 'Creative tools for unusual work',
 	canonicalOrigin: 'https://www.memorycore.dev',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-10-30',
+	reviewedAt: '2026-11-20',
 	metadata: {
 		title: 'MemoryCore',
 		description:

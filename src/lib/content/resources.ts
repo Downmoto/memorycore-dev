@@ -107,7 +107,7 @@ export const resources: readonly Resource[] = [
 		corrections: [],
 		publicationState: 'preview',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-11-08',
+		reviewedAt: '2026-11-20',
 		metadata: {
 			title: 'The syntax of defining syntax · Resource preview',
 			description:

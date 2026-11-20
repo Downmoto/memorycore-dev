@@ -1,231 +1,89 @@
-# Plan: memorycore.dev overhaul
+# Plan: memorycore.dev launch
 
 Status: Current
-Last reviewed: 2026-11-19
+Last reviewed: 2026-11-20
 Owner: Arad Fadaei
 
 ## Objective
 
-Replace the existing website with the approved static SvelteKit experience while keeping the current production site deployable until the verified Cloudflare cutover.
+Launch the approved static SvelteKit website on Cloudflare without disrupting the current website or Proton Mail.
 
 ## Current position
 
-Phase 2 and the shared Pass 1 foundations are implemented on `feat/website-overhaul`. The remaining Phase 2 exit evidence is a clean-checkout `npm ci` and `npm run verify` run. The deployed branch Preview remains non-indexable and has the expected security headers.
+The website implementation and whole-site refinement are complete on `feat/website-overhaul` through commit `e07ebad`. The site uses `@memorycore/design` 0.2.1, prerenders every published route, and passes the current automated verification suite.
 
-Home, the Tools and Libraries collection routes, About, Community, both library detail pages, both Tool detail pages, the Resources archive and preview detail template, Privacy, and the error response have completed focused refinement. The whole-site automated viewport, accessibility, metadata, no-JavaScript, and performance review is complete. The Resources overview and preview detail remain `noindex`; the preview publishes no downloadable files. Privacy retains its legal and operational publication gates and remains `preview` and `noindex`.
+Home, Tools, libraries, About, Community, Resources preview, Privacy preview, and the error response have completed focused visual refinement. Automated checks cover route rendering, metadata, structured data, accessibility scanning, no-JavaScript navigation, responsive overflow, interactions, performance budgets, sitemap generation, and `404` behaviour.
 
-Library documentation remains external on docs.rs for the initial release. In-house documentation routes, manifests, and topics are deferred until DitherTool is ready and do not block launch.
+The release candidate still requires clean-checkout evidence, manual acceptance, final Privacy and rights approval, and review of a Worker Preview built from the candidate commit.
 
-### Resume point
+Library documentation remains on docs.rs for launch. Resources contain no public downloads. Privacy remains `preview` and `noindex` until its launch gates are complete.
 
-Review and approve the whole-site refinement, then complete the remaining manual browser, assistive-technology, rights, privacy, and operational release gates. Resource publication and the in-house documentation transition remain deferred.
+## Remaining launch work
 
-## Implementation approach
+Complete these sections in order.
 
-Use a skeleton-first sequence followed by focused refinement in vertical slices. Each pass should leave the site coherent and verifiable so work can stop and resume safely between chats.
+### 1. Freeze and verify the release candidate
 
-At the end of every implementation slice, update the applicable checklist and revise **Current position** or **Resume point** only when the active area, decision, or remaining gate changes. Keep those sections as a concise snapshot; do not repeat implementation history. Record newly discovered blockers or gates beside the affected checkpoint.
+- [x] Update time-sensitive product, library, provider, external-link, and review-date facts.
+- [ ] Run `npm ci` from a clean checkout.
+- [ ] Run `npm run verify` from that clean checkout.
+- [ ] Require the matching GitHub Actions checks to pass without skipped or flaky tests.
+- [ ] Record the candidate commit SHA and the last verified production rollback version.
 
-### Focused refinement sequence
+### 2. Complete manual content, rights, browser, and accessibility acceptance
 
-Complete and review one area at a time. Commit each approved checkpoint before moving to the next area.
+- [ ] Review public copy, Canadian spelling, product status, library versions, relationships, dates, citations, and labels.
+- [ ] Open every external destination from the candidate Preview and confirm its label and target.
+- [ ] Confirm the source, publication rights, modifications, required attribution, and alternative text for every image. Confirm the committed font licences cover the shipped files.
+- [ ] Review Home, both Tool variations, ditherlib, Resources, Privacy, and `404` at 320, 768, 1200, and 1440 CSS px.
+- [ ] Smoke-test current Chrome, Firefox, Safari, and Edge, plus Safari on an available iPhone or iPad.
+- [ ] Test keyboard-only use, 400 percent zoom, 200 percent text scaling, text-spacing overrides, forced colours, reduced motion, font fallback, print output, and blocked optional media.
+- [ ] Test VoiceOver with Safari on macOS and iOS, and NVDA with Firefox on Windows, for the shell and each unique interactive pattern.
+- [ ] Resolve every confirmed WCAG 2.2 Level A or AA failure.
 
-1. Shared site shell
-   - [x] Update `@memorycore/design` to 0.2.1 and wrap the root site tree with `<Consumer consumer="website">`.
-   - [x] Refine the header identity and primary navigation.
-   - [x] Refine the small-screen navigation and no-JavaScript fallback.
-   - [x] Refine the footer hierarchy and destinations.
-   - [x] Approve shared shell spacing, responsive presentation, keyboard behaviour, and viewport checks. Carry cross-site consistency checks into whole-site review.
-2. Home
-   - [x] Add the supplied Riemersma image across the complete Home surface as a visible refinement precursor.
-   - [x] Refine and approve the hero first viewport.
-   - [x] Review and approve the Home Tools spread.
-   - [x] Review and approve the Home Libraries spread.
-   - [x] Review and approve the Home About section.
-   - [x] Refine the page hierarchy through the remaining sections.
-   - [x] Refine the Tool, library, About, and Community sections.
-   - [x] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.
-3. Main pages
-   - [x] Refine About.
-   - [x] Refine Community.
-   - [x] Refine Privacy while preserving its publication gates.
-4. Resources
-   - [x] Complete the requested refinements to the archive and its catalogue-driven preview detail template while preserving the publication gates.
-5. Library pages
-   - [x] Refine the Libraries collection page alongside the Tools collection page.
-   - [x] Refine ditherlib as the representative library page.
-   - [x] Apply the approved direction to aethellib.
-6. Documentation transition after DitherTool is ready
-   - [ ] Establish verified manifests and refine one representative documentation page.
-   - [ ] Complete the maintained documentation topic sets for both libraries.
-7. Error response
-   - [x] Refine the shared error response and verify generated `404.html` behaviour plus the deployed-style unknown-route response.
-8. Tool pages
-   - [x] Refine the Tools collection page alongside the Libraries collection page.
-   - [x] Refine DitherTool with truthful construction messaging.
-   - [x] Apply the approved direction to AethelTool.
-9. Whole-site polish
-   - [x] Resolve cross-site typography, spacing, alignment, density, and responsive inconsistencies.
-   - [ ] Complete whole-site accessibility, metadata, performance, privacy, and browser review.
+### 3. Complete the Privacy and operational launch gates
 
-### Pass 1: Route skeleton and shared structure
+- [ ] Complete the applicable Ontario registration or incorporation and approve the exact public operator identity.
+- [ ] Replace transitional Privacy copy with the approved identity, jurisdiction, effective date, and contact details.
+- [ ] Complete the provider register, retention schedule, safeguards, international-processing review, visitor choices, incident procedure, Community review, and younger-visitor review.
+- [ ] Establish and document the monitored privacy-request procedure.
+- [ ] Verify inbound and outbound delivery for `privacy@memorycore.dev` through Proton.
+- [ ] Complete qualified legal review of the implemented data flows and final Privacy policy.
+- [ ] Confirm whether production analytics can launch without prior consent. Keep the beacon disabled until a compliant choice exists if legal review requires consent.
 
-Establish the complete information architecture using genuine outline-level copy. Confirm content order, page hierarchy, relationships, navigation, metadata, responsive placement, and no-JavaScript behaviour before detailed visual treatment.
+### 4. Review the frozen Worker Preview
 
-- [x] Add typed site, Tool, library, destination, relationship, publication, and metadata records.
-- [x] Run `validateContent()` from the root server layout and from a unit test.
-- [x] Add the initial semantic shell, skip link, header, footer, and design-library styles.
-- [x] Extract one shared error view for `+error.svelte` and the `/404` build route.
-- [x] Add real outline-level content for Home, Tools, both Tool pages, Libraries, both library pages, Resources, Community, About, and the Privacy structure.
-- [ ] After DitherTool is ready, add documentation indexes only when the documentation manifest can supply their real published inventory.
-- [x] Add desktop navigation after all of its destinations prerender successfully.
-- [x] Add the accessible small-screen menu with the same order and destinations.
-- [x] Add the shared metadata helper, canonical URLs, indexing rules, and initial structured-data boundaries.
-- [x] Add font licence files.
-- [x] Review the committed security headers and robots file against the skeleton.
-- [x] Generate the sitemap from published indexable records.
-- [x] Review redirect requirements. No route aliases are currently approved.
-- [x] Confirm the shell and primary content remain useful with JavaScript disabled.
-- [x] Review the whole skeleton at 320, 768, 1200, and 1440 CSS px.
+- [ ] Deploy the frozen candidate commit to its immutable branch Worker Preview.
+- [ ] Confirm the Preview is `noindex`, contains no production analytics, performs no R2 writes, and matches the reviewed commit.
+- [ ] Verify Home, one route from each page family, direct and nested unknown routes, response headers, canonicals, sitemap, robots policy, and changed external destinations.
+- [ ] Repeat the automated performance measurements against the deployed Preview.
+- [ ] Resolve every release blocker and obtain owner approval for the candidate.
 
-Checkpoint: every unconditional route exists with truthful content, coherent hierarchy, valid relationships, one `h1`, working shell navigation, appropriate indexing, and no public placeholder claims. Layout and typography may remain deliberately rough.
+### 5. Deploy and cut over
 
-### Pass 2: Representative-page benchmarks
+- [ ] Connect the production Worker to `main`, enable branch previews, and keep custom domains disconnected during verification.
+- [ ] Export the current Porkbun zone and reproduce every web and Proton Mail record in Cloudflare. Keep mail records DNS-only, preserve one SPF record, and leave Cloudflare Email Routing disabled.
+- [ ] Query the assigned Cloudflare nameservers directly and compare their answers with the current authoritative zone.
+- [ ] Remove any existing Porkbun DNSSEC DS record at least 24 hours before delegation and confirm its removal.
+- [ ] Pause Vercel production automation while retaining the last verified deployment and current domain connection for rollback.
+- [ ] Merge the approved candidate through protected checks, deploy `main`, and smoke-test the production Worker on its `workers.dev` address.
+- [ ] Change only the authoritative nameservers at Porkbun.
+- [ ] After Cloudflare reports the zone active, attach `memorycore.dev` and `www.memorycore.dev`, enable HTTPS, and redirect the apex to `www` while preserving paths and queries.
+- [ ] Run the public website smoke check and independently test Proton inbound mail, outbound replies, SPF, DKIM, and DMARC.
+- [ ] Enable Cloudflare DNSSEC and publish the new DS record at Porkbun after the website and mail are stable.
+- [ ] Record the deployed commit, Cloudflare version, deployment time, operator, smoke-check result, and any approved exceptions in the pull request or linked issue.
+- [ ] Retain the last Vercel deployment and old Porkbun zone through sign-off, then remove obsolete Vercel domain automation.
 
-Refine one representative from each page family. Settle the shared visual language and component contracts against several real contexts before applying them across sibling pages.
+## Deferred work
 
-- [x] Home: establish the cobalt environment, first-viewport hierarchy, major section rhythm, and connections to Tools, libraries, About, and Community.
-- [x] ditherlib: establish the library-detail structure, technical hierarchy, Tool relationship, documentation action, examples, and labelled external destinations.
-- [ ] After DitherTool is ready, establish one documentation page with calm reading layout, hierarchy, navigation, code treatment, applicability, and technical links.
-- [x] Resources: complete the archive and catalogue-driven preview detail refinements while keeping both routes `noindex, follow` and publishing no downloadable files.
-- [x] Privacy: establish the readable policy structure while preserving its operational and legal publication gates.
-- [x] Error response: establish concise recovery actions and verify generated `404.html` behaviour plus the deployed-style unknown-route response.
-- [x] DitherTool: establish the Tool-detail structure, active-development status, authentic evidence treatment, library relationship, and Community action.
+These items do not block the website launch:
 
-For each representative page:
+- Transition library documentation in-house after DitherTool is ready.
+- Publish Resource downloads only when a complete source packet, rights evidence, and final files are approved.
+- Add R2 only when an approved Resource exceeds the repository storage policy.
+- Add commerce only when a paid Tool and provider review are complete.
+- Add Brand routes only after their page type and public content are approved.
 
-1. Confirm content accuracy and order.
-2. Block out responsive composition and reading order.
-3. Refine typography, spacing, colour, borders, and shared controls.
-4. Add cleared imagery or authentic technical material when required.
-5. Verify metadata, accessibility, no-JavaScript behaviour, performance, and route-family tests.
-6. Record shared decisions in the owning component or content contract before moving to the next family.
+## Launch completion
 
-Checkpoint: the representative set expresses the approved direction, establishes reusable family patterns, and passes automated checks plus the required viewport review.
-
-### Pass 3: Complete sibling pages
-
-Apply the proven family patterns to the remaining pages while preserving their content-specific expression.
-
-- [x] Complete aethellib from the reviewed library-detail direction.
-- [x] Complete the Tools and Libraries collection pages.
-- [x] Complete Community and About.
-- [ ] After DitherTool is ready, complete the maintained documentation topic sets for both libraries.
-- [x] Complete Home sections that depend on finished family content.
-- [ ] Complete Privacy after its launch gates and legal review are satisfied.
-- [ ] Complete AethelTool from the reviewed Tool-detail pattern after the other page families.
-
-Checkpoint: every unconditional route is content-complete, visually reviewed, accessible, prerendered, and covered by its applicable tests.
-
-### Pass 4: Whole-site refinement
-
-Refine cross-route consistency after all page families are visible together.
-
-- [ ] Resolve typography, spacing, alignment, density, and responsive inconsistencies.
-- [ ] Add approved purposeful motion and reduced-motion behaviour.
-- [ ] Complete cleared imagery, rights records, licences, attribution, and alternatives.
-- [ ] Complete browser, keyboard, screen-reader, forced-colour, zoom, and text-spacing review.
-- [x] Enforce request, byte, font, image, script, stylesheet, and third-party budgets.
-- [ ] Complete metadata, structured data, privacy, security, and operational acceptance.
-
-Checkpoint: the release candidate is ready for Phase 7 stabilisation and owner review.
-
-## Phase 0: Hand off approved context
-
-- [x] Review this exported pack.
-- [x] Copy this directory's contents into the website repository root, preserving `context/`.
-- [x] Record the exported source-review dates in the website repository.
-- [x] Create `feat/website-overhaul` from the current deployable `main`.
-
-Exit: the website repository has local, versioned context and no dependency on the private operations wiki.
-
-## Phase 1: Design-library baseline
-
-- [x] Complete website-required tokens, themes, and primitives.
-- [x] Verify server-rendering and prerendering safety.
-- [x] Release `@memorycore/design` 0.1.0 with documented public exports.
-- [x] Avoid speculative primitives and variants.
-
-Exit: the website can install `@memorycore/design` 0.1.0 without source or repository coupling.
-
-## Phase 2: Establish the website foundation
-
-- [x] Replace the obsolete implementation with the current stable SvelteKit scaffold.
-- [x] Configure static rendering, mdsvex, strict TypeScript, npm scripts, linting, formatting, checks, Vitest, Playwright, axe, GitHub Actions, Wrangler, previews, and `404` handling.
-- [x] Pin `@memorycore/design` 0.1.0.
-- [ ] Confirm `npm ci` and `npm run verify` from a clean checkout.
-- [ ] Confirm the minimal site on a non-indexable Worker Preview.
-
-Exit: `npm ci` and `npm run verify` pass from a clean checkout, and the minimal site deploys to a non-indexable Worker Preview.
-
-## Phase 3: Build shared foundations
-
-- Follow Pass 1 and the shared work exposed by the representative pages in Pass 2.
-- Add self-hosted fonts and licences, global styles, shell, navigation, footer, themes, metadata helpers, headers, redirects, sitemap, and robots generation.
-- Add typed content records, relationships, publication states, and `validateContent()`.
-- Add only the shared website compositions required by approved routes.
-
-Exit: representative pages satisfy the shell, no-JavaScript, content-validation, responsive, and accessibility baselines.
-
-## Phase 4: Implement core public routes
-
-- Follow Passes 1 through 3 for core routes, with the route-skeleton review preceding detailed page polish.
-- Build Home, Tools, both Tool pages, Libraries, both library pages, Community, About, the Resources empty state, Privacy structure, and the error response.
-- Add reviewed copy, metadata, structured data, cleared media, and route-family tests with each page.
-
-Exit: every unconditional route is complete in preview. Privacy remains gated by its legal and operational requirements.
-
-## Phase 5: Transition documentation in-house after DitherTool is ready
-
-This phase is deferred and does not block the initial release. Keep docs.rs as the labelled documentation destination until the transition is reviewed and complete.
-
-- Add the internal mdsvex pipeline, manifests, loaders, shell, navigation, build-time highlighting, technical components, and source-baseline validation.
-- Publish both documentation indexes with maintained, reviewed topic sets.
-
-Exit: every published topic appears once in its manifest, prerenders correctly, passes technical-owner review, and replaces its external launch-era path deliberately.
-
-## Phase 6: Publish Resources when material exists
-
-- Use the refined archive and no-download preview detail as the shipping baseline after approval.
-- Keep the overview and preview detail `noindex, follow` until a complete reviewed Resource is published.
-- Add a Resource record and detail route only for a complete reviewed source packet.
-- Use repository storage first and activate R2 only at the approved threshold.
-
-Exit: each published Resource passes rights, licence, checksum, download, preview, accessibility, performance, and relationship checks.
-
-## Phase 7: Stabilise the release candidate
-
-- Fix shared primitive defects in `@memorycore/design` and consume released updates through the lockfile.
-- Confirm the installed design-library version remains appropriate after website integration and release an update only when a shared defect or reusable gap requires it.
-- Complete content, browser, accessibility, privacy, security, performance, and operational acceptance.
-
-Exit: the frozen release-candidate commit passes automated and manual gates and has owner approval.
-
-## Phase 8: Deploy and cut over
-
-- Configure the production Worker from committed files.
-- Pause Vercel production automation while retaining the last deployment.
-- Verify the Worker and complete the Cloudflare DNS and Proton Mail safety procedure.
-- Merge the approved branch, attach the domains, verify production, then enable DNSSEC.
-
-Exit: `www.memorycore.dev` serves the verified release, mail passes independent tests, and the release record identifies both deployed and rollback versions.
-
-## Dependency rules
-
-- `@memorycore/design` tokens and required primitives precede website composition.
-- Typed records and validation precede generated documentation and Resource routes.
-- Tool and library records precede pages that consume their reciprocal relationships.
-- After DitherTool is ready, documentation manifests and immutable source baselines precede in-house topic publication.
-- Resource details, R2, commerce, and Brand routes remain conditional.
-- Worker verification and a matching Cloudflare zone precede the Porkbun nameserver change.
-- Accessibility, metadata, performance, privacy, validation, and tests belong to every phase.
+The launch is complete when every applicable launch checkbox above is satisfied, the frozen candidate has owner approval, `www.memorycore.dev` serves the verified commit, Proton Mail passes independent testing, and a verified rollback path remains available through sign-off.

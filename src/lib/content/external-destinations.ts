@@ -6,7 +6,7 @@ export const communityInvite = {
 	kind: 'community',
 	url: 'https://discord.gg/deJfdDJ6Nm',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-11-04'
+	reviewedAt: '2026-11-20'
 } satisfies ExternalDestination;
 
 export const externalDestinations = [
@@ -17,7 +17,7 @@ export const externalDestinations = [
 		kind: 'source',
 		url: 'https://github.com/Downmoto',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-11-02'
+		reviewedAt: '2026-11-20'
 	},
 	{
 		id: 'memorycore-youtube',
@@ -25,7 +25,7 @@ export const externalDestinations = [
 		kind: 'video',
 		url: 'https://www.youtube.com/@MemoryCoreDev',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-11-02'
+		reviewedAt: '2026-11-20'
 	},
 	{
 		id: 'ditherlib-source',
@@ -33,7 +33,7 @@ export const externalDestinations = [
 		kind: 'source',
 		url: 'https://github.com/Downmoto/ditherlib',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30'
+		reviewedAt: '2026-11-20'
 	},
 	{
 		id: 'ditherlib-package',
@@ -41,7 +41,7 @@ export const externalDestinations = [
 		kind: 'package',
 		url: 'https://crates.io/crates/ditherlib',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30'
+		reviewedAt: '2026-11-20'
 	},
 	{
 		id: 'ditherlib-api',
@@ -49,7 +49,7 @@ export const externalDestinations = [
 		kind: 'api-reference',
 		url: 'https://docs.rs/ditherlib/latest/ditherlib/',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-11-17'
+		reviewedAt: '2026-11-20'
 	},
 	{
 		id: 'aethellib-source',
@@ -57,7 +57,7 @@ export const externalDestinations = [
 		kind: 'source',
 		url: 'https://github.com/Downmoto/aethellib',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30'
+		reviewedAt: '2026-11-20'
 	},
 	{
 		id: 'aethellib-package',
@@ -65,7 +65,7 @@ export const externalDestinations = [
 		kind: 'package',
 		url: 'https://crates.io/crates/aethellib',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30'
+		reviewedAt: '2026-11-20'
 	},
 	{
 		id: 'aethellib-api',
@@ -73,6 +73,6 @@ export const externalDestinations = [
 		kind: 'api-reference',
 		url: 'https://docs.rs/aethellib/latest/aethellib/',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-11-17'
+		reviewedAt: '2026-11-20'
 	}
 ] satisfies readonly ExternalDestination[];

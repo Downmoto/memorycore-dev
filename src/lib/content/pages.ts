@@ -7,7 +7,7 @@ export const pages = {
 		summary: 'Some ideas need their own tools.',
 		publicationState: 'published',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30',
+		reviewedAt: '2026-11-20',
 		metadata: {
 			title: 'Tools',
 			description:
@@ -22,7 +22,7 @@ export const pages = {
 		summary: 'Good software starts with good foundations.',
 		publicationState: 'published',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30',
+		reviewedAt: '2026-11-20',
 		metadata: {
 			title: 'Libraries',
 			description:
@@ -38,7 +38,7 @@ export const pages = {
 			'Open companion material for MemoryCore videos and technical work.',
 		publicationState: 'published',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30',
+		reviewedAt: '2026-11-20',
 		metadata: {
 			title: 'Resources',
 			description:
@@ -54,7 +54,7 @@ export const pages = {
 			'A place for thoughtful discussion about MemoryCore tools, libraries, and creative practice.',
 		publicationState: 'published',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30',
+		reviewedAt: '2026-11-20',
 		metadata: {
 			title: 'Community',
 			description:
@@ -70,7 +70,7 @@ export const pages = {
 			'MemoryCore creates authored creative software and the open-source systems beneath it.',
 		publicationState: 'published',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30',
+		reviewedAt: '2026-11-20',
 		metadata: {
 			title: 'About',
 			description:
@@ -86,7 +86,7 @@ export const pages = {
 			'How MemoryCore handles personal information and third-party services.',
 		publicationState: 'preview',
 		owner: 'Arad Fadaei',
-		reviewedAt: '2026-10-30',
+		reviewedAt: '2026-11-20',
 		metadata: {
 			title: 'Privacy policy',
 			description:

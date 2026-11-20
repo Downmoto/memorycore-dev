@@ -10,7 +10,7 @@ export const dithertool = {
 	destinations: [],
 	publicationState: 'published',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-11-18',
+	reviewedAt: '2026-11-20',
 	metadata: {
 		title: 'DitherTool',
 		description:
@@ -30,7 +30,7 @@ export const aetheltool = {
 	destinations: [],
 	publicationState: 'published',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-11-18',
+	reviewedAt: '2026-11-20',
 	metadata: {
 		title: 'AethelTool',
 		description:
@@ -54,7 +54,7 @@ export const ditherlib = {
 	destinations: ['ditherlib-source', 'ditherlib-package', 'ditherlib-api'],
 	publicationState: 'published',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-11-17',
+	reviewedAt: '2026-11-20',
 	metadata: {
 		title: 'ditherlib',
 		description:
@@ -77,7 +77,7 @@ export const aethellib = {
 	destinations: ['aethellib-source', 'aethellib-package', 'aethellib-api'],
 	publicationState: 'published',
 	owner: 'Arad Fadaei',
-	reviewedAt: '2026-11-18',
+	reviewedAt: '2026-11-20',
 	metadata: {
 		title: 'aethellib',
 		description:
