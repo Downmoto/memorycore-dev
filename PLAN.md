@@ -10,7 +10,7 @@ Launch the approved static SvelteKit website on Cloudflare without disrupting th
 
 ## Current position
 
-The website implementation and whole-site refinement are complete on `feat/website-overhaul` through commit `e07ebad`. The site uses `@memorycore/design` 0.2.1, prerenders every published route, and passes the current automated verification suite.
+The website implementation and whole-site refinement are complete on `feat/website-overhaul`. The site uses `@memorycore/design` 0.2.1, prerenders every published route, and passes the current automated verification suite.
 
 Home, Tools, libraries, About, Community, Resources preview, Privacy preview, and the error response have completed focused visual refinement. Automated checks cover route rendering, metadata, structured data, accessibility scanning, no-JavaScript navigation, responsive overflow, interactions, performance budgets, sitemap generation, and `404` behaviour.
 
@@ -25,8 +25,8 @@ Complete these sections in order.
 ### 1. Freeze and verify the release candidate
 
 - [x] Update time-sensitive product, library, provider, external-link, and review-date facts.
-- [ ] Run `npm ci` from a clean checkout.
-- [ ] Run `npm run verify` from that clean checkout.
+- [x] Run `npm ci` from a clean checkout.
+- [x] Run `npm run verify` from that clean checkout.
 - [ ] Require the matching GitHub Actions checks to pass without skipped or flaky tests.
 - [ ] Record the candidate commit SHA and the last verified production rollback version.
 
