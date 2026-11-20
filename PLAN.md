@@ -27,8 +27,10 @@ Complete these sections in order.
 - [x] Update time-sensitive product, library, provider, external-link, and review-date facts.
 - [x] Run `npm ci` from a clean checkout.
 - [x] Run `npm run verify` from that clean checkout.
-- [ ] Require the matching GitHub Actions checks to pass without skipped or flaky tests.
-- [ ] Record the candidate commit SHA and the last verified production rollback version.
+- [x] Require the matching GitHub Actions checks to pass without skipped or flaky tests.
+- [x] Record the candidate commit SHA and the last verified production rollback version.
+
+Candidate record: annotated tag `release-candidate-2026-11-20`. Production rollback: `4ba7e3c`, recorded by GitHub as a successful Production deployment on 2026-09-11.
 
 ### 2. Complete manual content, rights, browser, and accessibility acceptance
 
