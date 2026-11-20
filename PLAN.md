@@ -12,15 +12,13 @@ Replace the existing website with the approved static SvelteKit experience while
 
 Phase 2 and the shared Pass 1 foundations are implemented on `feat/website-overhaul`. The remaining Phase 2 exit evidence is a clean-checkout `npm ci` and `npm run verify` run. The deployed branch Preview remains non-indexable and has the expected security headers.
 
-Home, the Tools and Libraries collection routes, About, Community, the Resources archive and preview detail template, and the Privacy presentation are approved. Both library detail pages and both Tool detail pages are implemented for review. The Resources overview and preview detail remain `noindex`; the preview publishes no downloadable files. Home retains its request-count and asset provenance/resolution gates. Privacy retains its legal and operational publication gates and remains `preview` and `noindex`.
+Home, the Tools and Libraries collection routes, About, Community, both library detail pages, both Tool detail pages, the Resources archive and preview detail template, Privacy, and the error response have completed focused refinement. The whole-site automated viewport, accessibility, metadata, no-JavaScript, and performance review is complete. The Resources overview and preview detail remain `noindex`; the preview publishes no downloadable files. Privacy retains its legal and operational publication gates and remains `preview` and `noindex`.
 
 Library documentation remains external on docs.rs for the initial release. In-house documentation routes, manifests, and topics are deferred until DitherTool is ready and do not block launch.
 
 ### Resume point
 
-Review the implemented library and Tool detail pages, then complete the remaining shared items and whole-site review while keeping the Home, Resource publication, and Privacy release gates open.
-
-The remaining shared Pass 1 items stay queued: retain the font licence texts in the repository and define the initial structured-data boundaries.
+Review and approve the whole-site refinement, then complete the remaining manual browser, assistive-technology, rights, privacy, and operational release gates. Resource publication and the in-house documentation transition remain deferred.
 
 ## Implementation approach
 
@@ -46,7 +44,7 @@ Complete and review one area at a time. Commit each approved checkpoint before m
    - [x] Review and approve the Home About section.
    - [x] Refine the page hierarchy through the remaining sections.
    - [x] Refine the Tool, library, About, and Community sections.
-   - [ ] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.
+   - [x] Complete Home responsive, accessibility, no-JavaScript, metadata, and performance checks.
 3. Main pages
    - [x] Refine About.
    - [x] Refine Community.
@@ -67,7 +65,7 @@ Complete and review one area at a time. Commit each approved checkpoint before m
    - [x] Refine DitherTool with truthful construction messaging.
    - [x] Apply the approved direction to AethelTool.
 9. Whole-site polish
-   - [ ] Resolve cross-site typography, spacing, alignment, density, and responsive inconsistencies.
+   - [x] Resolve cross-site typography, spacing, alignment, density, and responsive inconsistencies.
    - [ ] Complete whole-site accessibility, metadata, performance, privacy, and browser review.
 
 ### Pass 1: Route skeleton and shared structure
@@ -82,8 +80,8 @@ Establish the complete information architecture using genuine outline-level copy
 - [ ] After DitherTool is ready, add documentation indexes only when the documentation manifest can supply their real published inventory.
 - [x] Add desktop navigation after all of its destinations prerender successfully.
 - [x] Add the accessible small-screen menu with the same order and destinations.
-- [ ] Add the shared metadata helper, canonical URLs, indexing rules, and initial structured-data boundaries. The helper, canonicals, and indexing rules are complete; structured-data boundaries remain.
-- [ ] Add font licence files.
+- [x] Add the shared metadata helper, canonical URLs, indexing rules, and initial structured-data boundaries.
+- [x] Add font licence files.
 - [x] Review the committed security headers and robots file against the skeleton.
 - [x] Generate the sitemap from published indexable records.
 - [x] Review redirect requirements. No route aliases are currently approved.
@@ -96,7 +94,7 @@ Checkpoint: every unconditional route exists with truthful content, coherent hie
 
 Refine one representative from each page family. Settle the shared visual language and component contracts against several real contexts before applying them across sibling pages.
 
-- [ ] Home: establish the cobalt environment, first-viewport hierarchy, major section rhythm, and connections to Tools, libraries, About, and Community.
+- [x] Home: establish the cobalt environment, first-viewport hierarchy, major section rhythm, and connections to Tools, libraries, About, and Community.
 - [x] ditherlib: establish the library-detail structure, technical hierarchy, Tool relationship, documentation action, examples, and labelled external destinations.
 - [ ] After DitherTool is ready, establish one documentation page with calm reading layout, hierarchy, navigation, code treatment, applicability, and technical links.
 - [x] Resources: complete the archive and catalogue-driven preview detail refinements while keeping both routes `noindex, follow` and publishing no downloadable files.
@@ -123,7 +121,7 @@ Apply the proven family patterns to the remaining pages while preserving their c
 - [x] Complete the Tools and Libraries collection pages.
 - [x] Complete Community and About.
 - [ ] After DitherTool is ready, complete the maintained documentation topic sets for both libraries.
-- [ ] Complete Home sections that depend on finished family content.
+- [x] Complete Home sections that depend on finished family content.
 - [ ] Complete Privacy after its launch gates and legal review are satisfied.
 - [ ] Complete AethelTool from the reviewed Tool-detail pattern after the other page families.
 
@@ -137,7 +135,7 @@ Refine cross-route consistency after all page families are visible together.
 - [ ] Add approved purposeful motion and reduced-motion behaviour.
 - [ ] Complete cleared imagery, rights records, licences, attribution, and alternatives.
 - [ ] Complete browser, keyboard, screen-reader, forced-colour, zoom, and text-spacing review.
-- [ ] Enforce request, byte, font, image, script, stylesheet, and third-party budgets.
+- [x] Enforce request, byte, font, image, script, stylesheet, and third-party budgets.
 - [ ] Complete metadata, structured data, privacy, security, and operational acceptance.
 
 Checkpoint: the release candidate is ready for Phase 7 stabilisation and owner review.

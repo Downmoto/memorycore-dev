@@ -56,7 +56,7 @@
 		<div class="community-art" aria-hidden="true">
 			<img
 				class="glow-art"
-				src="/images/community/falling-figure.png"
+				src="/images/community/falling-figure.webp"
 				alt=""
 				width="1245"
 				height="1263"
@@ -65,7 +65,7 @@
 			/>
 			<img
 				class="clear-art"
-				src="/images/community/falling-figure.png"
+				src="/images/community/falling-figure.webp"
 				alt=""
 				width="1245"
 				height="1263"

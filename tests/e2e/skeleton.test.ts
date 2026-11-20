@@ -11,6 +11,7 @@ const routes = [
 	'/libraries/ditherlib',
 	'/libraries/aethellib',
 	'/resources',
+	'/resources/syntax-of-defining-syntax-preview',
 	'/community',
 	'/about',
 	'/privacy'
@@ -33,6 +34,18 @@ for (const route of routes) {
 		expect(findings.violations).toEqual([]);
 	});
 }
+
+test('published routes fit the narrowest supported viewport', async ({
+	page
+}) => {
+	await page.setViewportSize({ width: 320, height: 700 });
+	for (const route of routes) {
+		await page.goto(route);
+		expect(
+			await page.evaluate(() => document.documentElement.scrollWidth)
+		).toBeLessThanOrEqual(320);
+	}
+});
 
 test('no-JavaScript navigation exposes every primary destination', async ({
 	browser
@@ -58,6 +71,23 @@ test('no-JavaScript navigation exposes every primary destination', async ({
 	}
 
 	await context.close();
+});
+
+test('Home publishes the approved structured-data boundary', async ({
+	page
+}) => {
+	await page.goto('/');
+	const structuredData = await page
+		.locator('script[type="application/ld+json"]')
+		.textContent();
+	const graph = JSON.parse(structuredData ?? '{}')['@graph'];
+
+	expect(graph.map((entry: { '@type': string }) => entry['@type'])).toEqual([
+		'WebSite',
+		'Organization'
+	]);
+	expect(graph[1].name).toBe('MemoryCore');
+	expect(graph[1]).not.toHaveProperty('address');
 });
 
 test('small-screen menu opens, closes, and navigates', async ({ page }) => {

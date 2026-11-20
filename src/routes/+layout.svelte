@@ -70,7 +70,7 @@
 			linear-gradient(var(--texture-shade), var(--texture-shade)) center / cover
 				no-repeat,
 			var(--mc-colour-consumer-website-primary-light, #2f6892)
-				url('/images/home/riemersma.png') center top / cover no-repeat;
+				url('/images/home/riemersma.webp') center top / cover no-repeat;
 	}
 
 	.site-shell.textured.dark-theme {
@@ -83,7 +83,7 @@
 		background:
 			linear-gradient(var(--about-shade), var(--about-shade)) center / cover
 				no-repeat,
-			url('/images/about/floyd-steinberg.png') center top / cover no-repeat;
+			url('/images/about/floyd-steinberg.webp') center top / cover no-repeat;
 	}
 
 	.site-shell.about-background.dark-theme {
@@ -100,7 +100,7 @@
 		background:
 			linear-gradient(var(--privacy-shade), var(--privacy-shade)) center / cover
 				no-repeat,
-			url('/images/privacy/floyd-steinberg.png') center calc(0% - 25vh) / cover
+			url('/images/privacy/floyd-steinberg.webp') center calc(0% - 25vh) / cover
 				no-repeat #000;
 	}
 

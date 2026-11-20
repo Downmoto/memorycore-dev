@@ -19,28 +19,28 @@
 	);
 	// Original and processed images supplied by the project owner on 2026-11-17.
 	const logicalPixelImages = {
-		before: '/images/libraries/ditherlib/logical-pixels-original.jpg',
-		after: '/images/libraries/ditherlib/logical-pixels.png',
+		before: '/images/libraries/ditherlib/logical-pixels-original.webp',
+		after: '/images/libraries/ditherlib/logical-pixels.webp',
 		beforeAlt: 'Original photograph of a Brutalist concrete building',
 		afterAlt: 'The same building rendered with large logical pixels'
 	} as const;
 	const paletteImages = {
-		before: '/images/libraries/ditherlib/palettes-original.jpg',
-		after: '/images/libraries/ditherlib/palettes.png',
+		before: '/images/libraries/ditherlib/palettes-original.webp',
+		after: '/images/libraries/ditherlib/palettes.webp',
 		beforeAlt: 'Original photograph of a glass prism casting a rainbow',
 		afterAlt: 'The same prism photograph rendered with a limited palette'
 	} as const;
 	const pipelineImages = {
-		before: '/images/libraries/ditherlib/pipelines-original.jpg',
-		after: '/images/libraries/ditherlib/pipelines.png',
+		before: '/images/libraries/ditherlib/pipelines-original.webp',
+		after: '/images/libraries/ditherlib/pipelines.webp',
 		beforeAlt: 'Original photograph of purple flowers',
 		afterAlt: 'The same flowers after a greyscale halftone pipeline',
 		width: 1920,
 		height: 2560
 	} as const;
 	const selectionImages = {
-		before: '/images/libraries/ditherlib/selections-original.jpg',
-		after: '/images/libraries/ditherlib/selections.png',
+		before: '/images/libraries/ditherlib/selections-original.webp',
+		after: '/images/libraries/ditherlib/selections.webp',
 		beforeAlt: 'Original photograph of storm clouds lit by sunset',
 		afterAlt: 'The same clouds with an elliptical selection effect',
 		width: 1920,
@@ -229,7 +229,11 @@
 				Then load an image, apply an effect, and write the owned result.
 			</Typography>
 		</div>
-		<pre aria-label="ditherlib threshold example"><code
+		<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+		<pre
+			aria-label="ditherlib threshold example"
+			role="region"
+			tabindex="0"><code
 				><span class="syntax-keyword">use</span> <span class="syntax-path"
 					>ditherlib</span
 				>::&#123;

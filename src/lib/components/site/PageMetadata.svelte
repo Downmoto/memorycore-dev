@@ -2,7 +2,13 @@
 	import { site } from '../../content/site';
 	import type { PageMetadata } from '../../content/types';
 
-	let { metadata }: { metadata: PageMetadata } = $props();
+	let {
+		metadata,
+		structuredData
+	}: {
+		metadata: PageMetadata;
+		structuredData?: Record<string, unknown>;
+	} = $props();
 	let title = $derived(
 		metadata.title === site.name
 			? site.name
@@ -21,4 +27,9 @@
 	<meta property="og:description" content={metadata.description} />
 	<meta property="og:url" content={url} />
 	<meta property="og:site_name" content={site.name} />
+	{#if structuredData}
+		<svelte:element this={"script"} type="application/ld+json"
+			>{JSON.stringify(structuredData)}</svelte:element
+		>
+	{/if}
 </svelte:head>

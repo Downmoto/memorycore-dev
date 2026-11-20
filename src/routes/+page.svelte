@@ -5,9 +5,33 @@
 	import { libraries, tools } from '../lib/content/catalogue';
 	import { communityInvite } from '../lib/content/external-destinations';
 	import { site } from '../lib/content/site';
+
+	const structuredData = {
+		'@context': 'https://schema.org',
+		'@graph': [
+			{
+				'@type': 'WebSite',
+				'@id': `${site.canonicalOrigin}/#website`,
+				url: `${site.canonicalOrigin}/`,
+				name: site.name,
+				description: site.metadata.description,
+				publisher: { '@id': `${site.canonicalOrigin}/#organization` }
+			},
+			{
+				'@type': 'Organization',
+				'@id': `${site.canonicalOrigin}/#organization`,
+				name: site.name,
+				url: `${site.canonicalOrigin}/`,
+				sameAs: [
+					'https://github.com/Downmoto',
+					'https://www.youtube.com/@MemoryCoreDev'
+				]
+			}
+		]
+	};
 </script>
 
-<PageMetadata metadata={site.metadata} />
+<PageMetadata metadata={site.metadata} {structuredData} />
 
 <div class="welcome page-shell">
 	<div class="welcome-content">

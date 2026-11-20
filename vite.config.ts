@@ -7,6 +7,7 @@ export default defineConfig({
 	plugins: [
 		sveltekit({
 			adapter: adapter(),
+			output: { bundleStrategy: 'single' },
 			csp: {
 				mode: 'hash',
 				directives: {

@@ -30,7 +30,7 @@
 			<div class="about-art" aria-hidden="true">
 				<img
 					class="glow-art"
-					src="/images/about/reclining-figure.png"
+					src="/images/about/reclining-figure.webp"
 					alt=""
 					width="1536"
 					height="1024"
@@ -39,7 +39,7 @@
 				/>
 				<img
 					class="clear-art"
-					src="/images/about/reclining-figure.png"
+					src="/images/about/reclining-figure.webp"
 					alt=""
 					width="1536"
 					height="1024"
